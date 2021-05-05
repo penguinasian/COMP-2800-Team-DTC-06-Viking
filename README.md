@@ -1,2 +1,4 @@
-# Viking-COMP2800
-A group project developing an app that solves biking related issues in Vancouver city
+This is my readme file.
+To run the website:
+1. Download the files.
+2. Open index.html in your browser
