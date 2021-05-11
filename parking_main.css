@@ -57,3 +57,7 @@ img {
     margin-top:0px;
     font:bolder;
 }
+
+iframe {
+    width: 100%;
+}
