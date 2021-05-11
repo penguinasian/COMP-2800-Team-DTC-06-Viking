@@ -8,21 +8,15 @@
     flex-direction: column;
     align-items: center;
     padding-bottom: 0px;
-    
 }
 
 .fixed-bottom {
-    
     border-top:black solid 1px;
-    
-    
 }
 
 .appname {
     background-color:
-    #4C744C
-    ;
-   
+    #4C744C;
 }
 
 .logoName {
@@ -47,14 +41,14 @@
 }
 
 .iconButton:hover{
-    background-color:#4C744C ;
+    background-color:#4C744C;
 }
 
 img {
     width:100px;
     height:50px;
     margin-left: 0px;
-    margin-top:0px;
+    margin-top: 0px;
     font:bolder;
 }
 
