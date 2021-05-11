@@ -66,6 +66,7 @@ nav {
 
 .iconButton:hover{
     background-color:#4C744C;
+    color: white;
 }
 
 #buttons {
@@ -92,7 +93,22 @@ nav i {
     font-size: 10vw !important;
 }
 
-.parking p {
+
+.bottomIcon button {
+    color:#767274;
+}
+
+/* Active page icon style -classes: parking, services, routes, info, profile*/
+.parking{
     color:#4C744C;
 }
+
+.parking p{
+    color:#4C744C;
+}
+
+.parking:hover{
+    color:white;
+}
+/* Active page style.*/
 
