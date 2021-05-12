@@ -1,0 +1,161 @@
+
+body, html {
+  opacity: 0.9;
+  z-index: -1;
+  color: whitesmoke;
+  scroll-behavior: smooth;
+  font-family: 'Open sans', serif;
+  font-size: 50px;
+  height: 100%;
+}
+
+button:hover {
+  background-color: silver;
+}
+
+@media (max-width: 749px){
+  img {
+    width:100px;
+    height:66px;
+}
+
+body,html {
+    font-size: 30px;
+}
+
+.firstPage {
+  height: 100%;
+  background-image: url(../home_images/biking\ 9.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.topnav {
+    background-color: #4C744C;
+    height: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+      font-family: 'Berkshire Swash', serif;
+      font-size:2.5em;
+  }
+
+  .titleIntro > p {
+    width: 50%;
+    font-size: 0.5em;
+  }
+
+  .button{
+    margin: auto;
+  }
+
+  button {
+    border-radius: 15px;
+    background-color: #4C744C;
+    font-size: 0.8em;
+    color:whitesmoke;
+    padding:0.3em;
+  }
+
+  .titleIntro {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 35%;
+  }
+
+
+
+}
+
+
+@media (min-width: 750px) and (max-width: 1025px){
+
+img {
+    width:150px;
+    height:100px;
+}
+
+body,html {
+    font-size: 50px;
+}
+
+.firstPage {
+  height: 100%;
+  background-image: url(../home_images/biking\ 9.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+/* section {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+} 
+
+section > div {
+  height: 20%;
+}
+
+div > h3 {
+  margin: 0;
+  color: whitesmoke;
+}
+
+.availabilityFeature {
+  background-image: url(../home_images/bike_locker.jpg);
+
+}
+.servicesFeature {
+  background-image: url(../home_images/biking_8.jpg);
+}
+.routesFeature {
+  background-image: url(../home_images/bike_routes2.jpg);
+}*/
+
+.topnav {
+    background-color: #4C744C;
+    height: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+      font-family: 'Berkshire Swash', serif;
+      font-size:2.5em;
+  }
+
+  .titleIntro > p {
+    width: 50%;
+    font-size: 0.5em;
+  }
+
+  .button{
+    margin: auto;
+  }
+
+  button {
+    border-radius: 15px;
+    background-color: #4C744C;
+    font-size: 0.8em;
+    color:whitesmoke;
+    padding:0.3em;
+  }
+
+  .titleIntro {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 25%;
+  }
+
+}
