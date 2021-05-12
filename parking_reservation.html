@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./parking_reservation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <title>Parking_main</title>
+</head>
+
+<body>
+    <header>
+        <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top" style="height:10vh">
+            <div class="logoName">
+                <img src="./pics/logo final.png">
+            </div>
+        </div>
+    </header>
+
+    <!-- All elements go into main-->
+    <main>
+        <form action=#>
+            <label for="Start_Date">Start Date:</label>
+            <label for="End_Date">End Date:</label>
+
+            <input type="date" id="Start_Date" name="Start_Date">
+            <input type="date" id="End_Date" name="End_Date">
+
+            <!-- <input type="submit"> -->
+        </form>
+
+        <h4>Availability</h4>
+        <div class="result">
+            <table class="tg">
+                <thead>
+                    <tr>
+                        <th class="field">Address</th>
+                        <td class="value">Lorem 1338920, Vancouver</td>
+                    </tr>
+                    <tr>
+                        <th class="field">Available Slots</th>
+                        <td class="slots">16 / 32</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class=lockerNumber>
+            <form action="/action_page.php">
+                <label for="quantity">Number of bike lockers </label>
+                <input type="number" id="quantity" name="quantity" min="1" max="99">
+            </form>
+        </div>
+
+        <button id='summary' type="button" class="btn btn-primary btn-sm">Summary</button>
+        <div class="summaryTable">
+            <table class="tg">
+                <thead>
+                    <tr>
+                        <th class="field">Address</th>
+                        <td class="value">Lorem 1338920, Vancouver</td>
+                    </tr>
+                    <tr>
+                        <th class="field">Check-in</th>
+                        <td class="slots">2021-05-01</td>
+                    </tr>
+                    <tr>
+                        <th class="field">Check-out</th>
+                        <td class="slots">2021-05-31</td>
+                    </tr>
+                    <tr>
+                        <th class="field">Length</th>
+                        <td class="slots">3 months</td>
+                    </tr>
+                    <tr>
+                        <th class="field">Qty</th>
+                        <td class="slots">2</td>
+                    </tr>
+                    <tr>
+                        <th class="field">Unit Price</th>
+                        <td class="slots">a bike locker for $ 10/month</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <table class="tg">
+            <thead>
+                <tr>
+                    <th class="field">Total Price</th>
+                    <td class="slots">$ 60</td>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="d-flex justify-content-center">
+            <button id='pay' type="button" class="btn btn-primary btn-sm">Pay</button>
+        </div>
+
+
+
+
+    </main>
+
+
+    <!-- Bottom: parking, services, routes, info and profile icons -->
+    <nav class="navbar navbar-expand fixed-bottom d-flex align-items-center">
+        <div class="container-fluid">
+            <div class="bottomIcon parking">
+                <button class="btn iconButton parking" href="#"><i class="fas fa-biking parking"></i></button>
+                <p class="footer">Parking</p>
+            </div>
+
+            <div class="bottomIcon services">
+                <button class="btn iconButton" href="#"><i class="fas fa-map-marked services"></i></button>
+                <p class="footer">Services</p>
+            </div>
+            <div class="bottomIcon routes">
+                <button class="btn iconButton" href="#"><i class="far fa-compass routes"></i></i></button>
+                <p class="footer">Routes</p>
+            </div>
+            <div class="bottomIcon info">
+                <button class="btn iconButton" href="#"><i class="fas fa-info-circle info"></i></i></button>
+                <p class="footer">Info</p>
+            </div>
+            <div class="bottomIcon profile">
+                <button class="btn iconButton" href="#"><i class="fas fa-user-circle profile"></i></button>
+                <p class="footer">Profile</p>
+            </div>
+        </div>
+    </nav>
+
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="./javascripts/firebase_api.js"></script>
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+
+    <script src="./javascripts/user_login.js"></script>
+    <script src='./parking_reservation.js'></script>
+</body>
+
+</html>
