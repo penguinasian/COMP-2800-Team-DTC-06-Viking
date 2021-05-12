@@ -9,6 +9,11 @@ body, html {
   height: 100%;
 }
 
+#homeButton {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
 button:hover {
   background-color: silver;
 }
