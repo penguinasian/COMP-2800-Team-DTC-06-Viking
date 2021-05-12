@@ -79,11 +79,11 @@ nav {
 }
 
 nav p {
-    font-size: 3.5vw !important;
+    font-size: 2.5vw !important;
 }
 
 nav i {
-    font-size: 10vw !important;
+    font-size: 2.5vw !important;
 }
 
 iframe {
@@ -109,3 +109,13 @@ iframe {
 }
 /* Active page style.*/
 
+main>form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+    gap: 3%;
+    margin: 0% 5%;
+    grid-template-areas:
+    "label label"
+    "input input"
+}
