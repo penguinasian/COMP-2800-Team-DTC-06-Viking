@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--Favicon links-->
+        <link rel="apple-touch-icon" sizes="180x180" href="../public/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../public/favicon/favicon-16x16.png">
+        <link rel="manifest" href="../public/favicon/site.webmanifest">
+        <link rel="mask-icon" href="../public/favicon/safari-pinned-tab.svg" color="#4c744c">
+        <link rel="shortcut icon" href="../public/favicon/favicon.ico">
+        <meta name="msapplication-TileColor" content="#4c744c">
+        <meta name="msapplication-config" content="../public/favicon/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+        <!--End Favicon links-->
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../public/css/skeleton.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="../public/css/routes.css">
+        <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
+
+        <title>Parking_main</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top" style="height:10vh">
+                <div class="logoName">
+                    <img src="../public/images/logo final.png">
+                </div>
+            </div>
+        </header>
+        
+        <!-- All elements go into main-->
+        <main id="routesContent">
+            <div class="routesNav">
+                <div id="navLeftPadding"></div>
+                <h1 id="routesTitle">Routes</h1>
+                <div class="navButtonWrapper">
+                <div class="routesNavButton" id="filterButton"></div>
+                <div class="routesNavButton" id="searchButton"></div>
+                </div>
+            </div>
+            <div class="routesDisplay">
+                <div class="routeElement" id="routeOne">
+                    <div class="routeInfo" id="routeOneInfo">
+                        <h2>English Bay Circuit</h2>
+                        <p>Difficulty: 1 Star
+                            Length: 5km
+                            Estimated Time: 1 hour
+                            Elevation: 2 meters
+                        </p>
+                    </div>
+                    <div class="clickOverlay" id="routeOneOverlay">
+                    </div>
+                    
+                </div>
+                <div class="routeElement" id="routeTwo">
+                    <h2>routes</h2>
+                </div>
+                <div class="routeElement" id="routeThree">
+                    <h2>routes</h2>
+                </div>
+                <div class="routeElement" id="routeFour">
+                    <h2>routes</h2>
+                </div>
+                <div class="routeElement" id="routeFive">
+                    <h2>routes</h2>
+                </div>
+                <div class="routeElement" id="routeSix">
+                    <h2>routes</h2>
+                </div>
+            </div>
+
+        </main>
+        
+
+        <!-- Bottom: parking, services, routes, info and profile icons -->
+        <nav class="navbar navbar-expand fixed-bottom d-flex align-items-center">
+            <div class="container-fluid">
+                <div class="bottomIcon parking">
+                    <button class="btn iconButton parking" href="#"><i class="fas fa-biking parking"></i></button>
+                    <p class="footer">Parking</p>
+                </div>
+
+                <div class="bottomIcon services">
+                    <button class="btn iconButton" href="#"><i class="fas fa-map-marked services"></i></button>
+                    <p class="footer">Services</p>
+                </div>
+                <div class="bottomIcon routes">
+                    <button class="btn iconButton" href="#"><i class="far fa-compass routes"></i></i></button>
+                    <p class="footer">Routes</p>
+                </div>
+                <div class="bottomIcon info">
+                    <button class="btn iconButton" href="#"><i class="fas fa-info-circle info"></i></i></button>
+                    <p class="footer">Info</p>
+                </div>
+                <div class="bottomIcon profile">
+                    <button class="btn iconButton" href="#"><i class="fas fa-user-circle profile"></i></button>
+                    <p class="footer">Profile</p>
+                </div>
+            </div>
+        </nav>
+
+
+        <!----------------------------------------------->
+        <!-- JS: Boostrap, Firebase, API related    -->
+        <!----------------------------------------------->
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+            </script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+        <script src="../public/javascripts/firebase_api.js"></script>
+        <!--------------------------------------------------------------------->
+        <!-- JS files: Your own JavaScript functions included here    -->
+        <!--------------------------------------------------------------------->
+        <script src="../public/javascripts/swipe.js"></script>
+        <script src="../public/javascripts/routes.js"></script>
+        <script src="../public/javascripts/login.js"></script>
+    </body>
+
+</html>
