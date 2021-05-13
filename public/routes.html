@@ -46,7 +46,7 @@
         
         <!-- All elements go into main-->
         <main id="routesContent">
-            <div class="routesNav">
+            <div class="routesNav" id="routesNavBar">
                 <div id="navLeftPadding"><p>Page <span id="currentPage">4</span> of <span id="totalPages">7</span></p></div>
                 <div id="routesTitleDiv">
                     <h1 id="routesTitle">Routes</h1>
@@ -58,11 +58,95 @@
             </div>
 
             <div id="filterSettings">
+                <form action="" method="POST" class="" id="filterForm">
+<!--                     
+                    <label for="sortByField">Sort By:</label>
+                    <select id="sortByField" name="sortByFieldContent">
+                        <option value="none" selected disabled hidden>Select</option>
+                        <option value="difficulty">Difficulty</option>
+                        <option value="length">Length</option>
+                        <option value="time">Time</option>
+                        <option value="elevation">Elevation</option>
+                        <option value="likes">Likes</option>
+                        <option value="name">Name</option>
+                    </select> -->
+                      <div class="form-group">
+                        <label for="sortByField">Sort By:</label>
+                        <select class="form-control" id="sortByField">
+                            <option value="none" selected disabled hidden>Select</option>
+                            <option value="difficulty">Difficulty</option>
+                            <option value="length">Length</option>
+                            <option value="time">Time</option>
+                            <option value="elevation">Elevation</option>
+                            <option value="likes">Likes</option>
+                            <option value="name">Name</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="difficultySelect">Select Difficulty:</label>
+                        <select multiple class="form-control" id="difficultySelect">
+                            <option selected>Any</option>
+                            <option>1 Star</option>
+                            <option>2 Stars</option>
+                            <option>3 Stars</option>
+                            <option>4 Stars</option>
+                            <option>5 Stars</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="lengthSelect">Select Length:</label>
+                        <select class="form-control" id="lengthSelect">
+                            <option selected>Any</option>
+                            <option>&#60; 1km</option>
+                            <option>1km - 5km</option>
+                            <option>5km - 10km</option>
+                            <option>10km - 20km</option>
+                            <option>&#62; 20km</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="timeSelect">Select Time:</label>
+                        <select class="form-control" id="timeSelect">
+                            <option selected>Any</option>
+                            <option>&#60; 15min</option>
+                            <option>15min - 30min</option>
+                            <option>30min - 1hr</option>
+                            <option>1hr - 2hrs</option>
+                            <option>&#62; 2hrs</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="elevationSelect">Select Elevation:</label>
+                        <select class="form-control" id="elevationSelect">
+                            <option selected>Any</option>
+                            <option>&#60; 10m ↑↓</option>
+                            <option>10m - 50m ↑↓</option>
+                            <option>50m - 100m ↑↓</option>
+                            <option>100m - 200km ↑↓</option>
+                            <option>&#62; 200m ↑↓</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="likeSelect">Select Likes:</label>
+                        <select class="form-control" id="likeSelect">
+                            <option selected>Any</option>
+                            <option>&#60; 10</option>
+                            <option>10 - 50</option>
+                            <option>50 - 100</option>
+                            <option>100 - 200</option>
+                            <option>&#62; 200</option>
+                        </select>
+                      </div>
+                      <div class="form-group filterButtonControl">
+                        <button type="submit" class="btn btn-primary mb-2" id="filterSubmit">Filter</button>
+                        <button type="reset" class="btn btn-primary mb-2" id="filterReset">Reset</button>
+                      </div>
+                </form>
             </div>
             <div id="searchSettings">
                 <form action="" method="POST" class="" id="searchForm">
                     <div id="searchFormText">
-                        <input type="text" value="Search...">
+                        <input type="text" placeholder="Search...">
                         <button type="submit">Submit</button>
                     </div>
                     <div class="checkBoxForm">
@@ -93,6 +177,9 @@
                         <div class="routeElevation">
                             <p>Elevation: ↑ 31m ↓ 28m</p>
                         </div>
+                        <div class="routeLikes">
+                            <p>Likes: 54</p>
+                        </div>
                     </div>
                     <div class="clickOverlay overlapChild" id="routeOneOverlay"></div>
                 </div>
@@ -113,6 +200,9 @@
                         </div>
                         <div class="routeElevation">
                             <p>Elevation: ↑ 54m ↓ 8m</p>
+                        </div>
+                        <div class="routeLikes">
+                            <p>Likes: 54</p>
                         </div>
                     </div>
                     <div class="clickOverlay overlapChild" id="routeTwoOverlay"></div>
@@ -135,6 +225,9 @@
                         <div class="routeElevation">
                             <p>Elevation: ↑ 143m ↓ 63m</p>
                         </div>
+                        <div class="routeLikes">
+                            <p>Likes: 54</p>
+                        </div>
                     </div>
                     <div class="clickOverlay overlapChild" id="routeThreeOverlay"></div>
                 </div>
@@ -155,6 +248,9 @@
                         </div>
                         <div class="routeElevation">
                             <p>Elevation: ↑ 1m ↓ 1m</p>
+                        </div>
+                        <div class="routeLikes">
+                            <p>Likes: 54</p>
                         </div>
                     </div>
                     <div class="clickOverlay overlapChild" id="routeFourOverlay"></div>
@@ -177,6 +273,9 @@
                         <div class="routeElevation">
                             <p>Elevation: ↑ 31m ↓ 28m</p>
                         </div>
+                        <div class="routeLikes">
+                            <p>Likes: 54</p>
+                        </div>
                     </div>
                     <div class="clickOverlay overlapChild" id="routeFiveOverlay"></div>
                 </div>
@@ -197,21 +296,30 @@
                         <div class="routeElevation">
                             <p>Elevation: ↑ 746m ↓ 839m</p>
                         </div>
+                        <div class="routeLikes">
+                            <p>Likes: 54</p>
+                        </div>
                     </div>
                     <div class="clickOverlay overlapChild" id="routeSixOverlay"></div>
                 </div>
             </div>
 
             <div id="routeInfoPage">
-                <div class="routeInfoFlex">
-                    <h2 id="routeInfoTitle">Stanley Park Trail</h2>
+                <div class="routeInfoFlex" id="routeInfoTitleDiv">
+                    <div id="routeInfoFlexPadding"></div>
+                    <div id="routeTitleDiv">
+                        <p id="routeInfoTitle">Stanley Park Trail</p>
+                    </div>
+                    <div id="bookmarkButtonDiv">
+                        <div class="routesNavButton" id="bookmarkButton"><img src="../public/images/bookmark.png" id="bookmarkButtonImg"></div>
+                    </div>
                 </div>
 
-                <div class="routeInfoFlex" id="mapcontainer">
+                <div class="routeInfoFlex" id="mapcontainer" data-swipe-ignore="true">
                     <iframe src="https://www.google.com/maps/d/u/0/embed?mid=13BY1Ex2YGsn7mvHugormpetPaGP_EaGx"></iframe>
                 </div>
 
-                <div class="routeInfoFlex">
+                <div class="routeInfoFlex" id="routeDescriptionTextDiv">
                     <div class="routeDifficulty">
                         <p>Difficulty: ⭐⭐⭐⭐⭐</p>
                     </div>
@@ -223,6 +331,9 @@
                     </div>
                     <div class="routeElevation">
                         <p>Elevation: ↑ 746m ↓ 839m</p>
+                    </div>
+                    <div class="routeLikes">
+                        <p>Likes: 54</p>
                     </div>
                     <div id="routeInfoDescriptionDiv">
                         <p id="routeInfoDescription">

@@ -1,3 +1,7 @@
+body {
+    background-color:rgb(76, 116, 76);
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -13,7 +17,7 @@ main {
     justify-content: space-between;
     text-align: center;
     height: 10vw;
-    margin-top: 1%;
+    background-color: white;
 }
 
 #routesDisplay {
@@ -27,8 +31,47 @@ main {
 #filterSettings, #searchSettings, #routeInfoPage {
     flex-grow: 1;
     visibility: hidden;
+    overflow: auto;
     height: 0;
     background-color: rgb(76, 116, 76);
+}
+
+#filterSettings label {
+    color: white;
+}
+
+#filterSettings {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+}
+
+#filterForm {
+    margin-top: 5%;
+    width: 80%;
+    height: 100%;
+}
+
+#filterForm option {
+    width: fit-content;
+    height: fit-content;
+    font-size: 2vw;
+}
+
+.filterButtonControl button {
+    margin-top: 2%;
+    float: right;
+    background-color: white;
+    color: black;
+    width: 20%;
+    height: 5%;
+    font-size: 3vw;
+    text-align: center;
+}
+
+#filterReset {
+    margin-right: 5%;
 }
 
 #searchForm {
@@ -52,10 +95,6 @@ main {
 #searchFormText input {
     width: 70%;
     height: 8vw;
-}
-
-#searchFormText button {
-    width: 15%;
 }
 
 #checkBoxForm {
@@ -200,7 +239,7 @@ main {
     background-image: url("../images/routeTwo.png");
 }
 
-@media (min-width: 750px) {
+@media (min-width: 500px) {
 
     #inlineFormCheck {
         width: 2em;
@@ -210,6 +249,23 @@ main {
 
     .checkBoxForm label {
         font-size: 2em;
+    }
+
+    #filterForm {
+        font-size: 4vw;
+    }
+
+    .form-control {
+        height: 5vw;
+        font-size: 2.5vw;
+    }
+    
+    #difficultySelect {
+        height: 15vw;
+    }
+
+    .routeInfo p {
+        font-size: 3vw;
     }
     
 }

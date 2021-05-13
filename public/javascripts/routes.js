@@ -54,25 +54,21 @@ document.getElementById("routesDisplay").addEventListener('swiped-left', functio
     }
   });
 
-document.getElementById("filterButton").addEventListener('click', function () {
-    
-    let infoObj = window.getComputedStyle(document.getElementById("routeInfoPage"));
-    let infoEleVis = infoObj.getPropertyValue("visibility");
+document.getElementById("routeInfoPage").addEventListener('swiped-right', function(e) {
+console.log(e.target); // element that was swiped
+console.log(e.detail); // event data { dir: 'right', xStart: 196, xEnd: 230, yStart: 196, yEnd: 4 }
+routeDescriptionRedirect("../public/");
+});
 
-    if (infoEleVis == "hidden") {
+
+document.getElementById("filterButton").addEventListener('click', function () {
     changeFilterColour("filterButton");
     expandHiddenWindow("routesDisplay", "filterSettings", "search");
-    }
 });
 
 document.getElementById("searchButton").addEventListener('click', function () {
-    let infoObj = window.getComputedStyle(document.getElementById("routeInfoPage"));
-    let infoEleVis = infoObj.getPropertyValue("visibility");
-
-    if (infoEleVis == "hidden") {
     changeFilterColour("searchButton");
-    expandHiddenWindow("routesDisplay", "searchSettings", "filter");
-    }   
+    expandHiddenWindow("routesDisplay", "searchSettings", "filter"); 
 });
 
 function changeFilterColour(elementID) {
@@ -132,18 +128,44 @@ function routeLike(elementId) {
 
 function routeDescriptionRedirect(linkID) {
     //document.location.href = linkID;
-    document.getElementById('routesDisplay').style.visibility = "hidden";
-    document.getElementById('routesDisplay').style.height = "0";
-    
-    document.getElementById('routeInfoPage').style.height = "100%";
-    document.getElementById('routeInfoPage').style.visibility = "visible";
+    let currentObj = window.getComputedStyle(document.getElementById('routeInfoPage'));
+    let currentEleVis = currentObj.getPropertyValue("visibility");
+    if (currentEleVis == "hidden") {
+
+        document.getElementById('routesDisplay').style.visibility = "hidden";
+        document.getElementById('routesDisplay').style.height = "0";
+
+        document.getElementById('routesNavBar').style.visibility = "hidden";
+        document.getElementById('routesNavBar').style.height = "0";
+
+        document.getElementById('routeInfoPage').style.height = "100%";
+        document.getElementById('routeInfoPage').style.visibility = "visible";
+
+    } else {
+        document.getElementById('routesDisplay').style.visibility = "visible";
+        document.getElementById('routesDisplay').style.height = "100%";
+
+        document.getElementById('routesNavBar').style.visibility = "visible";
+        document.getElementById('routesNavBar').style.height = "10vw";
+        
+        document.getElementById('routeInfoPage').style.height = "0";
+        document.getElementById('routeInfoPage').style.visibility = "hidden";
+    }
+
 }
 
 //Code taken from https://www.sitepoint.com/delay-sleep-pause-wait/
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-  
+
+function resizeForms() {
+    if (screen.width > 500) {
+        
+    }
+}
+
+resizeForms();
 
 
 

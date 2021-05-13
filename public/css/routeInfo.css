@@ -1,15 +1,52 @@
 #routeInfoPage {
     display: flex;
+    visibility: hidden;
     flex-direction: column;
     vertical-align: middle;
     align-items: center;
     justify-content: center;
     overflow-y: scroll;
+    color: white;
 }
 
 .routeInfoFlex {
     flex-grow: 1;
     font-size: 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#routeInfoTitleDiv {
+    flex-direction: row;
+    width: 100%;
+}
+
+#routeInfoTitle {
+    margin:0;
+}
+
+#routeTitleDiv {
+    text-align: center;
+    flex-grow: 7;
+    font-size: 7vw;
+    flex-basis: 0;
+}
+
+#routeInfoFlexPadding, #bookmarkButtonDiv {
+    flex-grow: 2;
+    flex-basis: 0;
+}
+
+#bookmarkButton {
+    margin-right: 5%;
+    background-color: white;
+}
+
+#bookmarkButtonImg {
+    width: 80%;
+    margin:auto;
 }
 
 .routeInfoSpace {
@@ -17,15 +54,9 @@
 }
 
 #mapcontainer {
-    width: 100%;
-    height: 80vh;
-    max-height: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100vw;
 }
 
-#mapcontainer iframe {
+#routeDescriptionTextDiv {
     width: 80%;
-    height: 80%;
 }
