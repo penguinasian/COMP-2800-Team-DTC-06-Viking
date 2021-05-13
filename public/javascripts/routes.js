@@ -57,7 +57,7 @@ document.getElementById("routesDisplay").addEventListener('swiped-left', functio
 document.getElementById("filterButton").addEventListener('click', function () {
     
     let infoObj = window.getComputedStyle(document.getElementById("routeInfoPage"));
-    let infoEleVis = currentObj.getPropertyValue("visibility");
+    let infoEleVis = infoObj.getPropertyValue("visibility");
 
     if (infoEleVis == "hidden") {
     changeFilterColour("filterButton");
@@ -67,7 +67,7 @@ document.getElementById("filterButton").addEventListener('click', function () {
 
 document.getElementById("searchButton").addEventListener('click', function () {
     let infoObj = window.getComputedStyle(document.getElementById("routeInfoPage"));
-    let infoEleVis = currentObj.getPropertyValue("visibility");
+    let infoEleVis = infoObj.getPropertyValue("visibility");
 
     if (infoEleVis == "hidden") {
     changeFilterColour("searchButton");
