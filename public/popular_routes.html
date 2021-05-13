@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./popular_routes.css">
+    <link rel="stylesheet" href="./css/popular_routes.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
 
@@ -37,7 +37,7 @@
     <header>
         <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top" style="height:10vh">
             <div class="logoName">
-                <img src="./logo final.png">
+                <img src="./images/logo final.png">
             </div>
         </div>
     </header>
@@ -117,12 +117,12 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
-    <script src="firebase_api.js"></script>
+    <script src="./javascripts/firebase_api.js"></script>
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
-        function add_popularRoutes(id, name, level, Length, pic, likes) {
+        function add_popularRoutes(id, name, pic, Length, level, likes) {
 
             //create an individule div for each routes inside parent div  
             let individule_routes = document.createElement("div")
@@ -164,7 +164,7 @@
             let length_value = document.createElement("p")
             length_value.innerHTML = Length
             let likes_number = document.createElement("p")
-            likes_number.innerHTML = likes
+            
             routes_detail.appendChild(level_text)
             routes_detail.appendChild(length_text)
             routes_detail.appendChild(length_value)
@@ -229,6 +229,11 @@
 
                 })
             })
+            db.collection("popular_routes")
+                .doc(id)
+                .onSnapshot(function (snap) {
+                    likes_number.innerHTML = snap.get("likes")
+                })
         }
     </script>
 </body>
