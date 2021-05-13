@@ -80,6 +80,7 @@ nav {
 
 nav p {
     font-size: 3.5vw !important;
+    margin-bottom: 0px !important;
 }
 
 nav i {
@@ -137,7 +138,8 @@ iframe {
     margin: 0 auto;
 }
 
-.tg  {border-collapse:collapse;border-spacing:0;
+.tg  {
+    border-collapse:collapse;border-spacing:0;
     margin: 13px auto;
 }
 
