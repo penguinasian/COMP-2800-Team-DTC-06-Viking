@@ -60,12 +60,16 @@
 
             <div class="custom-select" style="width:200px;">
                 <i class="fas fa-filter"></i>
-                <select>
+                <select id="levelOption">
                     <option value="0">Difficulty level:</option>
                     <option value="1">Easy</option>
                     <option value="2">Medium</option>
                     <option value="3">Hard</option>
                 </select>
+            </div>
+
+            <div class="buttonForFilter">
+                <button id="buttonFilter">Go</button>
             </div>
         </div>
 
@@ -161,13 +165,18 @@
             level_text.innerHTML = level
             let length_text = document.createElement("p")
             length_text.innerHTML = "Length:"
+            length_text.className = "text"
             let length_value = document.createElement("p")
             length_value.innerHTML = Length
+            let length_unit = document.createElement("p")
+            length_unit.className = "unit"
+            length_unit.innerHTML = "km"
             let likes_number = document.createElement("p")
-            
+
             routes_detail.appendChild(level_text)
             routes_detail.appendChild(length_text)
             routes_detail.appendChild(length_value)
+            routes_detail.appendChild(length_unit)
             routes_detail.appendChild(likes_number)
 
 
@@ -235,6 +244,32 @@
                     likes_number.innerHTML = snap.get("likes")
                 })
         }
+
+
+        function addFilterListener() {
+            var e = document.getElementById("levelOption")
+            
+            var buttonClick = document.getElementById("buttonFilter");
+            firebase.auth().onAuthStateChanged(function (user) {
+                buttonClick.addEventListener("click", function () {
+                    var text = e.options[e.selectedIndex].text
+                    console.log("button was clicked")
+                    db.collection("popular_routes")
+                        .get()
+                        .then(function (query) {
+                            document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                            query.forEach(function (doc) {
+                                if (doc.data().level == text) {
+                                    add_popularRoutes(doc.id, doc.data().name, doc.data().pic, doc.data().Length
+                                        , doc.data().level, doc.data().likes)
+                                }
+                            })
+                        })
+                })
+            })
+        }
+
+        addFilterListener();
     </script>
 </body>
 
