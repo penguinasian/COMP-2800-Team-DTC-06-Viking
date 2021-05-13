@@ -99,15 +99,15 @@ nav i {
 }
 
 /* Active page icon style -classes: parking, services, routes, info, profile*/
-.parking{
+.services{
     color:#4C744C;
 }
 
-.parking p{
+.services p{
     color:#4C744C;
 }
 
-.parking:hover{
+.services:hover{
     color:white;
 }
 /* Active page style.*/
