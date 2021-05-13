@@ -37,6 +37,7 @@ main {
     background-image: url(../images/biking_wall.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;
 }
 
 main p {
