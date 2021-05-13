@@ -1,6 +1,5 @@
 
 body, html {
-  opacity: 0.9;
   z-index: -1;
   color: whitesmoke;
   scroll-behavior: smooth;
@@ -19,9 +18,10 @@ button:hover {
 }
 
 @media (max-width: 749px){
+
   img {
-    width:100px;
-    height:66px;
+    width:10vh;
+
 }
 
 body,html {
@@ -38,7 +38,7 @@ body,html {
 
 .topnav {
     background-color: #4C744C;
-    height: 12%;
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,8 +82,8 @@ body,html {
 @media (min-width: 750px) and (max-width: 1025px){
 
 img {
-    width:150px;
-    height:100px;
+    width:10vh;
+  
 }
 
 body,html {
@@ -127,7 +127,7 @@ div > h3 {
 
 .topnav {
     background-color: #4C744C;
-    height: 12%;
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
