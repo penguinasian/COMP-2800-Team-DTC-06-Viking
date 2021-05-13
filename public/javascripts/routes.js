@@ -4,27 +4,127 @@ $("#routeOneOverlay").single_double_click(function () {
     routeLike('routeOne')
   })
 
+  $("#routeTwoOverlay").single_double_click(function () {
+    routeDescriptionRedirect('../public/index.html')
+  }, function () {
+    routeLike('routeTwo')
+  })
+
+  $("#routeThreeOverlay").single_double_click(function () {
+    routeDescriptionRedirect('../public/index.html')
+  }, function () {
+    routeLike('routeThree')
+  })
+
+  $("#routeFourOverlay").single_double_click(function () {
+    routeDescriptionRedirect('../public/index.html')
+  }, function () {
+    routeLike('routeFour')
+  })
+
+  $("#routeFiveOverlay").single_double_click(function () {
+    routeDescriptionRedirect('../public/index.html')
+  }, function () {
+    routeLike('routeFive')
+  })
+
+  $("#routeSixOverlay").single_double_click(function () {
+    routeDescriptionRedirect('../public/index.html')
+  }, function () {
+    routeLike('routeSix')
+  })
 
 document.getElementById("routesContent").addEventListener('swiped-right', function(e) {
     console.log(e.target); // element that was swiped
     console.log(e.detail); // event data { dir: 'right', xStart: 196, xEnd: 230, yStart: 196, yEnd: 4 }
-    routeDescriptionRedirect('../public/index.html');
+    let currentPage = document.getElementById('currentPage').innerHTML;
+    console.log(currentPage);
+    if (currentPage > 1) {
+        document.getElementById('currentPage').innerHTML = parseInt(currentPage) - 1;
+    }
   });
+
+document.getElementById("routesContent").addEventListener('swiped-left', function(e) {
+    console.log(e.target); // element that was swiped
+    console.log(e.detail); // event data { dir: 'right', xStart: 196, xEnd: 230, yStart: 196, yEnd: 4 }
+    let currentPage = document.getElementById('currentPage').innerHTML;
+    console.log(currentPage);
+    if (currentPage < document.getElementById('totalPages').innerHTML) {
+        document.getElementById('currentPage').innerHTML = parseInt(currentPage) + 1;
+    }
+  });
+
+document.getElementById("filterButton").addEventListener('click', function () {
+    changeFilterColour("filterButton");
+    expandHiddenWindow("routesDisplay", "filterSettings", "search");
+});
+
+document.getElementById("searchButton").addEventListener('click', function () {
+    changeFilterColour("searchButton");
+    expandHiddenWindow("routesDisplay", "searchSettings", "filter");
+});
+
+function changeFilterColour(elementID) {
+    let elementObj = window.getComputedStyle(document.getElementById(elementID));
+    let bgColour = elementObj.getPropertyValue("background-color");
+    console.log(bgColour);
+    if (bgColour != "rgb(76, 116, 76)") {
+        document.getElementById(elementID).style.backgroundColor = "rgb(76, 116, 76)";
+    } else {
+        document.getElementById(elementID).style.backgroundColor = "white"
+    }
+}
+
+function expandHiddenWindow(elementID, replacementElementID, currentElementID) {
+    let replacementObj = window.getComputedStyle(document.getElementById(replacementElementID));
+    let replacementEleVis = replacementObj.getPropertyValue("visibility");
+    let currentObj = window.getComputedStyle(document.getElementById(currentElementID + "Settings"));
+    let currentEleVis = currentObj.getPropertyValue("visibility");
+    if (currentEleVis != "hidden") {
+        document.getElementById(currentElementID + "Settings").style.height = "0";
+        document.getElementById(currentElementID + "Settings").style.visibility = "hidden";
+        changeFilterColour(currentElementID + "Button");
+    }
+
+    if (replacementEleVis == "visible") {
+        document.getElementById(elementID).style.height = "100%";
+        document.getElementById(elementID).style.visibility = "visible";
+        document.getElementById(replacementElementID).style.height = "0";
+        document.getElementById(replacementElementID).style.visibility = "hidden";
+    } else {
+        document.getElementById(elementID).style.height = "0";
+        document.getElementById(elementID).style.visibility = "hidden";
+        document.getElementById(replacementElementID).style.height = "100%";
+        document.getElementById(replacementElementID).style.visibility = "visible";
+    }
+
+}
+
 
 function routeLike(elementId) {
     let likedVisibility = document.getElementById(elementId + 'Like').style.visibility;
-    if (likedVisibility) {
+    if (likedVisibility == "visible") {
         document.getElementById(elementId + 'Like').style.visibility = "hidden";
     } else {
         document.getElementById(elementId + 'Like').style.visibility = "visible";
         document.getElementById(elementId + 'Info').style.visibility = "hidden";
+        document.getElementById(elementId + 'Background').style.backgroundColor = "rgba(76,116,76, 0.8)";
+        sleep(750).then(() => { 
+            document.getElementById(elementId + 'Info').style.visibility = "visible";
+            document.getElementById(elementId + 'Background').style.backgroundColor = "rgba(76,116,76, 0.6)";
+        });
     }
 }
 
 function routeDescriptionRedirect(linkID) {
-    window.location.href = linkID;
+    document.location.href = linkID;
 }
 
+//Code taken from https://www.sitepoint.com/delay-sleep-pause-wait/
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  
 
 
 

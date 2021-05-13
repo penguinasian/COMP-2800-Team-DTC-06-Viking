@@ -46,14 +46,33 @@
         <!-- All elements go into main-->
         <main id="routesContent">
             <div class="routesNav">
-                <div id="navLeftPadding"><p>Page 4 of 7</p></div>
-                <h1 id="routesTitle">Routes</h1>
+                <div id="navLeftPadding"><p>Page <span id="currentPage">4</span> of <span id="totalPages">7</span></p></div>
+                <div id="routesTitleDiv">
+                    <h1 id="routesTitle">Routes</h1>
+                </div>
                 <div class="navButtonWrapper">
-                <div class="routesNavButton" id="filterButton"></div>
-                <div class="routesNavButton" id="searchButton"></div>
+                <div class="routesNavButton" id="filterButton"><img src="../public/images/filter.png"></div>
+                <div class="routesNavButton" id="searchButton"><img src="../public/images/loupe.png"></div>
                 </div>
             </div>
-            <div class="routesDisplay">
+            <div id="filterSettings">
+            </div>
+            <div id="searchSettings">
+                <form action="" method="POST" class="" id="searchForm">
+                    <div id="searchFormText">
+                        <input type="text" value="Search...">
+                        <button type="submit">Submit</button>
+                    </div>
+                    <div class="checkBoxForm">
+                        <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                        <label class="form-check-label" id="formCheckLabel" for="inlineFormCheck">
+                          Use Filters
+                        </label>
+                    </div>
+                    </div>
+                </form>
+            </div>
+            <div id="routesDisplay">
                 <div class="routeElement" id="routeOne">
                     <div class="likeOverlay" id="routeOneBackground"></div>
                     <div class="heartImg overlapChild" id="routeOneLike"><img src="../public/images/heartLightTransparent.png"></div>
@@ -209,9 +228,8 @@
                 </div>
             </div>
         </nav>
-
-
-        <!----------------------------------------------->
+    </body>
+      <!----------------------------------------------->
         <!-- JS: Boostrap, Firebase, API related    -->
         <!----------------------------------------------->
         
@@ -229,6 +247,4 @@
         <script src="../public/javascripts/dblclickFix.js"></script>
         <script src="../public/javascripts/swipe.js"></script>
         <script src="../public/javascripts/routes.js"></script>
-    </body>
-
 </html>
