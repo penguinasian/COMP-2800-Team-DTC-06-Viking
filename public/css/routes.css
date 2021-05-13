@@ -23,6 +23,13 @@ main {
 #navLeftPadding {
     flex-grow: 2;
     flex-basis: 0;
+    font-size: 3vw;
+    display: flex;
+    vertical-align: middle;
+}
+
+#navLeftPadding p {
+    margin: auto;
 }
 
 #routesTitle {
@@ -58,23 +65,74 @@ main {
 .routeElement {
     text-align: center;
     align-items: center;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     position: relative;
     user-select: none;
 }
 
-.clickOverlay {
-    position:absolute;
-    top:0;
+.likeOverlay {
+    background-color: rgba(76,116,76, 0.6);
     width: 100%;
     height: 100%;
 }
 
-#routeOne {
-    background-image: url(https://via.placeholder.com/512);
+.overlapChild {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
 }
 
-#routeOneInfo {
+.heartImg {
+    display: flex;
+    vertical-align: middle;
     visibility: hidden;
+}
+
+.heartImg img {
+    width: 30%;
+    margin: auto;
+}
+
+.routeInfo {
+    color: whitesmoke;
+    text-shadow: 0.2vw 0.2vw black;
+}
+
+.routeInfo h2 {
+    font-size: 5vw;
+}
+
+.routeInfo p {
+    font-size: 3.5vw;
+    margin-left: 2vw;
+    text-align: left;
+    margin-bottom: 0vw;
+}
+
+#routeOne {
+    background-image: url("../images/routeOne.png");
+}
+
+#routeTwo {
+    background-image: url("../images/routeTwo.png");
+}
+
+#routeThree {
+    background-image: url("../images/routeOne.png");
+}
+
+#routeFour {
+    background-image: url("../images/routeTwo.png");
+
+}
+
+#routeFive {
+    background-image: url("../images/routeOne.png");
+}
+
+#routeSix {
+    background-image: url("../images/routeTwo.png");
 }

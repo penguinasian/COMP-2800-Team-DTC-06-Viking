@@ -30,7 +30,7 @@
 
         <link rel="stylesheet" href="../public/css/routes.css">
         <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <title>Parking_main</title>
     </head>
 
@@ -46,7 +46,7 @@
         <!-- All elements go into main-->
         <main id="routesContent">
             <div class="routesNav">
-                <div id="navLeftPadding"></div>
+                <div id="navLeftPadding"><p>Page 4 of 7</p></div>
                 <h1 id="routesTitle">Routes</h1>
                 <div class="navButtonWrapper">
                 <div class="routesNavButton" id="filterButton"></div>
@@ -55,32 +55,128 @@
             </div>
             <div class="routesDisplay">
                 <div class="routeElement" id="routeOne">
-                    <div class="routeInfo" id="routeOneInfo">
+                    <div class="likeOverlay" id="routeOneBackground"></div>
+                    <div class="heartImg overlapChild" id="routeOneLike"><img src="../public/images/heartLightTransparent.png"></div>
+                    <div class="routeInfo overlapChild" id="routeOneInfo">
                         <h2>English Bay Circuit</h2>
-                        <p>Difficulty: 1 Star
-                            Length: 5km
-                            Estimated Time: 1 hour
-                            Elevation: 2 meters
-                        </p>
+                        <div class="routeDifficulty">
+                            <p>Difficulty: ⭐</p>
+                        </div>
+                        <div class="routeLength">
+                            <p>Length: 2km</p>
+                        </div>
+                        <div class="routeTime">
+                            <p>Time: 32 min</p>
+                        </div>
+                        <div class="routeElevation">
+                            <p>Elevation: ↑ 31m ↓ 28m</p>
+                        </div>
                     </div>
-                    <div class="clickOverlay" id="routeOneOverlay">
-                    </div>
-                    
+                    <div class="clickOverlay overlapChild" id="routeOneOverlay"></div>
                 </div>
+
                 <div class="routeElement" id="routeTwo">
-                    <h2>routes</h2>
+                    <div class="likeOverlay" id="routeTwoBackground"></div>
+                    <div class="heartImg overlapChild" id="routeTwoLike"><img src="../public/images/heartLightTransparent.png"></div>
+                    <div class="routeInfo overlapChild" id="routeTwoInfo">
+                        <h2>False Creek Trail</h2>
+                        <div class="routeDifficulty">
+                            <p>Difficulty: ⭐⭐</p>
+                        </div>
+                        <div class="routeLength">
+                            <p>Length: 10km</p>
+                        </div>
+                        <div class="routeTime">
+                            <p>Time: 20 min</p>
+                        </div>
+                        <div class="routeElevation">
+                            <p>Elevation: ↑ 54m ↓ 8m</p>
+                        </div>
+                    </div>
+                    <div class="clickOverlay overlapChild" id="routeTwoOverlay"></div>
                 </div>
+
                 <div class="routeElement" id="routeThree">
-                    <h2>routes</h2>
+                    <div class="likeOverlay" id="routeThreeBackground"></div>
+                    <div class="heartImg overlapChild" id="routeThreeLike"><img src="../public/images/heartLightTransparent.png"></div>
+                    <div class="routeInfo overlapChild" id="routeThreeInfo">
+                        <h2>Vancouver City Trip</h2>
+                        <div class="routeDifficulty">
+                            <p>Difficulty: ⭐⭐⭐⭐</p>
+                        </div>
+                        <div class="routeLength">
+                            <p>Length: 25km</p>
+                        </div>
+                        <div class="routeTime">
+                            <p>Time: 2 hrs 24 min</p>
+                        </div>
+                        <div class="routeElevation">
+                            <p>Elevation: ↑ 143m ↓ 63m</p>
+                        </div>
+                    </div>
+                    <div class="clickOverlay overlapChild" id="routeThreeOverlay"></div>
                 </div>
+
                 <div class="routeElement" id="routeFour">
-                    <h2>routes</h2>
+                    <div class="likeOverlay" id="routeFourBackground"></div>
+                    <div class="heartImg overlapChild" id="routeFourLike"><img src="../public/images/heartLightTransparent.png"></div>
+                    <div class="routeInfo overlapChild" id="routeFourInfo">
+                        <h2>Science World Route</h2>
+                        <div class="routeDifficulty">
+                            <p>Difficulty: ⭐</p>
+                        </div>
+                        <div class="routeLength">
+                            <p>Length: 1km</p>
+                        </div>
+                        <div class="routeTime">
+                            <p>Time: 5 min</p>
+                        </div>
+                        <div class="routeElevation">
+                            <p>Elevation: ↑ 1m ↓ 1m</p>
+                        </div>
+                    </div>
+                    <div class="clickOverlay overlapChild" id="routeFourOverlay"></div>
                 </div>
+
                 <div class="routeElement" id="routeFive">
-                    <h2>routes</h2>
+                    <div class="likeOverlay" id="routeFiveBackground"></div>
+                    <div class="heartImg overlapChild" id="routeFiveLike"><img src="../public/images/heartLightTransparent.png"></div>
+                    <div class="routeInfo overlapChild" id="routeFiveInfo">
+                        <h2>Burnaby Bike Trail</h2>
+                        <div class="routeDifficulty">
+                            <p>Difficulty: ⭐⭐⭐</p>
+                        </div>
+                        <div class="routeLength">
+                            <p>Length: 2km</p>
+                        </div>
+                        <div class="routeTime">
+                            <p>Time: 32 min</p>
+                        </div>
+                        <div class="routeElevation">
+                            <p>Elevation: ↑ 31m ↓ 28m</p>
+                        </div>
+                    </div>
+                    <div class="clickOverlay overlapChild" id="routeFiveOverlay"></div>
                 </div>
                 <div class="routeElement" id="routeSix">
-                    <h2>routes</h2>
+                    <div class="likeOverlay" id="routeSixBackground"></div>
+                    <div class="heartImg overlapChild" id="routeSixLike"><img src="../public/images/heartLightTransparent.png"></div>
+                    <div class="routeInfo overlapChild" id="routeSixInfo">
+                        <h2>Whistler Bike Path</h2>
+                        <div class="routeDifficulty">
+                            <p>Difficulty: ⭐⭐⭐⭐⭐</p>
+                        </div>
+                        <div class="routeLength">
+                            <p>Length: 234km</p>
+                        </div>
+                        <div class="routeTime">
+                            <p>Time: 5 hrs 23 min</p>
+                        </div>
+                        <div class="routeElevation">
+                            <p>Elevation: ↑ 746m ↓ 839m</p>
+                        </div>
+                    </div>
+                    <div class="clickOverlay overlapChild" id="routeSixOverlay"></div>
                 </div>
             </div>
 
@@ -130,9 +226,9 @@
         <!--------------------------------------------------------------------->
         <!-- JS files: Your own JavaScript functions included here    -->
         <!--------------------------------------------------------------------->
+        <script src="../public/javascripts/dblclickFix.js"></script>
         <script src="../public/javascripts/swipe.js"></script>
         <script src="../public/javascripts/routes.js"></script>
-        <script src="../public/javascripts/login.js"></script>
     </body>
 
 </html>

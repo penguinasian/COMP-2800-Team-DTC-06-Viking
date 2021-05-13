@@ -1,6 +1,9 @@
-document.getElementById("routeOneOverlay").addEventListener("touchstart", function() {testMouseOver('routeOneInfo');});
-document.getElementById("routeOneOverlay").addEventListener("mouseup", function() {removeMouseOut('routeOneInfo');});
-document.getElementById("routeOneOverlay").addEventListener("dblclick", function() {routeDescriptionRedirect('../public/index.html');});
+$("#routeOneOverlay").single_double_click(function () {
+    routeDescriptionRedirect('../public/index.html')
+  }, function () {
+    routeLike('routeOne')
+  })
+
 
 document.getElementById("routesContent").addEventListener('swiped-right', function(e) {
     console.log(e.target); // element that was swiped
@@ -8,12 +11,14 @@ document.getElementById("routesContent").addEventListener('swiped-right', functi
     routeDescriptionRedirect('../public/index.html');
   });
 
-function testMouseOver(elementId) {
-    document.getElementById(elementId).style.visibility = "visible";
-}
-
-function removeMouseOut(elementID) {
-    document.getElementById(elementID).style.visibility = "hidden";
+function routeLike(elementId) {
+    let likedVisibility = document.getElementById(elementId + 'Like').style.visibility;
+    if (likedVisibility) {
+        document.getElementById(elementId + 'Like').style.visibility = "hidden";
+    } else {
+        document.getElementById(elementId + 'Like').style.visibility = "visible";
+        document.getElementById(elementId + 'Info').style.visibility = "hidden";
+    }
 }
 
 function routeDescriptionRedirect(linkID) {
