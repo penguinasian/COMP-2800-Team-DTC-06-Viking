@@ -80,17 +80,18 @@ nav {
     flex-grow: 1;
     background-color: #4C744C;
     border: none;
-    height: 7vh;
+    height: 6vh;
     padding-top: 0.2rem;
-    font-size: 2.8vh;
+    font-size: 2.6vh;
 }
 
 nav p {
     font-size: 3.5vw !important;
+    margin-bottom: 0px !important;
 }
 
 nav i {
-    font-size: 10vw !important;
+    font-size: 8vw !important;
 }
 
 

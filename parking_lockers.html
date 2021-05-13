@@ -28,7 +28,7 @@
         <meta name="theme-color" content="#ffffff">
         <!--End Favicon links-->
 
-        <title>Parking_main</title>
+        <title>Parking_lockers</title>
     </head>
 
     <body>
@@ -42,8 +42,8 @@
         
         <main>
             <form action=#>
-                <label for="birthday">Start Date:</label>
-                <label for="birthday">End Date:</label>
+                <label for="Start_Date">Start Date:</label>
+                <label for="End_Date">End Date:</label>
 
                 <input type="date" id="Start_Date" name="Start_Date">
                 <input type="date" id="End_Date" name="End_Date">
@@ -62,7 +62,7 @@
                             <th class="listNumber" rowspan="2"># 1</th>
                             <th class="titles">Address</th>
                             <th class="values">Lorem 1338920, Vancouver</th>
-                            <th class="reserve" rowspan="2"><button type="button">Reserve</button></th>
+                            <th class="reserve" rowspan="2"><button type="button" onclick="document.location.href='./parking_reservation.html'">Reserve</button></th>
                         </tr>
                         <tr>
                             <td class="titles">Available Slots</td>
@@ -78,7 +78,7 @@
                             <th class="listNumber" rowspan="2"># 2</th>
                             <th class="titles">Address</th>
                             <th class="values">1338 Cambie, Vancouver</th>
-                            <th class="reserve" rowspan="2"><button type="button">Reserve</button></th>
+                            <th class="reserve" rowspan="2"><button type="button" onclick="document.location.href='./parking_reservation.html'">Reserve</button></th>
                         </tr>
                         <tr>
                             <td class="titles">Available Slots</td>
@@ -93,7 +93,7 @@
                             <th class="listNumber" rowspan="2"># 3</th>
                             <th class="titles">Address</th>
                             <th class="values">130 Lorem , BC, Vancouver</th>
-                            <th class="reserve" rowspan="2"><button type="button">Reserve</button></th>
+                            <th class="reserve" rowspan="2"><button type="button" onclick="document.location.href='./parking_reservation.html'">Reserve</button></th>
                         </tr>
                         <tr>
                             <td class="titles">Available Slots</td>
@@ -108,7 +108,7 @@
                             <th class="listNumber" rowspan="2"># 4</th>
                             <th class="titles">Address</th>
                             <th class="values">38920 Main, Vancouver</th>
-                            <th class="reserve" rowspan="2"><button type="button">Reserve</button></th>
+                            <th class="reserve" rowspan="2"><button type="button" onclick="document.location.href='./parking_reservation.html'">Reserve</button></th>
                         </tr>
                         <tr>
                             <td class="titles">Available Slots</td>
@@ -125,7 +125,7 @@
         <nav class="navbar navbar-expand fixed-bottom d-flex align-items-center">
             <div class="container-fluid">
                 <div class="bottomIcon parking">
-                    <button class="btn iconButton parking" href="#"><i class="fas fa-biking parking"></i></button>
+                    <button class="btn iconButton parking" onclick="document.location='./parking_main.html'"><i class="fas fa-biking parking"></i></button>
                     <p class="footer">Parking</p>
                 </div>
 
