@@ -243,6 +243,7 @@ h3 {
     padding: 1vh 5vw;
     background-color: #4C744C;
     border: none;
+    color: #F8F0E6;
 }
 
 #pay {
@@ -251,6 +252,7 @@ h3 {
     background-color: #4C744C;
     border: none;
     padding: 1vh 5vw;
+    color: #F8F0E6;
 }
 
 #total {
