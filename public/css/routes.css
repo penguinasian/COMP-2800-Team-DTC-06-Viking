@@ -3,12 +3,16 @@ main {
     flex-direction: column;
 }
 
+.navbar {
+    background-color: white;
+}
+
 .routesNav {
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
     text-align: center;
-    height: 10%;
+    height: 10vw;
     margin-top: 1%;
 }
 
@@ -20,14 +24,7 @@ main {
     grid-template-rows: 33% 33% 33%;
 }
 
-#filterSettings {
-    flex-grow: 1;
-    visibility: hidden;
-    height: 0;
-    background-color: rgb(76, 116, 76);
-}
-
-#searchSettings {
+#filterSettings, #searchSettings, #routeInfoPage {
     flex-grow: 1;
     visibility: hidden;
     height: 0;

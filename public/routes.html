@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <link rel="stylesheet" href="../public/css/routes.css">
+        <link rel="stylesheet" href="../public/css/routeInfo.css">
         <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <title>Parking_main</title>
@@ -51,10 +52,11 @@
                     <h1 id="routesTitle">Routes</h1>
                 </div>
                 <div class="navButtonWrapper">
-                <div class="routesNavButton" id="filterButton"><img src="../public/images/filter.png"></div>
-                <div class="routesNavButton" id="searchButton"><img src="../public/images/loupe.png"></div>
+                <div class="routesNavButton" id="filterButton"><img id="filterButtonImg" src="../public/images/filter.png"></div>
+                <div class="routesNavButton" id="searchButton"><img id="searchButtonImg"src="../public/images/loupe.png"></div>
                 </div>
             </div>
+
             <div id="filterSettings">
             </div>
             <div id="searchSettings">
@@ -72,6 +74,7 @@
                     </div>
                 </form>
             </div>
+
             <div id="routesDisplay">
                 <div class="routeElement" id="routeOne">
                     <div class="likeOverlay" id="routeOneBackground"></div>
@@ -198,6 +201,46 @@
                     <div class="clickOverlay overlapChild" id="routeSixOverlay"></div>
                 </div>
             </div>
+
+            <div id="routeInfoPage">
+                <div class="routeInfoFlex">
+                    <h2 id="routeInfoTitle">Stanley Park Trail</h2>
+                </div>
+
+                <div class="routeInfoFlex" id="mapcontainer">
+                    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=13BY1Ex2YGsn7mvHugormpetPaGP_EaGx"></iframe>
+                </div>
+
+                <div class="routeInfoFlex">
+                    <div class="routeDifficulty">
+                        <p>Difficulty: ⭐⭐⭐⭐⭐</p>
+                    </div>
+                    <div class="routeLength">
+                        <p>Length: 234km</p>
+                    </div>
+                    <div class="routeTime">
+                        <p>Time: 5 hrs 23 min</p>
+                    </div>
+                    <div class="routeElevation">
+                        <p>Elevation: ↑ 746m ↓ 839m</p>
+                    </div>
+                    <div id="routeInfoDescriptionDiv">
+                        <p id="routeInfoDescription">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sodales purus dictum ex dapibus sagittis ut eget diam. Sed rhoncus malesuada nibh id consequat. 
+                            In hac habitasse platea dictumst. Integer eu mi mattis purus interdum volutpat in sed lorem. Aenean convallis posuere odio, 
+                            vel sollicitudin dolor aliquet eu. Donec eu pharetra elit. Orci varius natoque penatibus et magnis dis parturient montes, 
+                            nascetur ridiculus mus. Sed dignissim id enim et commodo. Curabitur vestibulum sollicitudin pellentesque. Quisque ac eros 
+                            id nulla euismod aliquet sit amet sed risus. Quisque ultrices rhoncus diam, eu interdum odio placerat a. Quisque ultricies eros
+                             lobortis dignissim egestas. Morbi egestas efficitur mauris at euismod.
+                        </p>
+                    </div>
+
+                    <div class="routeInfoSpace">
+
+                    </div>
+                </div>
+            </div>
+
 
         </main>
         

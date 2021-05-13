@@ -34,7 +34,7 @@ $("#routeOneOverlay").single_double_click(function () {
     routeLike('routeSix')
   })
 
-document.getElementById("routesContent").addEventListener('swiped-right', function(e) {
+document.getElementById("routesDisplay").addEventListener('swiped-right', function(e) {
     console.log(e.target); // element that was swiped
     console.log(e.detail); // event data { dir: 'right', xStart: 196, xEnd: 230, yStart: 196, yEnd: 4 }
     let currentPage = document.getElementById('currentPage').innerHTML;
@@ -44,7 +44,7 @@ document.getElementById("routesContent").addEventListener('swiped-right', functi
     }
   });
 
-document.getElementById("routesContent").addEventListener('swiped-left', function(e) {
+document.getElementById("routesDisplay").addEventListener('swiped-left', function(e) {
     console.log(e.target); // element that was swiped
     console.log(e.detail); // event data { dir: 'right', xStart: 196, xEnd: 230, yStart: 196, yEnd: 4 }
     let currentPage = document.getElementById('currentPage').innerHTML;
@@ -55,13 +55,24 @@ document.getElementById("routesContent").addEventListener('swiped-left', functio
   });
 
 document.getElementById("filterButton").addEventListener('click', function () {
+    
+    let infoObj = window.getComputedStyle(document.getElementById("routeInfoPage"));
+    let infoEleVis = currentObj.getPropertyValue("visibility");
+
+    if (infoEleVis == "hidden") {
     changeFilterColour("filterButton");
     expandHiddenWindow("routesDisplay", "filterSettings", "search");
+    }
 });
 
 document.getElementById("searchButton").addEventListener('click', function () {
+    let infoObj = window.getComputedStyle(document.getElementById("routeInfoPage"));
+    let infoEleVis = currentObj.getPropertyValue("visibility");
+
+    if (infoEleVis == "hidden") {
     changeFilterColour("searchButton");
     expandHiddenWindow("routesDisplay", "searchSettings", "filter");
+    }   
 });
 
 function changeFilterColour(elementID) {
@@ -70,8 +81,10 @@ function changeFilterColour(elementID) {
     console.log(bgColour);
     if (bgColour != "rgb(76, 116, 76)") {
         document.getElementById(elementID).style.backgroundColor = "rgb(76, 116, 76)";
+        document.getElementById(elementID + "Img").style.filter = "invert(1)";
     } else {
         document.getElementById(elementID).style.backgroundColor = "white"
+        document.getElementById(elementID + "Img").style.filter = "invert(0)";
     }
 }
 
@@ -80,6 +93,7 @@ function expandHiddenWindow(elementID, replacementElementID, currentElementID) {
     let replacementEleVis = replacementObj.getPropertyValue("visibility");
     let currentObj = window.getComputedStyle(document.getElementById(currentElementID + "Settings"));
     let currentEleVis = currentObj.getPropertyValue("visibility");
+
     if (currentEleVis != "hidden") {
         document.getElementById(currentElementID + "Settings").style.height = "0";
         document.getElementById(currentElementID + "Settings").style.visibility = "hidden";
@@ -117,7 +131,12 @@ function routeLike(elementId) {
 }
 
 function routeDescriptionRedirect(linkID) {
-    document.location.href = linkID;
+    //document.location.href = linkID;
+    document.getElementById('routesDisplay').style.visibility = "hidden";
+    document.getElementById('routesDisplay').style.height = "0";
+    
+    document.getElementById('routeInfoPage').style.height = "100%";
+    document.getElementById('routeInfoPage').style.visibility = "visible";
 }
 
 //Code taken from https://www.sitepoint.com/delay-sleep-pause-wait/
