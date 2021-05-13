@@ -1,0 +1,228 @@
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 7.5fr 1.5fr;
+
+    grid-template-areas:
+    "header"
+    "main"
+    "nav";
+}
+
+header {
+    grid-area: "header";
+    background-color:#4C744C;
+}
+
+.logoName {
+    margin: auto;
+    text-align: center;
+}
+
+#appName {
+    margin-bottom: 0;
+    font-size: large;
+    font-weight: bold;
+    font-family: "Sofia", sans-serif;
+    color: white;
+}
+
+header img {
+    width: 10vh;
+}
+
+main {
+    grid-area: "main";
+}
+
+nav {
+    grid-area: "nav";
+    height: 15vh;
+    padding-top: 1vh !important;
+}
+
+.footer{
+    font-size: small;
+    color:#767274;
+}
+
+.bottomIcon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0px;
+}
+
+.fixed-bottom {
+    border-top:black solid 1px;
+}
+
+.iconButton:hover{
+    background-color:#4C744C;
+    color: white;
+}
+
+#buttons {
+    display: flex;
+    gap: 15vw;
+    margin: 0vh 5vw;
+    margin-top: 1vh;
+}
+
+#buttons button {
+    flex-grow: 1;
+    background-color: #4C744C;
+    border: none;
+    height: 7vh;
+    padding-top: 0.2rem;
+    font-size: 2.8vh;
+}
+
+nav p {
+    font-size: 3.5vw !important;
+    margin-bottom: 0px !important;
+}
+
+nav i {
+    font-size: 8vw !important;
+}
+
+iframe {
+    width: 100vw;
+    height: 65vh;
+}
+
+.bottomIcon button {
+    color:#767274;
+}
+
+/* Active page icon style -classes: parking, services, routes, info, profile*/
+.parking{
+    color:#4C744C;
+}
+
+.parking p{
+    color:#4C744C;
+}
+
+.parking:hover{
+    color:white;
+}
+/* Active page style.*/
+
+main>form {
+    font-size: 3vw;
+    font-weight: bold;
+    color: #4C744C;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+    gap: 8% 3%;
+    margin: 0% 5% 3%;
+    grid-template-areas:
+    "label label"
+    "input input"
+}
+
+form>input {
+    height: 4vh;
+}
+
+/* css style ends. needs to be removed after updating skeleton.css*/
+
+iframe {
+    width: 100vw;
+    height: 50vh;
+}
+
+.result {
+    margin: 0 auto;
+}
+
+.tg  {
+    border-collapse:collapse;border-spacing:0;
+    margin: 13px auto;
+}
+
+table {
+    width: 90vw;
+    background-color: #F8F0E6;
+    color: #4C744C;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 40vh;
+}
+
+.listNumber {
+    width: 10vw;
+    text-align:center;
+    border-color:#4C744C;
+    border-style:solid;
+    border-width:1px;
+    font-family:Arial, sans-serif;
+    font-size:3.5vw;
+    font-weight:normal;
+    overflow:hidden;
+    padding:5px 5px;
+    word-break:normal;
+}
+
+.titles {
+    width: 25vw;
+    vertical-align:middle;
+    text-align: center;
+    border-color:#4C744C;
+    border-style:solid;
+    border-width:1px;
+    font-family:Arial, sans-serif;
+    font-size:3vw;
+    font-weight: normal;
+    font-weight:normal;
+    overflow:hidden;
+    padding:5px 5px;
+    word-break:normal;
+}
+
+.values {
+    vertical-align:middle;
+    border-color: #4C744C;
+    border-style:solid;
+    border-width:1px;
+    font-family:Arial, sans-serif;
+    font-size:3vw;
+    font-weight: normal;
+    overflow:hidden;
+    padding:5px 5px;
+    word-break:normal; 
+    text-align: center;
+}
+
+th.titles {
+    height: 8vh;
+}
+
+.reserve {
+    width: 15vw;
+    border-color: #4C744C;
+    border-style:solid;
+    border-width:1px;
+    font-family:Arial, sans-serif;
+    font-size:3vw;
+    overflow:hidden;
+    text-align: center;
+}
+
+.reserve>button {
+    height: 100%;
+    width: 100%;
+    background-color: #4C744C;
+    color: #F8F0E6;
+    font-weight:bold;
+}
+
+main {
+    overflow: scroll;
+}
+
+.slots {
+    text-align:center
+}
