@@ -61,7 +61,7 @@
             <div class="custom-select" style="width:200px;">
                 <i class="fas fa-filter"></i>
                 <select id="levelOption">
-                    <option value="0">Difficulty level:</option>
+                    <option value="0">Difficulty level: All</option>
                     <option value="1">Easy</option>
                     <option value="2">Medium</option>
                     <option value="3">Hard</option>
@@ -269,6 +269,20 @@
                                 if (doc.data().level == text) {
                                     add_popularRoutes(doc.id, doc.data().name, doc.data().pic, doc.data().Length
                                         , doc.data().level, doc.data().likes)
+                                        
+                                } 
+
+                                if (text == "Difficulty level: All") {
+                                    db.collection("popular_routes")
+                                    .get()
+                                    .then(function (query) {
+                                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                                        query.forEach(function (doc) {
+                                        add_popularRoutes(doc.id, doc.data().name, doc.data().pic, doc.data().Length
+                                        , doc.data().level, doc.data().likes)
+                                    })
+                                })
+                                    
                                 }
                             })
                         })
