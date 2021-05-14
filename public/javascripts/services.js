@@ -6,9 +6,9 @@ const checkBoxBikeRental = document.querySelector('input[id="BikeRentalsCheck"]'
 
 /* paths of the imgs for markers */
 const mapIcons = { 
-    "airpump" : "./pics/airpump.png",
-    "repair" : "./pics/repair.png",
-    "rental" : "./pics/rental.png"
+    "airpump" : "./images/airpump.png",
+    "repair" : "./images/repair.png",
+    "rental" : "./images/rental.png"
 }
 
 
@@ -57,7 +57,7 @@ function updateMap() {
                 console.log(doc.data().address, doc.data().name, doc.data().latitud, doc.data().longitud)
                 let location = [`<h4>${doc.data().name}</h4> <br> ${doc.data().address}`, doc.data().latitud, doc.data().longitud, doc.data().type]
                 locations.push(location)
-                console.log(location)
+                // console.log(location)
             })
 
             updateMapCenter()
@@ -85,7 +85,6 @@ function addMarkers(locations, type) {
                 map: map,
                 icon: mapIcons[type]
             });
-            console.log('marker done')
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                 return function () {
                     let infowindow = new google.maps.InfoWindow({
