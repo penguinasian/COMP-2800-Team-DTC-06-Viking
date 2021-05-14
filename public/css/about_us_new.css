@@ -1,0 +1,163 @@
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+
+    grid-template-areas:
+    "header"
+    "main";
+}
+
+header {
+    grid-area: "header";
+    background-color:#4C744C;
+}
+
+.logoName {
+    margin: auto;
+    text-align: center;
+}
+
+#appName {
+    margin-bottom: 0;
+    font-size: large;
+    font-weight: bold;
+    font-family: "Sofia", sans-serif;
+    color: white;
+}
+
+header img {
+    width: 10vh;
+}
+
+main {
+    grid-area: "main";
+}
+
+.footer{
+    font-size: small;
+    color:#767274;
+}
+
+.bottomIcon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0px;
+}
+
+.fixed-bottom {
+    border-top:black solid 1px;
+}
+
+.iconButton:hover{
+    background-color:#4C744C;
+    color: white;
+}
+
+#buttons {
+    display: flex;
+    gap: 15vw;
+    margin: 0vh 5vw;
+    margin-top: 1vh;
+}
+
+#buttons button {
+    flex-grow: 1;
+    background-color: #4C744C;
+    border: none;
+    height: 7vh;
+    padding-top: 0.2rem;
+    font-size: 2.8vh;
+}
+
+nav {
+    padding: 0vh 1vw;
+}
+
+nav p {
+    font-size: 3.5vw !important;
+    margin-bottom: 0px !important;
+}
+
+nav i {
+    font-size: 8vw !important;
+}
+
+.bottomIcon button {
+    color:#767274;
+}
+
+/* Active page icon style -classes: parking, services, routes, info, profile*/
+.info{
+    color:#4C744C;
+}
+
+.info p{
+    color:#4C744C;
+}
+
+.info:hover{
+    color:white;
+}
+/* Active page style.*/
+
+
+/* css style ends. needs to be removed after updating skeleton.css*/
+
+main {
+    overflow: scroll;
+    text-align: center;
+    
+}
+
+main>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin: 3vh 0vw 1vh;
+    font-size: 5vw;
+}
+
+article {
+    margin-bottom: 2vh;
+    font-size: 3.5vw;
+    text-align: left !important;
+}
+
+main p {
+    margin: 1vh 4vw 2.5vh;
+    font-size: 3vw;
+}
+
+
+article>a {
+
+    text-decoration: none;
+    color: #4C744C;
+    font-weight: bold;
+    
+}
+
+section>img {
+    margin: 2vh;
+    width: 50vw;
+    height: auto;
+    border-radius: 4%;
+}
+
+#top_image {
+    width: 100vw;
+    
+}
+
+h3 {
+    font-size: 4vw;
+}
+
+section, article {
+    padding: 0vh 8vw;
+}
