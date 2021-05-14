@@ -1,7 +1,7 @@
 
 body, html {
     z-index: -1;
-    color: #4C744C;
+    color: whitesmoke;
     scroll-behavior: smooth;
     font-family: 'Open sans', serif;
     font-size: 10vw;
@@ -30,7 +30,7 @@ body, html {
   
   .firstPage {
     height: 100%;
-    background-image: url(/images/bike7p.jpeg);
+    background-image: url(/images/bike14p.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -95,7 +95,7 @@ body, html {
   
   .firstPage {
     height: 100%;
-    background-image: url(/images/bike7p.jpeg);
+    background-image: url(/images/bike14p.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
