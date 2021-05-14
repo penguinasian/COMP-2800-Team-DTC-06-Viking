@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="./services.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
-
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <title>Document</title>
 </head>
 
@@ -43,7 +43,27 @@
     </header>
     <!-- Main: section between header and footer -->
     <main>
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1K7LyHsk1qLcjo9yWws0FkXWQX04YJcyt"></iframe>
+        <div id="map"></div>
+
+
+        <div class="selectFilter">
+            <div class="air">
+                <input class="checkbox" type="checkbox" id="airPumpCheck" checked>
+                <img class="boximage" src="./pics/airpump.png">
+                <label class="form-check-label" for="airPumpCheck">Air Pumps</label>
+            </div>
+            <div class="repair">
+                <input class="checkbox" type="checkbox" id="serviceShopCheck" checked>
+                <img class="boximage" src="./pics/repair.png">
+                <label class="form-check-label" for="serviceShopCheck"> Service Shops </label>
+            </div>
+            <div class="rental">
+
+                <input class="checkbox" type="checkbox" id="BikeRentalsCheck" checked>
+                <img class="boximage" src="./pics/rental.png">
+                <label class="form-check-label" for="BikeRentalsCheck"> Bike Rentals</label>
+            </div>
+        </div>
 
     </main>
 
@@ -89,11 +109,19 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
-    <script src="../javascripts/firebase_api.js"></script>
+    <script src="./firebase_api.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_6aXL_PACxTA0BNnH3t97Z7jhTw3LbxI&callback=initMap&libraries=&v=weekly"
+        async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-
+    <script src="./services.js"></script>
 
 </body>
 

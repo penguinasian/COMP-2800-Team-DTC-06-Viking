@@ -36,11 +36,6 @@ main {
     grid-area: "main";
 }
 
-iframe {
-    width: 100vw;
-    height: 75vh;
-}
-
 
 nav {
     grid-area: "nav";
@@ -112,8 +107,71 @@ nav i {
 }
 /* Active page style.*/
 
+#map {
+    width: 100vw;
+    height: 61vh;
+}
+
+
 /* style for checkboxes.*/
 .checkboxes {
     display: flex;
     flex-direction: row;
+}
+
+main {
+    overflow: scroll;
+}
+
+.boximage {
+    width: 7vw;
+    text-align: center;
+}
+
+.selectFilter {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 1vh;
+
+    grid-template-areas:
+    "first second"
+    "third fourth";
+    gap: 0.5vh 0;
+}
+
+.selectFilter > div {
+    border: #4C744C solid 1px;
+    border-radius: 10px;
+    padding-left: 2vw;
+    width: 45vw;
+}
+
+label {
+    font-size: 4vw;
+}
+
+.checkbox {
+    width: 5vw;
+    height: 5vw;
+    color: #4C744C;
+    vertical-align: middle;
+}
+
+.air {
+    grid-area: first;
+    margin: 0 auto;
+}
+
+.repair {
+    grid-area: second;
+    margin: 0 auto;
+}
+
+.rental {
+    grid-area: third;
+    margin: 0 auto;
+}
+
+input[type='checkbox']:checked::after {
+    color: #4C744C;
 }
