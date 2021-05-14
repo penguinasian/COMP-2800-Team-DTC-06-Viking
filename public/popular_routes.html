@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
 
-    <title>Document</title>
+    <title>Popular routes</title>
 </head>
 
 <body>
@@ -61,7 +61,7 @@
             <div class="custom-select" style="width:200px;">
                 <i class="fas fa-filter"></i>
                 <select id="levelOption">
-                    <option value="0">Difficulty level:</option>
+                    <option value="0">Level: All</option>
                     <option value="1">Easy</option>
                     <option value="2">Medium</option>
                     <option value="3">Hard</option>
@@ -267,6 +267,20 @@
                                 if (doc.data().level == text) {
                                     add_popularRoutes(doc.id, doc.data().name, doc.data().pic, doc.data().Length
                                         , doc.data().level, doc.data().likes)
+                                        
+                                } 
+
+                                if (text == "Level: All") {
+                                    db.collection("popular_routes")
+                                    .get()
+                                    .then(function (query) {
+                                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                                        query.forEach(function (doc) {
+                                        add_popularRoutes(doc.id, doc.data().name, doc.data().pic, doc.data().Length
+                                        , doc.data().level, doc.data().likes)
+                                    })
+                                })
+                                    
                                 }
                             })
                         })
