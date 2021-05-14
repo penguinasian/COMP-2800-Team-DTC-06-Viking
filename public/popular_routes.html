@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Favicon links-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+    <link rel="manifest" href="../favicon/site.webmanifest">
+    <link rel="mask-icon" href="../favicon/safari-pinned-tab.svg" color="#4c744c">
+    <link rel="shortcut icon" href="../favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#4c744c">
+    <meta name="msapplication-config" content="../favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!--End Favicon links-->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/popular_routes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Header: logo -->
+    <header>
+        <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top" style="height:10vh">
+            <div class="logoName">
+                <img src="./images/logo final.png">
+            </div>
+        </div>
+    </header>
+    <!-- Main: section between header and footer -->
+    <main>
+        <div class="filter">
+            <div class="custom-select" style="width:200px;">
+                <i class="fas fa-filter"></i>
+                <select>
+                    <option value="0">Choose length:</option>
+                    <option value="1">0 ~ 5km</option>
+                    <option value="2">5km ~ 10km</option>
+                    <option value="3">10km ~ 20km</option>
+                    <option value="4">above 20km</option>
+
+                </select>
+
+
+            </div>
+
+            <div class="custom-select" style="width:200px;">
+                <i class="fas fa-filter"></i>
+                <select id="levelOption">
+                    <option value="0">Difficulty level:</option>
+                    <option value="1">Easy</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Hard</option>
+                </select>
+            </div>
+
+            <div class="buttonForFilter">
+                <button id="buttonFilter">Go</button>
+            </div>
+        </div>
+
+        <div class="routesImage">
+
+
+        </div>
+    </main>
+
+
+
+
+    <!-- Bottom: footer icons -->
+    <nav class="navbar navbar-expand fixed-bottom d-flex align-items-center">
+        <div class="container-fluid">
+            <div class="bottomIcon parking">
+                <button class="btn iconButton parking" href="#"><i class="fas fa-biking parking"></i></button>
+                <p class="footer">Parking</p>
+            </div>
+
+            <div class="bottomIcon services">
+                <button class="btn iconButton" href="#"><i class="fas fa-map-marked services"></i></button>
+                <p class="footer">Services</p>
+            </div>
+            <div class="bottomIcon routes">
+                <button class="btn iconButton" href="#"><i class="far fa-compass routes"></i></i></button>
+                <p class="footer">Routes</p>
+            </div>
+            <div class="bottomIcon info">
+                <button class="btn iconButton" href="#"><i class="fas fa-info-circle info"></i></i></button>
+                <p class="footer">Info</p>
+            </div>
+            <div class="bottomIcon profile">
+                <button class="btn iconButton" href="#"><i class="fas fa-user-circle profile"></i></button>
+                <p class="footer">Profile</p>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="./javascripts/firebase_api.js"></script>
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script>
+        function add_popularRoutes(id, name, pic, Length, level, likes) {
+
+            //create an individule div for each routes inside parent div  
+            let individule_routes = document.createElement("div")
+            individule_routes.className = "routes"  // set a class
+
+            //create an image tag
+            let image = document.createElement("iframe")
+            image.setAttribute("src", pic)
+            
+
+
+
+            //create a div for routes name under the pic
+            let routes_name = document.createElement("div")
+            routes_name.className = "routesName"
+
+
+            //create a p tag inside routesName div
+            let route_name = document.createElement("p")
+            route_name.className = "routesNameFont"
+            routes_name.appendChild(route_name)
+            route_name.innerText = name
+            let a_link = document.createElement("a")
+            a_link.setAttribute("href", "./routes_detail_page.html?name=" + name)
+            a_link.appendChild(route_name)
+            routes_name.appendChild(a_link)
+
+            //create a like button
+            let like_div = document.createElement("div")
+            like_div.className = "thumb"
+            like_div.innerHTML = '<i class="fas fa-thumbs-up"></i>'
+            routes_name.appendChild(like_div)
+
+            //create a routes detail div
+            let routes_detail = document.createElement("div")
+            routes_detail.className = "routesDetail"
+            let level_text = document.createElement("p")
+            level_text.innerHTML = level
+            let length_text = document.createElement("p")
+            length_text.innerHTML = "Length:"
+            length_text.className = "text"
+            let length_value = document.createElement("p")
+            length_value.innerHTML = Length
+            let length_unit = document.createElement("p")
+            length_unit.className = "unit"
+            length_unit.innerHTML = "km"
+            let likes_number = document.createElement("p")
+
+            //create a paragraph to describe the route
+            let route_para = document.createElement("p")
+            route_para.className = "routePara"
+            
+
+            routes_detail.appendChild(level_text)
+            routes_detail.appendChild(length_text)
+            routes_detail.appendChild(length_value)
+            routes_detail.appendChild(length_unit)
+            routes_detail.appendChild(likes_number)
+            routes_detail.appendChild(route_para)
+
+            //number_p is the amount of likes for food quality
+            //let number_p = document.createElement("p")
+            //like_div.appendChild(number_p)
+
+
+            //let number_p2 = document.createElement("p")
+            //like_div2.appendChild(number_p2)
+
+
+            //attache event listener to the thumb
+            addLikeListener(id, likes_number, like_div)
+
+
+            //append child divs to parent div
+            individule_routes.appendChild(image)
+            individule_routes.appendChild(routes_name)
+            individule_routes.appendChild(routes_detail)
+
+
+            document.getElementsByClassName("routesImage")[0].appendChild(individule_routes)
+        }
+
+        function readPopularRoutes() {
+            firebase.auth().onAuthStateChanged(function (user) {
+                var user = firebase.auth().currentUser;
+                var uid = user.uid;
+                db.collection("users").doc(uid)
+                    .get().then(function (doc) {
+                        db.collection("popular_routes")
+                            .get()
+                            .then(function (query) {
+                                query.forEach(function (doc) {
+
+                                    add_popularRoutes(doc.id, doc.data().name, doc.data().pic, doc.data().Length
+                                        , doc.data().level, doc.data().likes)
+
+                                })
+                            })
+
+                    })
+
+            })
+        }
+
+        readPopularRoutes();
+
+        function addLikeListener(id, likes_number, like_div) {
+            firebase.auth().onAuthStateChanged(function (user) {
+                like_div.addEventListener("click", function () {
+                    console.log("like was click!")
+                    db.collection("popular_routes")
+                        .doc(id)
+                        .update({
+                            likes: firebase.firestore.FieldValue.increment(1) //increments like!
+                        })
+
+                })
+            })
+            db.collection("popular_routes")
+                .doc(id)
+                .onSnapshot(function (snap) {
+                    likes_number.innerHTML = snap.get("likes")
+                })
+        }
+
+
+        function addFilterListener() {
+            var e = document.getElementById("levelOption")
+            
+            var buttonClick = document.getElementById("buttonFilter");
+            firebase.auth().onAuthStateChanged(function (user) {
+                buttonClick.addEventListener("click", function () {
+                    var text = e.options[e.selectedIndex].text
+                    console.log("button was clicked")
+                    db.collection("popular_routes")
+                        .get()
+                        .then(function (query) {
+                            document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                            query.forEach(function (doc) {
+                                if (doc.data().level == text) {
+                                    add_popularRoutes(doc.id, doc.data().name, doc.data().pic, doc.data().Length
+                                        , doc.data().level, doc.data().likes)
+                                }
+                            })
+                        })
+                })
+            })
+        }
+
+        addFilterListener();
+    </script>
+</body>
+
+</html>
