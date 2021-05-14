@@ -119,7 +119,7 @@ nav {
     border-top:black solid 1px;
     align-items: center;
     grid-area: "nav";
-    padding-top: 0.8vh !important;
+    padding-top: 1vh !important;
     text-align: center;
 }
 
@@ -148,7 +148,7 @@ h1 {
 
 article {
     margin-bottom: 2vh;
-    font-size: 3.5vw;
+    font-size: 3vw;
     text-align: left !important;
 }
 

@@ -125,13 +125,13 @@ main>div {
 }
 
 h1 {
-    margin: 3vh 0vw 1vh;
+    margin: 3vh 0vw 2vh;
     font-size: 5vw;
 }
 
 article {
     margin-bottom: 2vh;
-    font-size: 3.5vw;
+    font-size: 3vw;
     text-align: left !important;
 }
 
