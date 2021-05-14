@@ -78,6 +78,10 @@ nav {
     font-size: 2.8vh;
 }
 
+nav {
+    padding: 0vh 1vw;
+}
+
 nav p {
     font-size: 3.5vw !important;
     margin-bottom: 0px !important;
@@ -111,6 +115,7 @@ nav i {
 main {
     overflow: scroll;
     text-align: center;
+    
 }
 
 main>div {
@@ -120,43 +125,46 @@ main>div {
 }
 
 h1 {
-    margin: 2vh 0vw 1vh;
+    margin: 3vh 0vw 1vh;
+    font-size: 5vw;
 }
 
 article {
     margin-bottom: 2vh;
-}
-
-p {
-    margin: 1vh 0vw 2.5vh;
     font-size: 3.5vw;
+    text-align: left !important;
 }
 
-img {
-    width: 60vw;
-    height: auto;
-    border-radius: 4%;
+main p {
+    margin: 1vh 4vw 2.5vh;
+    font-size: 3vw;
+}
+
+
+article>a {
+
+    text-decoration: none;
+    color: #4C744C;
+    font-weight: bold;
     
 }
 
-main>div>a {
-    font-size: 5vw;
-    text-decoration: none;
+section>img {
+    margin: 2vh;
+    width: 50vw;
+    height: auto;
+    border-radius: 4%;
+}
+
+#top_image {
     width: 100vw;
-    height: 20vh;
+    
 }
 
-a:link, a:visited {
-
-    color: black;
-    border: 2px solid #4C744C;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-
+h3 {
+    font-size: 4vw;
 }
-  
-  a:hover, a:active {
-    background-color:#4C744C;
-    color: white;
+
+section, article {
+    padding: 0vh 8vw;
 }
