@@ -135,9 +135,7 @@
             //create an image tag
             let image = document.createElement("iframe")
             image.setAttribute("src", pic)
-            let a_link = document.createElement("a")
-            a_link.setAttribute("href", "individule_routes_page.html?name=" + name)
-            a_link.appendChild(image)
+            
 
 
 
@@ -151,6 +149,10 @@
             route_name.className = "routesNameFont"
             routes_name.appendChild(route_name)
             route_name.innerText = name
+            let a_link = document.createElement("a")
+            a_link.setAttribute("href", "./routes_detail_page.html?name=" + name)
+            a_link.appendChild(route_name)
+            routes_name.appendChild(a_link)
 
             //create a like button
             let like_div = document.createElement("div")
@@ -173,12 +175,17 @@
             length_unit.innerHTML = "km"
             let likes_number = document.createElement("p")
 
+            //create a paragraph to describe the route
+            let route_para = document.createElement("p")
+            route_para.className = "routePara"
+            
+
             routes_detail.appendChild(level_text)
             routes_detail.appendChild(length_text)
             routes_detail.appendChild(length_value)
             routes_detail.appendChild(length_unit)
             routes_detail.appendChild(likes_number)
-
+            routes_detail.appendChild(route_para)
 
             //number_p is the amount of likes for food quality
             //let number_p = document.createElement("p")
@@ -194,7 +201,7 @@
 
 
             //append child divs to parent div
-            individule_routes.appendChild(a_link)
+            individule_routes.appendChild(image)
             individule_routes.appendChild(routes_name)
             individule_routes.appendChild(routes_detail)
 

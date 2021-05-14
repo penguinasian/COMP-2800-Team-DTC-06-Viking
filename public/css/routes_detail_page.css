@@ -45,7 +45,7 @@ main {
 
 iframe {
     width: 100vw;
-    height: 65vh;
+    height: 50vh;
 }
 
 
@@ -106,11 +106,11 @@ nav i {
 }
 
 /* Active page icon style -classes: parking, services, routes, info, profile*/
-.parking{
+.routes{
     color:#4C744C;
 }
 
-.parking p{
+.routes p{
     color:#4C744C;
 }
 
@@ -119,83 +119,30 @@ nav i {
 }
 /* Active page style.*/
 
-.filter {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 2%;
-    align-items: center;
-}
-
-
-.routesImage {
-    display: grid;
-    grid-template-columns: 35% 35%;
-    grid-template-rows: auto;
-    justify-items: center;
-    gap:15%;
-    justify-content: center;
-    margin-top: 5%;
-    
-}
-
-.routesName {
+.detailsText {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: bottom;
+    justify-content: start;
 }
 
-.routesDetail {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-p {
+p{
+    margin-left: 5px;
     font-size: small;
-   
-}
-
-.routesNameFont {
     font-weight: bold;
 }
 
-img {
-    width:100%;
+
+.routePara {
+    margin-left: 4vw !important;
+    margin-right: 4vw !important;
+    text-align: center;
+    font-size: large !important;
+    font-weight: normal !important;
+}
+.route_title {
+    margin-top:1vh;
 }
 
-.levelBackground {
-    
-    border-radius: 100px / 50px;
+h1 {
+    margin-left: 2vw;
 }
-
-.fa-thumbs-up{
-    color:#4C744C ;
-}
-
-.fa-filter {
-    color:#4C744C ;
-}
-
-.unit {
-    margin-left: -1px;
-}
-
-button {
-    background-color:#4C744C ;
-    border-radius: 20%;
-    margin-right:5%;
-    color: white;
-}
-
-iframe {
-    width:100%;
-    height: 100%;
-}
-
-a {
-    text-decoration: none;
-    color: #4C744C;
-}
-
