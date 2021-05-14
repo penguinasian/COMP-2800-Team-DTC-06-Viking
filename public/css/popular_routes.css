@@ -106,11 +106,11 @@ nav i {
 }
 
 /* Active page icon style -classes: parking, services, routes, info, profile*/
-.parking{
+.routes{
     color:#4C744C;
 }
 
-.parking p{
+.routes p{
     color:#4C744C;
 }
 
