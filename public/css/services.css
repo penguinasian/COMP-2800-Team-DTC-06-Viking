@@ -12,6 +12,7 @@ body {
 header {
     grid-area: "header";
     background-color:#4C744C;
+    overflow: hidden;
 }
 
 .logoName {
@@ -43,6 +44,7 @@ nav {
     padding-top: 1vh !important;
     background-color: white;
     padding: 0vh 1vw;
+    overflow: hidden;
 }
 
 .footer{
@@ -146,11 +148,11 @@ main {
     border: #4C744C solid 1px;
     border-radius: 10px;
     padding-left: 2vw;
-    width: 45vw;
+    width: 40vw;
 }
 
 label {
-    font-size: 4vw;
+    font-size: 3vw;
 }
 
 .checkbox {
