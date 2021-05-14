@@ -43,7 +43,7 @@ h1 {
 
   width: 60%;
   font-size: 4vw;
-  margin: 30vh 0vw 0vh 0vw;
+  margin: 0vh 0vw 30vh 0vw;
   font-weight: bold;
 }
 
@@ -53,7 +53,6 @@ h1 {
 
 img {
   width:10vh;
-  opacity: 70%;
 }
   
 .firstPage {
