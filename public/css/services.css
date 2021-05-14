@@ -41,6 +41,7 @@ nav {
     grid-area: "nav";
     height: 15vh;
     padding-top: 1vh !important;
+    background-color: white;
 }
 
 .footer{
