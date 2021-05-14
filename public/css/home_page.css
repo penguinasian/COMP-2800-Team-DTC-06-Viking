@@ -1,7 +1,7 @@
 
 body, html {
   z-index: -1;
-  color: #4C744C;
+  color: #F8F0E6;
   scroll-behavior: smooth;
   font-family: 'Open sans', serif;
   font-size: 10vw;
@@ -20,7 +20,7 @@ button:hover {
 h1 {
   font-family: 'Berkshire Swash', serif;
   font-size:20vw;
-  margin-bottom: 1vh;
+  margin: 5vh 0vw;
 }
 
 .topnav {
@@ -43,7 +43,7 @@ h1 {
 
   width: 60%;
   font-size: 4vw;
-  margin: 0vh 0vw 30vh 0vw;
+  margin: 5vh 0vw 10vh 0vw;
   font-weight: bold;
 }
 
@@ -57,7 +57,7 @@ img {
   
 .firstPage {
   height: 100%;
-  background-image: url(/images/bike14p.jpeg);
+  background-image: url(/images/biking_sea.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
