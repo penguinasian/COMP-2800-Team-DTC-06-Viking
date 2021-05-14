@@ -59,7 +59,7 @@ body,html {
   }
 
   button {
-    border-radius: 15px;
+    border-radius: 10%;
     background-color: #4C744C;
     font-size: 0.8em;
     color:whitesmoke;
@@ -148,7 +148,7 @@ div > h3 {
   }
 
   button {
-    border-radius: 15px;
+    border-radius: 10%;
     background-color: #4C744C;
     font-size: 0.8em;
     color:whitesmoke;
