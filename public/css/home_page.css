@@ -1,10 +1,10 @@
 
 body, html {
     z-index: -1;
-    color: whitesmoke;
+    color: #4C744C;
     scroll-behavior: smooth;
     font-family: 'Open sans', serif;
-    font-size: 50px;
+    font-size: 10vw;
     height: 100%;
   }
   
@@ -25,12 +25,12 @@ body, html {
   }
   
   body,html {
-      font-size: 30px;
+      font-size: 10vw;
   }
   
   .firstPage {
     height: 100%;
-    background-image: url(/images/biking_9.jpg);
+    background-image: url(/images/bike7p.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -46,13 +46,14 @@ body, html {
   
     h1 {
         font-family: 'Berkshire Swash', serif;
-        font-size:2.5em;
+        font-size:20vw;
     }
   
     .titleIntro > p {
-      width: 50%;
-      font-size: 0.5em;
-      margin-bottom: 2vh;
+      width: 60%;
+      font-size: 5vw;
+      margin: 20vh 0vw 2vh;
+      font-weight: bold;
     }
   
     .button{
@@ -64,10 +65,11 @@ body, html {
       background-color: #4C744C;
       border: rgb(64, 66, 42) solid;
       border-width: 1px;
-      font-size: 5vw;
+      font-size: 4vw;
       color:whitesmoke;
-      width: 70vw;
+      width: 40vw;
       padding: 2vw;
+      margin: 0.5vh;
     }
   
     .titleIntro {
@@ -75,11 +77,8 @@ body, html {
       flex-direction: column;
       text-align: center;
       align-items: center;
-      margin-top: 35%;
+      margin-top: 4vh;
     }
-  
-  
-  
   }
   
   
@@ -91,12 +90,12 @@ body, html {
   }
   
   body,html {
-      font-size: 50px;
+      font-size: 10vw;
   }
   
   .firstPage {
     height: 100%;
-    background-image: url(/images/biking_9.jpg);
+    background-image: url(/images/bike7p.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -139,13 +138,14 @@ body, html {
   
     h1 {
         font-family: 'Berkshire Swash', serif;
-        font-size:2.5em;
+        font-size:20vw;
     }
   
     .titleIntro > p {
-      width: 50%;
-      font-size: 0.5em;
-      margin-bottom: 2vh;
+      width: 60%;
+      font-size: 5vw;
+      margin: 20vh 0vw 2vh;
+      font-weight: bold;
     }
   
     .button{
@@ -153,14 +153,15 @@ body, html {
     }
   
     button {
-        border-radius: 5%;
-        background-color: #4C744C;
-        border: rgb(64, 66, 42) solid;
-        border-width: 1px;
-        font-size: 5vw;
-        color:whitesmoke;
-        width: 70vw;
-        padding: 2vw;
+      border-radius: 5%;
+      background-color: #4C744C;
+      border: rgb(64, 66, 42) solid;
+      border-width: 1px;
+      font-size: 4vw;
+      color:whitesmoke;
+      width: 40vw;
+      padding: 2vw;
+      margin: 0.5vh;
     }
   
     .titleIntro {
@@ -168,7 +169,7 @@ body, html {
       flex-direction: column;
       text-align: center;
       align-items: center;
-      margin-top: 25%;
+      margin-top: 4vh;
     }
   
   }
