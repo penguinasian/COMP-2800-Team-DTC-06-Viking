@@ -10,7 +10,7 @@ body, html {
 
 #homeButton {
   text-decoration: none;
-  color: whitesmoke;
+  color: #F8F0E6;
 }
   
 button:hover {
@@ -40,9 +40,10 @@ h1 {
 }
 
 .titleIntro > p {
-  width: 50%;
+
+  width: 60%;
   font-size: 4vw;
-  margin: 0vh 0vw 30vh 35vw;
+  margin: 25vh 0vw 5vh 0vw;
   font-weight: bold;
 }
 
@@ -57,7 +58,7 @@ img {
   
 .firstPage {
   height: 100%;
-  background-image: url(/images/bike7p.jpeg);
+  background-image: url(/images/bike14p.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -69,7 +70,7 @@ button {
   border: rgb(64, 66, 42) solid;
   border-width: 1px;
   font-size: 4vw;
-  color:whitesmoke;
+  color:#F8F0E6;
   width: 40vw;
   padding: 1.5vw;
 }
