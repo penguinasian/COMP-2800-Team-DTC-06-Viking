@@ -41,12 +41,12 @@ iframe {
     height: 65vh;
 }
 
-
 nav {
     grid-area: "nav";
     height: 15vh;
     padding-top: 1vh !important;
     background-color: white;
+    padding: 0vh 1vw;
 }
 
 .footer{

@@ -42,6 +42,7 @@ nav {
     height: 15vh;
     padding-top: 1vh !important;
     background-color: white;
+    padding: 0vh 1vw;
 }
 
 .footer{
@@ -83,10 +84,11 @@ nav {
 
 nav p {
     font-size: 3.5vw !important;
+    margin-bottom: 0px !important;
 }
 
 nav i {
-    font-size: 10vw !important;
+    font-size: 8vw !important;
 }
 
 
@@ -110,7 +112,7 @@ nav i {
 
 #map {
     width: 100vw;
-    height: 61vh;
+    height: 60vh;
 }
 
 

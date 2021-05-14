@@ -47,6 +47,7 @@ nav {
     height: 15vh;
     padding-top: 1vh !important;
     background-color: white;
+    padding: 0vh 1vw;
 }
 
 .footer{
@@ -120,6 +121,7 @@ nav i {
 main {
     margin: auto 8vw;
 }
+
 main>form {
     font-weight: bold;
     display: grid;
@@ -140,8 +142,6 @@ form>input {
 label {
     color: #4C744C;
 }
-
-
 
 iframe {
     width: 100vw;
@@ -212,7 +212,6 @@ main {
 .slots {
     text-align:center
 }
-
 
 h3 {
     margin-top: 2vh;

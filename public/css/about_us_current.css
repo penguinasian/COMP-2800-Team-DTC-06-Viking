@@ -39,6 +39,8 @@ nav {
     grid-area: "nav";
     height: 15vh;
     padding-top: 1vh !important;
+    background-color: white;
+    padding: 0vh 1vw;
 }
 
 .footer{
@@ -78,11 +80,6 @@ nav {
     font-size: 2.8vh;
 }
 
-nav {
-    padding: 0vh 1vw;
-    background-color: white;
-}
-
 nav p {
     font-size: 3.5vw !important;
     margin-bottom: 0px !important;
@@ -116,7 +113,6 @@ nav i {
 main {
     overflow: scroll;
     text-align: center;
-    
 }
 
 main>div {

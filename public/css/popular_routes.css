@@ -7,11 +7,7 @@ body {
     "header"
     "main"
     "nav";
-    
 }
-
-
-
 
 header {
     grid-area: "header";
@@ -39,8 +35,6 @@ header img {
 main {
     grid-area: "main";
     overflow: auto;
-
-
 }
 
 iframe {
@@ -53,6 +47,7 @@ nav {
     grid-area: "nav";
     height: 15vh;
     padding-top: 1vh !important;
+    padding: 0vh 1vw;
     background-color: white;
 }
 
@@ -95,10 +90,11 @@ nav {
 
 nav p {
     font-size: 3.5vw !important;
+    margin-bottom: 0px !important;
 }
 
 nav i {
-    font-size: 10vw !important;
+    font-size: 8vw !important;
 }
 
 
@@ -153,16 +149,11 @@ nav i {
     align-items: center;
 }
 
-p {
-    font-size: small;
-   
-}
-
 .routesNameFont {
     font-weight: bold;
 }
 
-img {
+main img {
     width:100%;
 }
 
@@ -183,7 +174,7 @@ img {
     margin-left: -1px;
 }
 
-button {
+main button {
     background-color:#4C744C ;
     border-radius: 20%;
     margin-right:5%;
@@ -195,7 +186,7 @@ iframe {
     height: 100%;
 }
 
-a {
+main a {
     text-decoration: none;
     color: #4C744C;
 }
