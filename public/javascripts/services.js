@@ -101,27 +101,15 @@ function addMarkers(locations, type) {
 
 /* update the map when a checkbox is changed */
 checkBoxAirPump.addEventListener( 'change', function() {
-    if (this.checked ) {
-        updateMap()
-    } else {
-        updateMap()
-    }
+    updateMap()
 });
 
 checkBoxServiceShop.addEventListener( 'change', function() {
-    if (this.checked ) {
-        updateMap()
-    } else {
-        updateMap()
-    }
+    updateMap()
 });
 
 checkBoxBikeRental.addEventListener( 'change', function() {
-    if (this.checked ) {
-        updateMap()
-    } else {
-        updateMap()
-    }
+    updateMap()
 });
 
 
