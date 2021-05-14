@@ -1,11 +1,12 @@
 body {
     height: 100vh;
     display: grid;
-    grid-template-rows: 1fr 9fr;
+    grid-template-rows: 1fr 8fr 1fr;
 
     grid-template-areas:
     "header"
-    "main";
+    "main"
+    "nav";
 }
 
 header {
@@ -32,11 +33,6 @@ header img {
 
 main {
     grid-area: "main";
-}
-
-.footer{
-    font-size: small;
-    color:#767274;
 }
 
 .bottomIcon {
@@ -73,6 +69,7 @@ main {
 
 nav {
     padding: 0vh 1vw;
+    
 }
 
 nav p {
@@ -100,6 +97,33 @@ nav i {
 .info:hover{
     color:white;
 }
+
+nav button {
+    background-color: #4C744C;
+    height: 7vh;
+    border-radius: 5%;
+    border: rgb(64, 66, 42) solid;
+    border-width: 1px;
+    font-size: 5vw;
+    color:whitesmoke;
+    width: 50vw;
+    margin: 0 auto;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    
+}
+nav {
+    border-top:black solid 1px;
+    align-items: center;
+    grid-area: "nav";
+    padding-top: 0.8vh !important;
+    text-align: center;
+}
+
+
 /* Active page style.*/
 
 
@@ -135,11 +159,9 @@ main p {
 
 
 article>a {
-
     text-decoration: none;
     color: #4C744C;
     font-weight: bold;
-    
 }
 
 section>img {
