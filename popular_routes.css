@@ -7,7 +7,11 @@ body {
     "header"
     "main"
     "nav";
+    
 }
+
+
+
 
 header {
     grid-area: "header";
@@ -34,6 +38,14 @@ header img {
 
 main {
     grid-area: "main";
+    overflow: auto;
+
+
+}
+
+iframe {
+    width: 100vw;
+    height: 65vh;
 }
 
 
@@ -94,84 +106,74 @@ nav i {
 }
 
 /* Active page icon style -classes: parking, services, routes, info, profile*/
-.services{
+.parking{
     color:#4C744C;
 }
 
-.services p{
+.parking p{
     color:#4C744C;
 }
 
-.services:hover{
+.parking:hover{
     color:white;
 }
 /* Active page style.*/
 
-#map {
-    width: 100vw;
-    height: 61vh;
+.filter {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2%;
+    
 }
 
 
-/* style for checkboxes.*/
-.checkboxes {
+.routesImage {
+    display: grid;
+    grid-template-columns: 35% 35%;
+    grid-template-rows: auto;
+    justify-items: center;
+    gap:15%;
+    justify-content: center;
+    margin-top: 5%;
+    
+}
+
+.routesName {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: bottom;
 }
 
-main {
-    overflow: scroll;
+.routesDetail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.boximage {
-    width: 7vw;
-    text-align: center;
+p {
+    font-size: small;
+   
 }
 
-.selectFilter {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 1vh;
-
-    grid-template-areas:
-    "first second"
-    "third fourth";
-    gap: 0.5vh 0;
+.routesNameFont {
+    font-weight: bold;
 }
 
-.selectFilter > div {
-    border: #4C744C solid 1px;
-    border-radius: 10px;
-    padding-left: 2vw;
-    width: 45vw;
+img {
+    width:100%;
 }
 
-label {
-    font-size: 4vw;
+.levelBackground {
+    
+    border-radius: 100px / 50px;
 }
 
-.checkbox {
-    width: 5vw;
-    height: 5vw;
-    color: #4C744C;
-    vertical-align: middle;
+.fa-thumbs-up{
+    color:#4C744C ;
 }
 
-.air {
-    grid-area: first;
-    margin: 0 auto;
-}
-
-.repair {
-    grid-area: second;
-    margin: 0 auto;
-}
-
-.rental {
-    grid-area: third;
-    margin: 0 auto;
-}
-
-input[type='checkbox']:checked::after {
-    color: #4C744C;
+.fa-filter {
+    color:#4C744C ;
 }
