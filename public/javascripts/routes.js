@@ -71,6 +71,10 @@ document.getElementById("searchButton").addEventListener('click', function () {
     expandHiddenWindow("routesDisplay", "searchSettings", "filter"); 
 });
 
+document.getElementById("bookmarkButton").addEventListener('click', function () {
+  changeFilterColour("bookmarkButton");
+});
+
 function changeFilterColour(elementID) {
     let elementObj = window.getComputedStyle(document.getElementById(elementID));
     let bgColour = elementObj.getPropertyValue("background-color");
