@@ -1,98 +1,3 @@
-body {
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr 7.5fr 1.5fr;
-
-    grid-template-areas:
-    "header"
-    "main"
-    "nav";
-}
-
-header {
-    grid-area: "header";
-    background-color:#4C744C;
-}
-
-.logoName {
-    margin: auto;
-    text-align: center;
-}
-
-#appName {
-    margin-bottom: 0;
-    font-size: large;
-    font-weight: bold;
-    font-family: "Sofia", sans-serif;
-    color: white;
-}
-
-header img {
-    width: 10vh;
-}
-
-main {
-    grid-area: "main";
-}
-
-nav {
-    grid-area: "nav";
-    height: 15vh;
-    padding-top: 1vh !important;
-    background-color: white;
-    padding: 0vh 1vw;
-}
-
-.footer{
-    font-size: small;
-    color:#767274;
-}
-
-.bottomIcon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 0px;
-}
-
-.fixed-bottom {
-    border-top:black solid 1px;
-}
-
-.iconButton:hover{
-    background-color:#4C744C;
-    color: white;
-}
-
-#buttons {
-    display: flex;
-    gap: 15vw;
-    margin: 0vh 5vw;
-    margin-top: 1vh;
-}
-
-#buttons button {
-    flex-grow: 1;
-    background-color: #4C744C;
-    border: none;
-    height: 7vh;
-    padding-top: 0.2rem;
-    font-size: 2.8vh;
-}
-
-nav p {
-    font-size: 3.5vw !important;
-    margin-bottom: 0px !important;
-}
-
-nav i {
-    font-size: 8vw !important;
-}
-
-.bottomIcon button {
-    color:#767274;
-}
-
 /* Active page icon style -classes: parking, services, routes, info, profile*/
 .info{
     color:#4C744C;
@@ -111,7 +16,6 @@ nav i {
 /* css style ends. needs to be removed after updating skeleton.css*/
 
 main {
-    overflow: scroll;
     text-align: center;
 }
 
@@ -123,27 +27,25 @@ main>div {
 
 h1 {
     margin: 3vh 0vw 2vh;
-    font-size: 5vw;
+    font-size: 3vh;
 }
 
 article {
     margin-bottom: 2vh;
-    font-size: 3vw;
+    font-size: 1.5vh;
     text-align: left !important;
 }
 
 main p {
     margin: 1vh 4vw 2.5vh;
-    font-size: 3vw;
+    font-size: 1.5vh;
 }
 
 
 article>a {
-
     text-decoration: none;
     color: #4C744C;
     font-weight: bold;
-    
 }
 
 section>img {
@@ -155,13 +57,13 @@ section>img {
 
 #top_image {
     width: 100vw;
-    
+    max-height: 50vh;
 }
 
 h3 {
-    font-size: 4vw;
+    font-size: 2vh;
 }
 
 section, article {
-    padding: 0vh 8vw;
+    padding: 0vh 6vw;
 }
