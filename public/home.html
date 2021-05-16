@@ -1,54 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--Favicon links-->
-        <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-        <!--<link rel="manifest" href="../public/favicon/manifest.json">-->
-        <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#4c744c">
-        <link rel="shortcut icon" href="./favicon/favicon.ico">
-        <meta name="msapplication-TileColor" content="#4c744c">
-        <meta name="msapplication-config" content="./favicon/browserconfig.xml">
-        <meta name="theme-color" content="#ffffff">
-        <!--End Favicon links-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Berkshire+Swash">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="./css/home_page.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
+    <!--Favicon links-->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <!--<link rel="manifest" href="../public/favicon/manifest.json">-->
+    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#4c744c">
+    <link rel="shortcut icon" href="./favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#4c744c">
+    <meta name="msapplication-config" content="./favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!--End Favicon links-->
 
-        <title>Home</title>
-    </head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Berkshire+Swash">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/home_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
 
-    <body>
-        <!-- top bar - logo -->
-        <div class="firstPage">
-            <div class="topnav">
-                <a href="index.html" class="active"><img src="./images/logo_final.png"></a>
-            </div>
-            <div class="titleIntro">
-                <h1>Viking</h1>
-                <p>Welcome to Viking! Everything biking related is just at your finger tips!</p>
-                <div class="button">
-                    <button onclick="document.location='./parking_main.html'">Parkings</button>
-                    <button onclick="document.location='./services.html'">Service Centers</button>
-                    <button onclick="document.location='./popular_routes.html'">Biking Routes</button>
-                    <button onclick="document.location='./about_us_current.html'">About us</button>
-                </div>
+    <title>Home</title>
+</head>
+
+<body>
+    <!-- top bar - logo -->
+    <div class="firstPage">
+        <div class="topnav">
+            <a href="index.html" class="active"><img src="./images/logo_final.png"></a>
+        </div>
+        <div class="titleIntro">
+            <h1>Viking</h1>
+            <p>Hi, <span id="username"></span>!<br> Welcome to Viking! Everything biking related is just at your finger tips!</p>
+           
+            <div class="button">
+                <button onclick="document.location='./parking_main.html'">Parkings</button>
+                <button onclick="document.location='./services.html'">Service Centers</button>
+                <button onclick="document.location='./popular_routes.html'">Biking Routes</button>
+                <button onclick="document.location='./about_us_current.html'">About us</button>
             </div>
         </div>
-    </body>
-    
+    </div>
+
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="./javascripts/firebase_api.js"></script>
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script>
+       
+        function sayHello() {
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    // User is signed in.
+                    // Do something for the user here. 
+                    console.log(user.uid);
+                    db.collection("users").doc(user.uid)
+                        .get()
+                        .then(function (doc) {
+                            var n = doc.data().name;
+                            console.log(n);
+                            document.getElementById("username").innerText = n;
+                      
+                        })
+                } else {
+                    // No user is signed in.
+                }
+            });
+        }
+        sayHello();
+    </script>
+</body>
+
 </html>
