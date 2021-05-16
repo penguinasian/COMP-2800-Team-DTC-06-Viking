@@ -6,17 +6,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--Favicon links-->
-        <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-        <!--<link rel="manifest" href="../public/favicon/manifest.json">-->
-        <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#4c744c">
-        <link rel="shortcut icon" href="./favicon/favicon.ico">
-        <meta name="msapplication-TileColor" content="#4c744c">
-        <meta name="msapplication-config" content="./favicon/browserconfig.xml">
-        <meta name="theme-color" content="#ffffff">
-        <!--End Favicon links-->
+    <!--Favicon links-->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <!--<link rel="manifest" href="../public/favicon/manifest.json">-->
+    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#4c744c">
+    <link rel="shortcut icon" href="./favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#4c744c">
+    <meta name="msapplication-config" content="./favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!--End Favicon links-->
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -25,18 +25,18 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="./skeleton.css">
+        <link rel="stylesheet" href="./css/skeleton.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
 
-        <title>Parking_main</title>
+        <title>Skeleton</title>
     </head>
 
     <body>
         <header>
-            <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top" style="height:10vh">
+            <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top">
                 <div class="logoName">
-                    <img src="./pics/logo_final.png">
+                    <img src="./images/logo_final.png">
                 </div>
             </div>
         </header>
@@ -51,20 +51,20 @@
         <nav class="navbar navbar-expand fixed-bottom d-flex align-items-center">
             <div class="container-fluid">
                 <div class="bottomIcon parking">
-                    <button class="btn iconButton parking" href="#"><i class="fas fa-biking parking"></i></button>
+                    <button class="btn iconButton parking" onclick="document.location='./parking_main.html'"><i class="fas fa-biking parking"></i></button>
                     <p class="footer">Parking</p>
                 </div>
-
+    
                 <div class="bottomIcon services">
-                    <button class="btn iconButton" href="#"><i class="fas fa-map-marked services"></i></button>
+                    <button class="btn iconButton" onclick="document.location='./services.html'"><i class="fas fa-map-marked services"></i></button>
                     <p class="footer">Services</p>
                 </div>
                 <div class="bottomIcon routes">
-                    <button class="btn iconButton" href="#"><i class="far fa-compass routes"></i></i></button>
+                    <button class="btn iconButton" onclick="document.location='./popular_routes.html'"><i class="far fa-compass routes"></i></i></button>
                     <p class="footer">Routes</p>
                 </div>
                 <div class="bottomIcon info">
-                    <button class="btn iconButton" href="#"><i class="fas fa-info-circle info"></i></i></button>
+                    <button class="btn iconButton" onclick="document.location='./about_us_current.html'"><i class="fas fa-info-circle info"></i></i></button>
                     <p class="footer">Info</p>
                 </div>
                 <div class="bottomIcon profile">

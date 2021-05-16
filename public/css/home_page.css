@@ -1,66 +1,62 @@
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 9fr;
 
-body, html {
-  z-index: -1;
-  color: #F8F0E6;
-  scroll-behavior: smooth;
-  font-family: 'Open sans', serif;
-  font-size: 10vw;
-  height: 100%;
+  grid-template-areas:
+  "header"
+  "main"
 }
 
-#homeButton {
-  text-decoration: none;
-  color: #F8F0E6;
+header {
+  grid-area: header;
+  background-color:#4C744C;
 }
-  
-button:hover {
-  background-color: silver;
+
+.logoName {
+  margin: 0.5vh auto;
+  text-align: center;
+  height: 9vh;
+}
+
+header img {
+  margin: 0px;
+  height: 9vh;
+}
+
+.firstPage {
+  grid-area: main;
+  background-image: url(../images/biking_sea.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 90vh;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  text-align: center;
+  justify-items: center;
 }
 
 h1 {
   font-family: 'Berkshire Swash', serif;
-  font-size:20vw;
+  font-size: 12vh;
   margin: 5vh 0vw;
+  color:#F8F0E6;
 }
 
-.topnav {
-  background-color: #4C744C;
-  height: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.titleIntro {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  margin-top: 1vh;
-}
-
-.titleIntro > p {
-
-  width: 60%;
-  font-size: 4vw;
+main p {
+  color:#F8F0E6;
+  width: 55vw;
+  font-size: 2.5vh;
   margin: 10vh 0vw 5vh 0vw;
   font-weight: bold;
 }
 
 .button{
-  margin: auto;
-}
-
-img {
-  width:10vh;
-}
-  
-.firstPage {
-  height: 100%;
-  background-image: url(../images/biking_sea.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4vh 5vw;
+  padding: 8vh 5vw;
 }
 
 button {
@@ -68,8 +64,12 @@ button {
   background-color: #4C744C;
   border: rgb(64, 66, 42) solid;
   border-width: 1px;
-  font-size: 4vw;
+  font-size: 1.8vh;
   color:#F8F0E6;
   width: 40vw;
-  padding: 1.5vw;
+  padding: 2vh;
+}
+
+button:hover {
+  background-color: silver;
 }
