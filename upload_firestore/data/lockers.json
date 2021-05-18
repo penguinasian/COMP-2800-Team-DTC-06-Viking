@@ -1,0 +1,52 @@
+{
+  "lockers": [
+    {
+      "id": 1,
+      "name": "Olympic Village Station",
+      "address": "Olympic Village Station, Vancouver, BC",
+      "latitude": 49.26718285,
+      "longitude": -123.1146517,
+      "total": 5
+    },
+    {
+      "id": 2,
+      "name": "Broadway-City Hall Station",
+      "address": "Broadway-City Hall Station, Vancouver, BC V5Z 2V2",
+      "latitude": 49.26284303,
+      "longitude": -123.1143954,
+      "total": 5
+    },
+    {
+      "id": 3,
+      "name": "Vcc-Clark Station",
+      "address": "Vcc-Clark Station, Vancouver, BC V5T 0B1",
+      "latitude": 49.26638352,
+      "longitude": -123.0792845,
+      "total": 5
+    },
+    {
+      "id": 4,
+      "name": "Renfrew Station",
+      "address": "Renfrew Station, Vancouver, BC V5M",
+      "latitude": 49.25920891,
+      "longitude": -123.0452189,
+      "total": 5
+    },
+    {
+      "id": 5,
+      "name": "29th Avenue Station",
+      "address": "29th Avenue Station, Vancouver, BC V5R 5Z5",
+      "latitude": 49.24502171,
+      "longitude": -123.0450746,
+      "total": 5
+    },
+    {
+      "id": 6,
+      "name": "Oakridge - 41st Avenue Station",
+      "address": "Oakridge - 41st Avenue Station, BC V5Z 4H2",
+      "latitude": 49.23332435,
+      "longitude": -123.1159535,
+      "total": 5
+    }
+  ]
+}

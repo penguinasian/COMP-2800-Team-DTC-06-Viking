@@ -1,0 +1,104 @@
+{
+  "boxes": [
+    {
+      "LOCKER_ID": 1,
+      "BOX_ID": 1
+    },
+    {
+      "LOCKER_ID": 1,
+      "BOX_ID": 2
+    },
+    {
+      "LOCKER_ID": 1,
+      "BOX_ID": 3
+    },
+    {
+      "LOCKER_ID": 1,
+      "BOX_ID": 4
+    },
+    {
+      "LOCKER_ID": 1,
+      "BOX_ID": 5
+    },
+    {
+      "LOCKER_ID": 3,
+      "BOX_ID": 1
+    },
+    {
+      "LOCKER_ID": 3,
+      "BOX_ID": 2
+    },
+    {
+      "LOCKER_ID": 3,
+      "BOX_ID": 3
+    },
+    {
+      "LOCKER_ID": 3,
+      "BOX_ID": 4
+    },
+    {
+      "LOCKER_ID": 3,
+      "BOX_ID": 5
+    },
+    {
+      "LOCKER_ID": 4,
+      "BOX_ID": 1
+    },
+    {
+      "LOCKER_ID": 4,
+      "BOX_ID": 2
+    },
+    {
+      "LOCKER_ID": 4,
+      "BOX_ID": 3
+    },
+    {
+      "LOCKER_ID": 4,
+      "BOX_ID": 4
+    },
+    {
+      "LOCKER_ID": 4,
+      "BOX_ID": 5
+    },
+    {
+      "LOCKER_ID": 5,
+      "BOX_ID": 1
+    },
+    {
+      "LOCKER_ID": 5,
+      "BOX_ID": 2
+    },
+    {
+      "LOCKER_ID": 5,
+      "BOX_ID": 3
+    },
+    {
+      "LOCKER_ID": 5,
+      "BOX_ID": 4
+    },
+    {
+      "LOCKER_ID": 5,
+      "BOX_ID": 5
+    },
+    {
+      "LOCKER_ID": 6,
+      "BOX_ID": 1
+    },
+    {
+      "LOCKER_ID": 6,
+      "BOX_ID": 2
+    },
+    {
+      "LOCKER_ID": 6,
+      "BOX_ID": 3
+    },
+    {
+      "LOCKER_ID": 6,
+      "BOX_ID": 4
+    },
+    {
+      "LOCKER_ID": 6,
+      "BOX_ID": 5
+    }
+  ]
+}

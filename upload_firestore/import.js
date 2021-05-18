@@ -16,7 +16,7 @@ const jsonToFirestore = async () => {
         console.log('Firebase Initialized');
 
         /* enter the name of JSON file below */
-        await firestoreService.restore('./data/parkade_json.json');
+        await firestoreService.restore('./data/lockers.json');
         console.log('Update Success');
     }
     catch (error) {
