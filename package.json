@@ -1,0 +1,22 @@
+{
+  "name": "comp-2800-team-dtc-06-viking",
+  "version": "1.0.0",
+  "description": "package for viking project",
+  "main": "firebase_api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/penguinasian/COMP-2800-Team-DTC-06-Viking.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/penguinasian/COMP-2800-Team-DTC-06-Viking/issues"
+  },
+  "homepage": "https://github.com/penguinasian/COMP-2800-Team-DTC-06-Viking#readme",
+  "dependencies": {
+    "firestore-export-import": "^0.15.0"
+  }
+}
