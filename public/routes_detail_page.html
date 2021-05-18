@@ -104,6 +104,12 @@
             route_title.innerText = name
             route_title_div.appendChild(route_title)
 
+            //create a bookmark for bike route details page on the top
+            let bookmark_div = document.createElement("div")
+            bookmark_div.className = "bookmark"
+            bookmark_div.innerHTML = '<i class="fas fa-bookmark fa-2x"></i>'
+            route_title_div.appendChild(bookmark_div)
+
             //create an image tag
             let image = document.createElement("iframe")
             image.setAttribute("src", pic)
@@ -117,22 +123,15 @@
             details_text.className = "detailsText"
 
             let level_text = document.createElement("p")
-            level_text.innerHTML = level
+            level_text.innerHTML = "Difficulty: " + level
             details_text.appendChild(level_text)
 
             let length_text = document.createElement("p")
-            length_text.innerHTML = "Length:"
+            length_text.innerHTML = "Length:" + " " + Length.toString() + "km"
             length_text.className = "text"
             details_text.appendChild(length_text)
         
-            let length_value = document.createElement("p")
-            length_value.innerHTML = Length
-            details_text.appendChild(length_value)
-
-            let length_unit = document.createElement("p")
-            length_unit.className = "unit"
-            length_unit.innerHTML = "km"
-            details_text.appendChild(length_unit)
+ 
 
             routes_detail.appendChild(image)
             routes_detail.appendChild(details_text)

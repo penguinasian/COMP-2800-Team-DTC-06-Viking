@@ -23,6 +23,16 @@ h1 {
     font-size: 3.5vh;
 }
 
+.route_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-bookmark {
+    color:#4C744C;
+}
+
 .detailsText {
     display: flex;
     flex-direction: row;

@@ -46,7 +46,7 @@ main button {
     align-content: center;
     justify-content: center;
     margin-top: 2vh;
-    padding: 0vh 2vw;
+    padding-left:4vw;
 }
 
 .routesName {
@@ -74,7 +74,7 @@ main button {
 }
 
 main img {
-    width:100%;
+    width:90%;
 }
 
 .levelBackground {
@@ -90,18 +90,5 @@ main img {
     color:#4C744C ;
 }
 
-.unit {
-    margin-left: -1px;
-}
 
 
-
-iframe {
-    width: 45vw;
-    height: 30vh;
-}
-
-main a {
-    text-decoration: none;
-    color: #4C744C;
-}
