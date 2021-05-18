@@ -123,22 +123,15 @@
             details_text.className = "detailsText"
 
             let level_text = document.createElement("p")
-            level_text.innerHTML = level
+            level_text.innerHTML = "Difficulty: " + level
             details_text.appendChild(level_text)
 
             let length_text = document.createElement("p")
-            length_text.innerHTML = "Length:"
+            length_text.innerHTML = "Length:" + " " + Length.toString() + "km"
             length_text.className = "text"
             details_text.appendChild(length_text)
         
-            let length_value = document.createElement("p")
-            length_value.innerHTML = Length
-            details_text.appendChild(length_value)
-
-            let length_unit = document.createElement("p")
-            length_unit.className = "unit"
-            length_unit.innerHTML = "km"
-            details_text.appendChild(length_unit)
+ 
 
             routes_detail.appendChild(image)
             routes_detail.appendChild(details_text)
