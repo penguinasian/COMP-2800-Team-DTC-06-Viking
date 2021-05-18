@@ -1,103 +1,3 @@
-body {
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr 7.5fr 1.5fr;
-
-    grid-template-areas:
-    "header"
-    "main"
-    "nav";
-}
-
-header {
-    grid-area: "header";
-    background-color:#4C744C;
-}
-
-.logoName {
-    margin: auto;
-    text-align: center;
-}
-
-#appName {
-    margin-bottom: 0;
-    font-size: large;
-    font-weight: bold;
-    font-family: "Sofia", sans-serif;
-    color: white;
-}
-
-header img {
-    width: 10vh;
-}
-
-main {
-    grid-area: "main";
-}
-
-nav {
-    grid-area: "nav";
-    height: 15vh;
-    padding-top: 1vh !important;
-    background-color: white;
-    padding: 0vh 1vw;
-}
-
-.footer{
-    font-size: small;
-    color:#767274;
-}
-
-.bottomIcon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 0px;
-}
-
-.fixed-bottom {
-    border-top:black solid 1px;
-}
-
-.iconButton:hover{
-    background-color:#4C744C;
-    color: white;
-}
-
-#buttons {
-    display: flex;
-    gap: 15vw;
-    margin: 0vh 5vw;
-    margin-top: 1vh;
-}
-
-#buttons button {
-    flex-grow: 1;
-    background-color: #4C744C;
-    border: none;
-    height: 7vh;
-    padding-top: 0.2rem;
-    font-size: 2.8vh;
-}
-
-nav p {
-    font-size: 3.5vw !important;
-    margin-bottom: 0px !important;
-}
-
-nav i {
-    font-size: 8vw !important;
-}
-
-iframe {
-    width: 100vw;
-    height: 65vh;
-}
-
-.bottomIcon button {
-    color:#767274;
-}
-
 /* Active page icon style -classes: parking, services, routes, info, profile*/
 .parking{
     color:#4C744C;
@@ -113,28 +13,28 @@ iframe {
 /* Active page style.*/
 
 main>form {
-    font-size: 3vw;
+    height: 8vh;
+    font-size: 2vh;
     font-weight: bold;
     color: #4C744C;
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: space-around;
-    gap: 8% 3%;
-    margin: 0% 5% 3%;
+    gap: 0.5vh 10vw;
+    margin: 0.5vh 5vw;
     grid-template-areas:
     "label label"
-    "input input"
+    "input input";
 }
 
 form>input {
     height: 4vh;
+    max-width: 500px;
 }
-
-/* css style ends. needs to be removed after updating skeleton.css*/
 
 iframe {
     width: 100vw;
-    height: 50vh;
+    height: 40vh;
 }
 
 .result {
@@ -161,7 +61,7 @@ table {
     border-style:solid;
     border-width:1px;
     font-family:Arial, sans-serif;
-    font-size:3.5vw;
+    font-size: 2vh;
     font-weight:normal;
     overflow:hidden;
     padding:5px 5px;
@@ -176,7 +76,7 @@ table {
     border-style:solid;
     border-width:1px;
     font-family:Arial, sans-serif;
-    font-size:3vw;
+    font-size: 1.5vh;
     font-weight: normal;
     font-weight:normal;
     overflow:hidden;
@@ -190,7 +90,7 @@ table {
     border-style:solid;
     border-width:1px;
     font-family:Arial, sans-serif;
-    font-size:3vw;
+    font-size:1.5vh;
     font-weight: normal;
     overflow:hidden;
     padding:5px 5px;
@@ -208,7 +108,7 @@ th.titles {
     border-style:solid;
     border-width:1px;
     font-family:Arial, sans-serif;
-    font-size:3vw;
+    font-size:1.5vh;
     overflow:hidden;
     text-align: center;
 }
@@ -219,10 +119,6 @@ th.titles {
     background-color: #4C744C;
     color: #F8F0E6;
     font-weight:bold;
-}
-
-main {
-    overflow: scroll;
 }
 
 .slots {
