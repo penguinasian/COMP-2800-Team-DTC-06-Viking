@@ -165,13 +165,9 @@
             let level_text = document.createElement("p")
             level_text.innerHTML = level
             let length_text = document.createElement("p")
-            length_text.innerHTML = "Length:"
+            length_text.innerHTML = "Length:" +" " + Length.toString() + "km"
             length_text.className = "text"
-            let length_value = document.createElement("p")
-            length_value.innerHTML = Length
-            let length_unit = document.createElement("p")
-            length_unit.className = "unit"
-            length_unit.innerHTML = "km"
+  
             let likes_number = document.createElement("p")
 
             
@@ -179,8 +175,8 @@
 
             routes_detail.appendChild(level_text)
             routes_detail.appendChild(length_text)
-            routes_detail.appendChild(length_value)
-            routes_detail.appendChild(length_unit)
+       
+         
             routes_detail.appendChild(likes_number)
             
 
