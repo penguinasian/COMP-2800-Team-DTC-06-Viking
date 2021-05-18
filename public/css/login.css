@@ -1,12 +1,12 @@
 body {
     height: 100vh;
     display: grid;
-    grid-template-rows: 1fr 7.5fr 1.5fr;
+    grid-template-rows: 1fr 9fr;
 
     grid-template-areas:
     "header"
-    "main"
-    "nav";
+    "main";
+
 }
 
 header {
@@ -34,6 +34,23 @@ header img {
 
 main {
     grid-area: "main";
+    background-image: url(../images/biking_wall.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+main p {
+    color:white !important;
+    font-size:3.5vw !important;
+    line-height: 3vh !important;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+main p a {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold !important;
+    color: darkblue !important;
 }
 
 iframe {

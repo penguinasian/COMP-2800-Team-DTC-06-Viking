@@ -1,0 +1,69 @@
+/* Active page icon style -classes: parking, services, routes, info, profile*/
+.info{
+    color:#4C744C;
+}
+
+.info p{
+    color:#4C744C;
+}
+
+.info:hover{
+    color:white;
+}
+/* Active page style.*/
+
+
+/* css style ends. needs to be removed after updating skeleton.css*/
+
+main {
+    text-align: center;
+}
+
+main>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin: 3vh 0vw 2vh;
+    font-size: 3vh;
+}
+
+article {
+    margin-bottom: 2vh;
+    font-size: 1.5vh;
+    text-align: left !important;
+}
+
+main p {
+    margin: 1vh 4vw 2.5vh;
+    font-size: 1.5vh;
+}
+
+
+article>a {
+    text-decoration: none;
+    color: #4C744C;
+    font-weight: bold;
+}
+
+section>img {
+    margin: 2vh;
+    width: 50vw;
+    height: auto;
+    border-radius: 50%;
+}
+
+#top_image {
+    width: 100vw;
+    max-height: 50vh;
+}
+
+h3 {
+    font-size: 2vh;
+}
+
+section, article {
+    padding: 0vh 6vw;
+}

@@ -23,40 +23,37 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Berkshire+Swash">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="./css/home_page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
 
-    <title>Log in</title>
+    <title>Home</title>
 </head>
 
 <body>
-    <!-- Header: logo -->
     <header>
-        <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top" style="height:10vh">
+        <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top">
             <div class="logoName">
-                <img src="/images/logo_final.png">
+                <img src="./images/logo_final.png">
             </div>
         </div>
     </header>
-   <!-- Main: section between header and footer -->
-    <main>
-
-        <div class="signIn">
-            <div class="tap">
-                <a href="#" class="btn indexButton  my-1 disabled" id="signIn"><i class="bi bi-person-circle"></i> SIGN
-                    IN
-                </a>
-            </div>
-
-            <div class="container">
-                <div id="firebaseui-auth-container"></div>
-            </div>
+    <!-- top bar - logo -->
+    <main class="firstPage">
+        <h1>Viking</h1>
+        <p>Hi, <span id="username"></span>!<br> Welcome to Viking! Everything biking related is just at your finger
+            tips!</p>
+        <div class="button">
+            <button onclick="document.location='./parking_main.html'">Parkings</button>
+            <button onclick="document.location='./services.html'">Service Centers</button>
+            <button onclick="document.location='./popular_routes.html'">Biking Routes</button>
+            <button onclick="document.location='./about_us_current.html'">About us</button>
         </div>
-    </main>
 
+    </main>
 
 
     <!----------------------------------------------->
@@ -69,12 +66,33 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
-    <script src="../javascripts/firebase_api.js"></script>
+    <script src="./javascripts/firebase_api.js"></script>
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
+    <script>
 
-    <script src="../javascripts/login.js"></script>
+        function sayHello() {
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    // User is signed in.
+                    // Do something for the user here. 
+                    console.log(user.uid);
+                    db.collection("users").doc(user.uid)
+                        .get()
+                        .then(function (doc) {
+                            var n = doc.data().name;
+                            console.log(n);
+                            document.getElementById("username").innerText = n;
+
+                        })
+                } else {
+                    // No user is signed in.
+                }
+            });
+        }
+        sayHello();
+    </script>
 </body>
 
 </html>

@@ -1,141 +1,52 @@
-body {
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr 7.5fr 1.5fr;
-
-    grid-template-areas:
-    "header"
-    "main"
-    "nav";
-    
-}
-
-
-
-
-header {
-    grid-area: "header";
-    background-color:#4C744C;
-}
-
-.logoName {
-    margin: auto;
-    text-align: center;
-}
-
-#appName {
-    margin-bottom: 0;
-    font-size: large;
-    font-weight: bold;
-    font-family: "Sofia", sans-serif;
-    color: white;
-}
-
-header img {
-    width: 10vh;
-    
-}
-
-main {
-    grid-area: "main";
-    overflow: auto;
-
-
-}
-
-iframe {
-    width: 100vw;
-    height: 65vh;
-}
-
-
-nav {
-    grid-area: "nav";
-    height: 15vh;
-    padding-top: 1vh !important;
-}
-
-.footer{
-    font-size: small;
-    color:#767274;
-}
-
-.bottomIcon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 0px;
-}
-
-.fixed-bottom {
-    border-top:black solid 1px;
-}
-
-.iconButton:hover{
-    background-color:#4C744C;
-    color: white;
-}
-
-#buttons {
-    display: flex;
-    gap: 15vw;
-    margin: 0vh 5vw;
-    margin-top: 1vh;
-}
-
-#buttons button {
-    flex-grow: 1;
-    background-color: #4C744C;
-    border: none;
-    height: 7vh;
-    padding-top: 0.2rem;
-    font-size: 2.8vh;
-}
-
-nav p {
-    font-size: 3.5vw !important;
-}
-
-nav i {
-    font-size: 10vw !important;
-}
-
-
-.bottomIcon button {
-    color:#767274;
-}
 
 /* Active page icon style -classes: parking, services, routes, info, profile*/
-.parking{
+.routes{
     color:#4C744C;
 }
 
-.parking p{
+.routes p{
     color:#4C744C;
 }
 
-.parking:hover{
+.routes:hover{
     color:white;
 }
 /* Active page style.*/
 
 .filter {
     display: flex;
-    justify-content: space-around;
-    margin-top: 2%;
+    justify-content: space-between;
+    margin-top: 1vh;
+    height: 7vh;
+    padding: 0.5vh 2vw;
     align-items: center;
+}
+
+main select {
+    width: 30vw;
+    font-size: 1.5vh;
+    height: 5vh;
+}
+
+main button {
+    background-color:#4C744C ;
+    border-radius: 20%;
+    margin-right:5%;
+    height: 5vh;
+    width: 6vh;
+    color: white;
+    font-size: 2vh;
 }
 
 
 .routesImage {
     display: grid;
-    grid-template-columns: 35% 35%;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-    justify-items: center;
-    gap:15%;
+    align-content: center;
     justify-content: center;
-    margin-top: 5%;
-    
+    margin-top: 2vh;
+    padding: 0vh 2vw;
 }
 
 .routesName {
@@ -143,6 +54,9 @@ nav i {
     flex-direction: row;
     justify-content: space-between;
     align-items: bottom;
+    width: 42vw;
+    font-size: 2vh;
+    height: 5vh;
 }
 
 .routesDetail {
@@ -150,18 +64,16 @@ nav i {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
-
-p {
-    font-size: small;
-   
+    width: 42vw;
+    font-size: 1.5vh;
+    height: 2vh;
 }
 
 .routesNameFont {
     font-weight: bold;
 }
 
-img {
+main img {
     width:100%;
 }
 
@@ -182,20 +94,14 @@ img {
     margin-left: -1px;
 }
 
-button {
-    background-color:#4C744C ;
-    border-radius: 20%;
-    margin-right:5%;
-    color: white;
-}
+
 
 iframe {
-    width:100%;
-    height: 100%;
+    width: 45vw;
+    height: 30vh;
 }
 
-a {
+main a {
     text-decoration: none;
     color: #4C744C;
 }
-

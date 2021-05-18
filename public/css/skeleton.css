@@ -1,7 +1,7 @@
 body {
     height: 100vh;
     display: grid;
-    grid-template-rows: 1fr 7.5fr 1.5fr;
+    grid-template-rows: 1fr 7.8fr 1.2fr;
 
     grid-template-areas:
     "header"
@@ -10,47 +10,33 @@ body {
 }
 
 header {
-    grid-area: "header";
+    grid-area: header;
     background-color:#4C744C;
 }
 
 .logoName {
-    margin: auto;
+    margin: 0.5vh auto;
     text-align: center;
-}
-
-#appName {
-    margin-bottom: 0;
-    font-size: large;
-    font-weight: bold;
-    font-family: "Sofia", sans-serif;
-    color: white;
+    height: 9vh;
 }
 
 header img {
-    width: 10vh;
-    
+    margin: 0px;
+    height: 9vh;
 }
 
 main {
-    grid-area: "main";
-}
-
-iframe {
-    width: 100vw;
-    height: 65vh;
+    grid-area: main;
+    overflow: scroll;
 }
 
 
 nav {
-    grid-area: "nav";
-    height: 15vh;
-    padding-top: 1vh !important;
-}
-
-.footer{
-    font-size: small;
-    color:#767274;
+    grid-area: nav;
+    height: 12vh;
+    background-color: white;
+    padding: 1.5vh 2.5vw 0.5vh;
+    border-top:black solid 1px;
 }
 
 .bottomIcon {
@@ -60,55 +46,46 @@ nav {
     padding-bottom: 0px;
 }
 
-.fixed-bottom {
-    border-top:black solid 1px;
-}
-
 .iconButton:hover{
     background-color:#4C744C;
     color: white;
 }
 
-#buttons {
-    display: flex;
-    gap: 15vw;
-    margin: 0vh 5vw;
-    margin-top: 1vh;
-}
-
-#buttons button {
+nav button {
     flex-grow: 1;
     background-color: #4C744C;
     border: none;
-    height: 7vh;
-    padding-top: 0.2rem;
-    font-size: 2.8vh;
+    height: 8vh;
+    padding: 0px 0px 1vh !important;
+    font-size: 5vh !important;
+    
 }
-
-nav p {
-    font-size: 3.5vw !important;
-}
-
-nav i {
-    font-size: 10vw !important;
-}
-
 
 .bottomIcon button {
     color:#767274;
 }
 
+nav p {
+    font-size: 2vh !important;
+    margin-bottom: 0px !important;
+    color:#767274;
+}
+
+
+
 /* Active page icon style -classes: parking, services, routes, info, profile*/
-.parking{
+/* .services{
     color:#4C744C;
 }
 
-.parking p{
+.services p{
     color:#4C744C;
 }
 
-.parking:hover{
+.services:hover{
     color:white;
-}
+} */
 /* Active page style.*/
+
+/* style for checkboxes.*/
 

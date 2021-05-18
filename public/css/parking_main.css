@@ -1,0 +1,35 @@
+
+/* Active page icon style -classes: parking, services, routes, info, profile*/
+.parking{
+    color:#4C744C;
+}
+
+.parking p{
+    color:#4C744C;
+}
+
+.parking:hover{
+    color:white;
+}
+/* Active page style.*/
+
+iframe {
+    width: 100vw;
+    height: 65vh;
+}
+
+#buttons {
+    display: flex;
+    gap: 15vw;
+    margin: 0vh 5vw;
+    margin-top: 1vh;
+}
+
+#buttons button {
+    flex-grow: 1;
+    background-color: #4C744C;
+    border: none;
+    height: 6vh;
+    padding-top: 0.2rem;
+    font-size: 2.8vh;
+}

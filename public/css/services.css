@@ -1,0 +1,75 @@
+/* Active page icon style -classes: parking, services, routes, info, profile*/
+.services{
+    color:#4C744C;
+}
+
+.services p{
+    color:#4C744C;
+}
+
+.services:hover{
+    color:white;
+}
+/* Active page style.*/
+
+#map {
+    width: 100vw;
+    height: 60vh;
+}
+
+/* style for checkboxes.*/
+
+.selectFilter {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 1vh;
+    height: 12vh;
+    grid-template-areas:
+    "first second"
+    "third fourth";
+    gap: 0.5vh 0;
+}
+
+.selectFilter > div {
+    border: #4C744C solid 1px;
+    border-radius: 10px;
+    height: 5vh;
+    width: 40vw;
+    margin: auto;
+    display: flex;
+}
+
+.air {
+    grid-area: first;
+}
+
+.repair {
+    grid-area: second;
+}
+
+.rental {
+    grid-area: third;
+}
+
+
+.boximage {
+    height: 4vh;
+    margin: auto 0.5vw;
+}
+
+
+label {
+    font-size: 1.5vh;
+    margin: auto 0.5vw;
+}
+
+.checkbox {
+    width: 3vh;
+    height: 3vh;
+    color: #4C744C;
+    margin: auto 1vw;
+}
+
+input[type='checkbox']:checked::after {
+    color: #4C744C;
+}
