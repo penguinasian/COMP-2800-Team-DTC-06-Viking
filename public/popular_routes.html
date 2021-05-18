@@ -127,33 +127,31 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
-        function add_popularRoutes(id, name, pic, Length, level, likes) {
+        function add_popularRoutes(id, name, static_image, Length, level, likes) {
 
             //create an individule div for each routes inside parent div  
             let individule_routes = document.createElement("div")
             individule_routes.className = "routes"  // set a class
 
             //create an image tag
-            let image = document.createElement("iframe")
-            image.setAttribute("src", pic)
-            
+            let image = document.createElement("img")
+            image.setAttribute("src", static_image)
+            let a_link = document.createElement("a")
+            a_link.setAttribute("href", "./routes_detail_page.html?name=" + name)
+            a_link.appendChild(image)
 
 
 
             //create a div for routes name under the pic
             let routes_name = document.createElement("div")
             routes_name.className = "routesName"
-
+           
 
             //create a p tag inside routesName div
             let route_name = document.createElement("p")
             route_name.className = "routesNameFont"
             routes_name.appendChild(route_name)
             route_name.innerText = name
-            let a_link = document.createElement("a")
-            a_link.setAttribute("href", "./routes_detail_page.html?name=" + name)
-            a_link.appendChild(route_name)
-            routes_name.appendChild(a_link)
 
             //create a like button
             let like_div = document.createElement("div")
@@ -200,7 +198,7 @@
 
 
             //append child divs to parent div
-            individule_routes.appendChild(image)
+            individule_routes.appendChild(a_link)
             individule_routes.appendChild(routes_name)
             individule_routes.appendChild(routes_detail)
 
@@ -219,7 +217,7 @@
                             .then(function (query) {
                                 query.forEach(function (doc) {
 
-                                    add_popularRoutes(doc.id, doc.data().name, doc.data().pic, doc.data().Length
+                                    add_popularRoutes(doc.id, doc.data().name, doc.data().static_image, doc.data().Length
                                         , doc.data().level, doc.data().likes)
 
                                 })
@@ -266,7 +264,7 @@
                             document.getElementsByClassName("routesImage")[0].innerHTML = "";
                             query.forEach(function (doc) {
                                 if (doc.data().level == text) {
-                                    add_popularRoutes(doc.id, doc.data().name, doc.data().pic, doc.data().Length
+                                    add_popularRoutes(doc.id, doc.data().name, doc.data().static_image, doc.data().Length
                                         , doc.data().level, doc.data().likes)
                                         
                                 } 
@@ -277,7 +275,7 @@
                                     .then(function (query) {
                                         document.getElementsByClassName("routesImage")[0].innerHTML = "";
                                         query.forEach(function (doc) {
-                                        add_popularRoutes(doc.id, doc.data().name, doc.data().pic, doc.data().Length
+                                        add_popularRoutes(doc.id, doc.data().name, doc.data().static_image, doc.data().Length
                                         , doc.data().level, doc.data().likes)
                                     })
                                 })
