@@ -1,0 +1,59 @@
+{ 
+"parkades" :  [
+ {
+   "id": 1,
+   "name": "Main Street-Science World Station",
+   "address": "Main Street-Science World Station, Vancouver, BC V6A 4G5",
+   "latitud": 49.27830261,
+   "longitud": -123.1015534,
+   "available": 10,
+   "total": 40
+ },
+ {
+   "id": 2,
+   "name": "King Edward Station",
+   "address": "King Edward Station, Vancouver, BC V5Z 2C4",
+   "latitud": 49.25028304,
+   "longitud": -123.1142007,
+   "available": 20,
+   "total": 30
+ },
+ {
+   "id": 3,
+   "name": "Commercial-Broadway Station",
+   "address": "Commercial-Broadway Station, Vancouver, BC V5N 4B9",
+   "latitud": 49.26269651,
+   "longitud": -123.0692284,
+   "available": 25,
+   "total": 35
+ },
+ {
+   "id": 4,
+   "name": "Bridgeport Station",
+   "address": "Bridgeport Station, Richmond, BC",
+   "latitud": 49.19558012,
+   "longitud": -123.1259386,
+   "available": 10,
+   "total": 25
+ },
+ {
+   "id": 5,
+   "name": "Joyce–Collingwood Station",
+   "address": "Joyce–Collingwood Station, Joyce Street, Vancouver, BC",
+   "latitud": 49.23834693,
+   "longitud": -123.0316961,
+   "available": 15,
+   "total": 30
+ },
+ {
+   "id": 6,
+   "name": "Metrotown Station",
+   "address": "Burnaby, BC V5H 4M3",
+   "latitud": 49.22590864,
+   "longitud": -123.0035829,
+   "available": 8,
+   "total": 35
+ }
+]
+
+}
