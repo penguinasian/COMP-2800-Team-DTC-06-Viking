@@ -104,6 +104,12 @@
             route_title.innerText = name
             route_title_div.appendChild(route_title)
 
+            //create a bookmark for bike route details page on the top
+            let bookmark_div = document.createElement("div")
+            bookmark_div.className = "bookmark"
+            bookmark_div.innerHTML = '<i class="fas fa-bookmark fa-2x"></i>'
+            route_title_div.appendChild(bookmark_div)
+
             //create an image tag
             let image = document.createElement("iframe")
             image.setAttribute("src", pic)
