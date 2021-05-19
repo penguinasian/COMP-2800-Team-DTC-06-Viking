@@ -16,7 +16,7 @@ function add_popularRoutes(id, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH, ROUTE
     //create a div for routes name under the pic
     let routes_name = document.createElement("div")
     routes_name.className = "routesName"
-   
+
 
     //create a p tag inside routesName div
     let route_name = document.createElement("p")
@@ -38,14 +38,14 @@ function add_popularRoutes(id, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH, ROUTE
     let length_text = document.createElement("p")
     length_text.innerHTML = "Length:" + ROUTE_LENGTH.toString() + "km"
     length_text.className = "text"
-    
+
     let likes_number = document.createElement("p")
-       
+
 
     routes_detail.appendChild(level_text)
     routes_detail.appendChild(length_text)
     routes_detail.appendChild(likes_number)
-    
+
 
     //attache event listener to the thumb
     addLikeListener(id, likes_number, like_div)
@@ -104,9 +104,9 @@ function addLikeListener(id, likes_number, like_div) {
 }
 
 
-function addFilterListener() {
+function addFilterListenerForLevel() {
     var e = document.getElementById("levelOption")
-    
+
     var levelDropDown = document.getElementById("levelOption");
     firebase.auth().onAuthStateChanged(function (user) {
         levelDropDown.addEventListener("change", function () {
@@ -120,20 +120,20 @@ function addFilterListener() {
                         if (doc.data().ROUTE_DIFFICULTY == text) {
                             add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                                 , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-                                
-                        } 
+
+                        }
 
                         if (text == "Level: All") {
                             db.collection("popular_routes")
-                            .get()
-                            .then(function (query) {
-                                document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                                query.forEach(function (doc) {
-                                    add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                                , doc.data().ROUTE_DURATION, doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-                            })
-                        })
-                            
+                                .get()
+                                .then(function (query) {
+                                    document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                                    query.forEach(function (doc) {
+                                        add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                            , doc.data().ROUTE_DURATION, doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+                                    })
+                                })
+
                         }
                     })
                 })
@@ -141,4 +141,150 @@ function addFilterListener() {
     })
 }
 
-addFilterListener();
+addFilterListenerForLevel();
+
+
+function addFilterListenerForLength() {
+    var e = document.getElementById("lengthOption")
+
+    var lengthDropDown = document.getElementById("lengthOption");
+    firebase.auth().onAuthStateChanged(function (user) {
+        lengthDropDown.addEventListener("change", function () {
+            var text = e.value
+            console.log("button was clicked")
+            if (text == "0") {
+                db.collection("popular_routes")
+                    .get()
+                    .then(function (query) {
+                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                        query.forEach(function (doc) {
+                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+
+                        })
+                    })
+            }
+
+            if (text == "1") {
+                db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 10)
+                    .get()
+                    .then(function (query) {
+                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                        query.forEach(function (doc) {
+                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+
+                        })
+                    })
+            }
+
+            if (text == "2") {
+                db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 20).where("ROUTE_LENGTH", ">", 10)
+                    .get()
+                    .then(function (query) {
+                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                        query.forEach(function (doc) {
+                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+
+                        })
+                    })
+            }
+
+            if (text == "3") {
+                db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 30).where("ROUTE_LENGTH", ">", 20)
+                    .get()
+                    .then(function (query) {
+                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                        query.forEach(function (doc) {
+                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+
+                        })
+                    })
+            }
+
+            if (text == "4") {
+                db.collection("popular_routes").where("ROUTE_LENGTH", ">", 30)
+                    .get()
+                    .then(function (query) {
+                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                        query.forEach(function (doc) {
+                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+
+                        })
+                    })
+            }
+
+        })
+    })
+}
+
+addFilterListenerForPopularity();
+
+function addFilterListenerForPopularity() {
+    var e = document.getElementById("popularity")
+
+    var lengthDropDown = document.getElementById("popularity");
+    firebase.auth().onAuthStateChanged(function (user) {
+        lengthDropDown.addEventListener("change", function () {
+            var text = e.value
+            console.log("filter changed")
+            if (text == "Popularity: All") {
+                db.collection("popular_routes")
+                    .get()
+                    .then(function (query) {
+                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                        query.forEach(function (doc) {
+                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+
+                        })
+                    })
+            }
+
+            if (text == "Top 3") {
+                db.collection("popular_routes").where("ROUTE_POPULARITY", ">=", 1).orderBy("ROUTE_POPULARITY").limit(3)
+                    .get()
+                    .then(function (query) {
+                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                        query.forEach(function (doc) {
+                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+
+                        })
+                    })
+            }
+
+            if (text == "Top 5") {
+                db.collection("popular_routes").where("ROUTE_POPULARITY", ">=", 1).orderBy("ROUTE_POPULARITY").limit(5)
+                    .get()
+                    .then(function (query) {
+                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                        query.forEach(function (doc) {
+                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+
+                        })
+                    })
+            }
+
+            if (text == "Top 10") {
+                db.collection("popular_routes").where("ROUTE_POPULARITY", ">=", 1).orderBy("ROUTE_POPULARITY").limit(10)
+                    .get()
+                    .then(function (query) {
+                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                        query.forEach(function (doc) {
+                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+
+                        })
+                    })
+            }
+
+        })
+    })
+}
+
+addFilterListenerForPopularity();

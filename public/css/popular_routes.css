@@ -23,9 +23,9 @@
 }
 
 main select {
-    width: 30vw;
+    width: 25vw;
     font-size: 1.5vh;
-    height: 5vh;
+    height: 3.5vh;
 }
 
 main button {
@@ -90,5 +90,9 @@ main img {
     color:#4C744C ;
 }
 
+.custom-select {
+    display: flex;
+    align-items: center;
+}
 
 

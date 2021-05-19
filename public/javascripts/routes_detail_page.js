@@ -26,15 +26,15 @@ function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, RO
     details_text.className = "detailsText"
 
     let level_text = document.createElement("p")
-    level_text.innerHTML = "Difficulty: " + ROUTE_DIFFICULTY
+    level_text.innerHTML = "Difficulty:" + ROUTE_DIFFICULTY
     details_text.appendChild(level_text)
 
     let duration = document.createElement("p")
-    duration.innerHTML = "Duration:" + ROUTE_DURATION
+    duration.innerHTML = "Duration:" + ROUTE_DURATION +"hr(s)"
     details_text.appendChild(duration)
 
     let length_text = document.createElement("p")
-    length_text.innerHTML = "Length:" + " " + ROUTE_LENGTH.toString() + "km"
+    length_text.innerHTML = "Length:" + ROUTE_LENGTH.toString() + "km"
     length_text.className = "text"
     details_text.appendChild(length_text)
 
