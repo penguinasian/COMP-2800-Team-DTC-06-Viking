@@ -28,7 +28,7 @@
     <meta name="msapplication-config" content="./favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <!--End Favicon links-->
-    
+
     <title>Parking_parkades</title>
 </head>
 
@@ -43,11 +43,9 @@
 
     <!-- All elements go into main-->
     <main>
-        <div class='map sticky-top'>
-            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1wS4XYpqO8nqYs0pi2q9clbwLN6VyKlAv"></iframe>
-        </div>
+        <div id="map"></div>
 
-        <div class="result">
+        <!-- <div class="result">
             <table class="tg">
                 <thead>
                     <tr>
@@ -95,8 +93,8 @@
                 <thead>
                     <tr>
                         <th class="listNumber" rowspan="2"># 4</th>
-                            <th class="titles">Address</th>
-                            <th class="values">38920 Main, Vancouver</th>
+                        <th class="titles">Address</th>
+                        <th class="values">38920 Main, Vancouver</th>
                     </tr>
                     <tr>
                         <td class="titles">Available Slots</td>
@@ -104,7 +102,7 @@
                     </tr>
                 </thead>
             </table>
-        </div>
+        </div> -->
 
 
     </main>
@@ -114,20 +112,24 @@
     <nav class="navbar navbar-expand fixed-bottom d-flex align-items-center">
         <div class="container-fluid">
             <div class="bottomIcon parking">
-                <button class="btn iconButton parking" onclick="document.location='./parking_main.html'"><i class="fas fa-biking parking"></i></button>
+                <button class="btn iconButton parking" onclick="document.location='./parking_main.html'"><i
+                        class="fas fa-biking parking"></i></button>
                 <p class="footer">Parking</p>
             </div>
 
             <div class="bottomIcon services">
-                <button class="btn iconButton" onclick="document.location='./services.html'"><i class="fas fa-map-marked services"></i></button>
+                <button class="btn iconButton" onclick="document.location='./services.html'"><i
+                        class="fas fa-map-marked services"></i></button>
                 <p class="footer">Services</p>
             </div>
             <div class="bottomIcon routes">
-                <button class="btn iconButton" onclick="document.location='./popular_routes.html'"><i class="far fa-compass routes"></i></i></button>
+                <button class="btn iconButton" onclick="document.location='./popular_routes.html'"><i
+                        class="far fa-compass routes"></i></i></button>
                 <p class="footer">Routes</p>
             </div>
             <div class="bottomIcon info">
-                <button class="btn iconButton" onclick="document.location='./about_us_current.html'"><i class="fas fa-info-circle info"></i></i></button>
+                <button class="btn iconButton" onclick="document.location='./about_us_current.html'"><i
+                        class="fas fa-info-circle info"></i></i></button>
                 <p class="footer">Info</p>
             </div>
             <div class="bottomIcon profile">
@@ -149,11 +151,18 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
     <script src="./javascripts/firebase_api.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_6aXL_PACxTA0BNnH3t97Z7jhTw3LbxI&callback=initMap&libraries=&v=weekly"
+        async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
 
-    <script src="./javascripts/user_login.js"></script>
+    <script src="./javascripts/parking_parkades.js"></script>
 </body>
 
 </html>
