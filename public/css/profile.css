@@ -1,0 +1,48 @@
+#profile-title {
+    font-size: 8vw;
+    text-align: center;
+}
+
+#bookmarks-title {
+    font-size: 5vw;
+}
+
+#profile-bookmarks-div {
+    text-align: center;
+}
+
+#bookmarks-parent {
+    display: flex;
+    text-align: center;
+    font-size: 4vw;
+}
+
+#route-overlay {
+    height: 40vw;
+    background-color: rgba(76,116,76, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+
+#bookmarks-container {
+    flex-grow: 6;
+    background-image: url("../images/images_for_bike_routes/Blackcomb_Path.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#bookmarks-prev, #bookmarks-next {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(200,200,200,0.5);
+}
+
+#bookmarks-prev:active, #bookmarks-next:active {
+    background-color: rgba(200,200,200,1);
+}
