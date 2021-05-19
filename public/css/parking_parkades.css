@@ -16,7 +16,7 @@
 
 /* css style ends. needs to be removed after updating skeleton.css*/
 
-iframe {
+#map {
     width: 100vw;
     height: 50vh;
 }
@@ -89,6 +89,41 @@ th.titles {
 .slots {
     text-align:center
 }
+
+
+.parkade_high {
+    color: white;
+    background-color: #63D668;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.parkade_medium {
+    color: white;
+    background-color: #FF974D;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.parkade_low {
+    color: white;
+    background-color: #F23C32;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.parkade_full {
+    color: white;
+    background-color: #F23C32;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0 5px;
+}
+
+
 
 
 
