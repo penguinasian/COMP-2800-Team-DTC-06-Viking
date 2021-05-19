@@ -17,6 +17,7 @@ function initMap() {
     });
 }
 
+/* read data from Firestore and update map*/
 function updateMap() {
     db.collection("parkades")
         .get()
@@ -28,6 +29,39 @@ function updateMap() {
                 locations.push(parkade)
             })
 
-            // addMarkers(locations, 'parkade')
+            addMarkers(locations, 'parkade')
         })
 }
+
+/* add Markers and infoWindows*/
+function addMarkers(locations, type) {
+    for (let i = 0; i < locations.length; i++) {
+
+        const latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
+        let mapIcon
+        if (locations[i][3] == 0) {
+            mapIcon = mapIcons["full"]
+        } else {
+            mapIcon = mapIcons[type]
+        }
+
+        let marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            icon: mapIcon
+        });
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+                let infowindow = new google.maps.InfoWindow({
+                    content: locations[i][0]
+                });
+
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
+
+    }
+}
+
+
+updateMap()
