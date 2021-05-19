@@ -62,16 +62,13 @@
             <div class="custom-select">
                 <i class="fas fa-filter"></i>
                 <select id="levelOption">
-                    <option value="0">Level: All</option>
-                    <option value="1">Easy</option>
-                    <option value="2">Medium</option>
-                    <option value="3">Hard</option>
+                    <option value="Level: all">Level: All</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
                 </select>
             </div>
 
-            <div class="buttonForFilter">
-                <button id="buttonFilter">Go</button>
-            </div>
         </div>
 
         <div class="routesImage">
@@ -236,10 +233,10 @@
         function addFilterListener() {
             var e = document.getElementById("levelOption")
             
-            var buttonClick = document.getElementById("buttonFilter");
+            var levelDropDown = document.getElementById("levelOption");
             firebase.auth().onAuthStateChanged(function (user) {
-                buttonClick.addEventListener("click", function () {
-                    var text = e.options[e.selectedIndex].text
+                levelDropDown.addEventListener("change", function () {
+                    var text = e.value
                     console.log("button was clicked")
                     db.collection("popular_routes")
                         .get()
