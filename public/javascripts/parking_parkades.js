@@ -1,8 +1,18 @@
 const mapIcons = {
-    "parkade": "./images/parkade.png",
-    "locker": "./images/locker.png",
-    "full": "./images/full.png"
+    "parkade_high": "./images/parkade_high.png",
+    "parkade_medium": "./images/parkade_medium.png",
+    "parkade_low": "./images/parkade_low.png",
+    "parkade_full": "./images/parkade_full.png",
+    "locker": "./images/locker.png"
 }
+
+/* 
+Availablity level
+high [0.6, 1.0]
+medium [0.3, 0.6)
+low (0, 0.3)
+full = 0
+*/
 
 const full = 0;
 const lowAvailablity = 0.3;
@@ -39,11 +49,22 @@ function addMarkers(locations, type) {
 
         const latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
         let mapIcon
-        if (locations[i][3] == 0) {
-            mapIcon = mapIcons["full"]
+        let availablity =  locations[i][3] / locations[i][4]
+        if (availablity >= 0.6) {
+            mapIcon = mapIcons["parkade_high"]
+        } else if (availablity >= 0.3) {
+            mapIcon = mapIcons["parkade_medium"]
+        } else if ( availablity > 0) {
+            mapIcon = mapIcons["parkade_low"]
         } else {
-            mapIcon = mapIcons[type]
+            mapIcon = mapIcons["parkade_full"]
         }
+
+        // if (locations[i][3] == 0) {
+        //     mapIcon = mapIcons["full"]
+        // } else if () {
+        //     mapIcon = mapIcons[type]
+        // }
 
         let marker = new google.maps.Marker({
             position: latLng,
