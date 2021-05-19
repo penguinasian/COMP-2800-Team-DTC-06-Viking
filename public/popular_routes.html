@@ -127,7 +127,7 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
-        function add_popularRoutes(id, name, static_image, Length, level, likes) {
+        function add_popularRoutes(id, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH, ROUTE_DIFFICULTY, ROUTE_POPULARITY) {
 
             //create an individule div for each routes inside parent div  
             let individule_routes = document.createElement("div")
@@ -135,9 +135,9 @@
 
             //create an image tag
             let image = document.createElement("img")
-            image.setAttribute("src", static_image)
+            image.setAttribute("src", ROUTE_STATIC_IMG)
             let a_link = document.createElement("a")
-            a_link.setAttribute("href", "./routes_detail_page.html?name=" + name)
+            a_link.setAttribute("href", "./routes_detail_page.html?name=" + ROUTE_NAME)
             a_link.appendChild(image)
 
 
@@ -151,7 +151,7 @@
             let route_name = document.createElement("p")
             route_name.className = "routesNameFont"
             routes_name.appendChild(route_name)
-            route_name.innerText = name
+            route_name.innerText = ROUTE_NAME
 
             //create a like button
             let like_div = document.createElement("div")
@@ -163,31 +163,18 @@
             let routes_detail = document.createElement("div")
             routes_detail.className = "routesDetail"
             let level_text = document.createElement("p")
-            level_text.innerHTML = level
+            level_text.innerHTML = ROUTE_DIFFICULTY
             let length_text = document.createElement("p")
-            length_text.innerHTML = "Length:" +" " + Length.toString() + "km"
+            length_text.innerHTML = "Length:" +" " + ROUTE_LENGTH.toString() + "km"
             length_text.className = "text"
   
             let likes_number = document.createElement("p")
-
-            
-            
+               
 
             routes_detail.appendChild(level_text)
-            routes_detail.appendChild(length_text)
-       
-         
+            routes_detail.appendChild(length_text)     
             routes_detail.appendChild(likes_number)
             
-
-            //number_p is the amount of likes for food quality
-            //let number_p = document.createElement("p")
-            //like_div.appendChild(number_p)
-
-
-            //let number_p2 = document.createElement("p")
-            //like_div2.appendChild(number_p2)
-
 
             //attache event listener to the thumb
             addLikeListener(id, likes_number, like_div)
@@ -213,8 +200,8 @@
                             .then(function (query) {
                                 query.forEach(function (doc) {
 
-                                    add_popularRoutes(doc.id, doc.data().name, doc.data().static_image, doc.data().Length
-                                        , doc.data().level, doc.data().likes)
+                                    add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                        , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
 
                                 })
                             })
@@ -229,11 +216,11 @@
         function addLikeListener(id, likes_number, like_div) {
             firebase.auth().onAuthStateChanged(function (user) {
                 like_div.addEventListener("click", function () {
-                    console.log("like was click!")
+                    console.log("like was clicked!")
                     db.collection("popular_routes")
                         .doc(id)
                         .update({
-                            likes: firebase.firestore.FieldValue.increment(1) //increments like!
+                            ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(1) //increments like!
                         })
 
                 })
@@ -241,7 +228,7 @@
             db.collection("popular_routes")
                 .doc(id)
                 .onSnapshot(function (snap) {
-                    likes_number.innerHTML = snap.get("likes")
+                    likes_number.innerHTML = snap.get("ROUTE_POPULARITY")
                 })
         }
 
@@ -259,9 +246,9 @@
                         .then(function (query) {
                             document.getElementsByClassName("routesImage")[0].innerHTML = "";
                             query.forEach(function (doc) {
-                                if (doc.data().level == text) {
-                                    add_popularRoutes(doc.id, doc.data().name, doc.data().static_image, doc.data().Length
-                                        , doc.data().level, doc.data().likes)
+                                if (doc.data().ROUTE_DIFFICULTY == text) {
+                                    add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                        , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
                                         
                                 } 
 
@@ -271,8 +258,8 @@
                                     .then(function (query) {
                                         document.getElementsByClassName("routesImage")[0].innerHTML = "";
                                         query.forEach(function (doc) {
-                                        add_popularRoutes(doc.id, doc.data().name, doc.data().static_image, doc.data().Length
-                                        , doc.data().level, doc.data().likes)
+                                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                        , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
                                     })
                                 })
                                     
