@@ -18,8 +18,8 @@
 }
 
 #route-overlay {
-    height: 40vw;
     background-color: rgba(76,116,76, 0.6);
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,9 +27,16 @@
     color: white;
 }
 
+#bookmarks-route-title {
+    font-size: 6vw;
+}
+
 #bookmarks-container {
-    flex-grow: 6;
-    background-image: url("../images/images_for_bike_routes/Blackcomb_Path.png");
+    flex-grow: 8;
+    height: 40vw;
+    flex-basis: 0;
+    background-image: url("");
+    background-color: grey;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -45,4 +52,51 @@
 
 #bookmarks-prev:active, #bookmarks-next:active {
     background-color: rgba(200,200,200,1);
+}
+
+.tg  {
+    border-collapse:collapse;border-spacing:0;
+    margin: 13px auto;
+}
+
+table {
+    width: 90vw;
+    background-color: #F8F0E6;
+    color: #4C744C;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 40vh;
+}
+
+.titles {
+    width: 25vw;
+    vertical-align:middle;
+    text-align: center;
+    border-color:#4C744C;
+    border-style:solid;
+    border-width:1px;
+    font-family:Arial, sans-serif;
+    font-size: 1.5vh;
+    font-weight: normal;
+    font-weight:normal;
+    overflow:hidden;
+    padding:5px 5px;
+    word-break:normal;
+}
+
+.values {
+    vertical-align:middle;
+    border-color: #4C744C;
+    border-style:solid;
+    border-width:1px;
+    font-family:Arial, sans-serif;
+    font-size:1.5vh;
+    font-weight: normal;
+    overflow:hidden;
+    padding:5px 5px;
+    word-break:normal; 
+    text-align: center;
+}
+
+th.titles {
+    height: 8vh;
 }
