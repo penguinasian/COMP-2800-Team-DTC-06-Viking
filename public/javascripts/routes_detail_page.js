@@ -1,4 +1,4 @@
-function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, ROUTE_DESC, ROUTE_NAME) {
+function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, ROUTE_DURATION, ROUTE_ELEV_UP, ROUTE_DESC, ROUTE_NAME) {
 
     //create a div for bike route title on the top
     let route_title_div = document.createElement("div")
@@ -29,12 +29,18 @@ function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, RO
     level_text.innerHTML = "Difficulty: " + ROUTE_DIFFICULTY
     details_text.appendChild(level_text)
 
+    let duration = document.createElement("p")
+    duration.innerHTML = "Duration:" + ROUTE_DURATION
+    details_text.appendChild(duration)
+
     let length_text = document.createElement("p")
     length_text.innerHTML = "Length:" + " " + ROUTE_LENGTH.toString() + "km"
     length_text.className = "text"
     details_text.appendChild(length_text)
 
-
+    let elevation = document.createElement("p")
+    elevation.innerHTML = "Elevation gain:" + ROUTE_ELEV_UP + "m"
+    details_text.appendChild(elevation)
 
     routes_detail.appendChild(image)
     routes_detail.appendChild(details_text)
@@ -59,7 +65,7 @@ function readPopularRoutesName(id) {
             .get().then(function (result) {
                    let doc = result.docs[0]
                     add_RoutesDetail(doc.id, doc.data().ROUTE_MAP_LINK, doc.data().ROUTE_LENGTH
-                        , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_DESC, doc.data().ROUTE_NAME)
+                        , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_DURATION, doc.data().ROUTE_ELEV_UP, doc.data().ROUTE_DESC, doc.data().ROUTE_NAME)
                 
             })     
 

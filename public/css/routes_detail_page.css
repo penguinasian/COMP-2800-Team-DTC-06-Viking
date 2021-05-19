@@ -58,3 +58,7 @@ iframe {
 main h1 {
     margin-left: 2vw;
 }
+
+main p {
+    font-size: 1.8vh !important;
+}

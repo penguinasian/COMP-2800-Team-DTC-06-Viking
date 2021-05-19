@@ -36,14 +36,14 @@ function add_popularRoutes(id, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH, ROUTE
     let level_text = document.createElement("p")
     level_text.innerHTML = ROUTE_DIFFICULTY
     let length_text = document.createElement("p")
-    length_text.innerHTML = "Length:" +" " + ROUTE_LENGTH.toString() + "km"
+    length_text.innerHTML = "Length:" + ROUTE_LENGTH.toString() + "km"
     length_text.className = "text"
-
+    
     let likes_number = document.createElement("p")
        
 
     routes_detail.appendChild(level_text)
-    routes_detail.appendChild(length_text)     
+    routes_detail.appendChild(length_text)
     routes_detail.appendChild(likes_number)
     
 
@@ -130,7 +130,7 @@ function addFilterListener() {
                                 document.getElementsByClassName("routesImage")[0].innerHTML = "";
                                 query.forEach(function (doc) {
                                     add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+                                , doc.data().ROUTE_DURATION, doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
                             })
                         })
                             
