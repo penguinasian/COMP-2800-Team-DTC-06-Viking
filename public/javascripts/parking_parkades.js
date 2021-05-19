@@ -46,7 +46,7 @@ function updateMap() {
                     availablity = "parkade_full"
                 }
 
-                let infoContent = `<h4>${doc.data().name}</h4> <br> ${doc.data().address} <br> <br><h5 class=${availablity}>Parking Slots: ${doc.data().available} / ${doc.data().total} </h5>`;
+                let infoContent = `<h4>${doc.data().name}</h4><b>Address: </b> <br> ${doc.data().address} <br> <br><h5 class=${availablity}>Parking Slots: ${doc.data().available} / ${doc.data().total} </h5>`;
                 let parkade = [infoContent, doc.data().latitude, doc.data().longitude, doc.data().available, doc.data().total, availablity];
                 locations.push(parkade)
             })
