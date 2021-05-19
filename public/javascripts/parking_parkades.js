@@ -34,8 +34,20 @@ function updateMap() {
         .then(function (query) {
             let locations = []
             query.forEach(function (doc) {
-                let infoContent = `<h4>${doc.data().name}</h4> <br> ${doc.data().address} <br> <br><h5>Parking Slots: ${doc.data().available} / ${doc.data().total} </h5>`;
-                let parkade = [infoContent, doc.data().latitude, doc.data().longitude, doc.data().available, doc.data().total];
+                let availablity = doc.data().available / doc.data().total
+
+                if (availablity >= 0.6) {
+                   availablity = "parkade_high"
+                } else if (availablity >= 0.3) {
+                    availablity = "parkade_medium"
+                } else if ( availablity > 0) {
+                    availablity = "parkade_low"
+                } else {
+                    availablity = "parkade_full"
+                }
+
+                let infoContent = `<h4>${doc.data().name}</h4> <br> ${doc.data().address} <br> <br><h5 class=${availablity}>Parking Slots: ${doc.data().available} / ${doc.data().total} </h5>`;
+                let parkade = [infoContent, doc.data().latitude, doc.data().longitude, doc.data().available, doc.data().total, availablity];
                 locations.push(parkade)
             })
 
@@ -49,27 +61,21 @@ function addMarkers(locations, type) {
 
         const latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
         let mapIcon
-        let availablity =  locations[i][3] / locations[i][4]
-        if (availablity >= 0.6) {
-            mapIcon = mapIcons["parkade_high"]
-        } else if (availablity >= 0.3) {
-            mapIcon = mapIcons["parkade_medium"]
-        } else if ( availablity > 0) {
-            mapIcon = mapIcons["parkade_low"]
-        } else {
-            mapIcon = mapIcons["parkade_full"]
-        }
-
-        // if (locations[i][3] == 0) {
-        //     mapIcon = mapIcons["full"]
-        // } else if () {
-        //     mapIcon = mapIcons[type]
+        // let availablity =  locations[i][3] / locations[i][4]
+        // if (availablity >= 0.6) {
+        //     mapIcon = mapIcons["parkade_high"]
+        // } else if (availablity >= 0.3) {
+        //     mapIcon = mapIcons["parkade_medium"]
+        // } else if ( availablity > 0) {
+        //     mapIcon = mapIcons["parkade_low"]
+        // } else {
+        //     mapIcon = mapIcons["parkade_full"]
         // }
 
         let marker = new google.maps.Marker({
             position: latLng,
             map: map,
-            icon: mapIcon
+            icon: mapIcons[locations[i][5]]
         });
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
