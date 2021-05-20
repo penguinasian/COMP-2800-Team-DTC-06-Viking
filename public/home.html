@@ -88,7 +88,7 @@
                         })
                 } else {
                     // No user is signed in.
-                    window.location.href="https://viking-eaee3.web.app/login.html";
+                    //window.location.href="https://viking-eaee3.web.app/login.html";
                 }
             });
         }
@@ -97,11 +97,9 @@
         document.getElementById("logoImg").addEventListener("click", function () {
             if (clickCount != 10) {
                 clickCount++;
-                console.log(clickCount);
                 document.getElementsByClassName("logoName")[0].removeAttribute("id");
             } else {
                 clickCount = 1;
-                console.log(clickCount);
                 document.getElementsByClassName("logoName")[0].id = "animated-logo";
             }
         });
