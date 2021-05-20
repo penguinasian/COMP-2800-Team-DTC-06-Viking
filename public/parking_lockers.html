@@ -42,17 +42,17 @@
         </header>
         
         <main>
-            <form action=#>
+            <form action="#" onsubmit="yourJsFunction();return false">
                 <label for="start_date">Start Date:</label>
                 <label for="end_date">Duration (weeks):</label>
                 <label></label>
-                <input type="date" id="start_date" name="start_date">
+                <input type="date" id="start_date" required name="start_date">
                 <div id="end_date">
                     <div class="value-button" id="decrease" onclick="decreaseValue()">-</div>
-                    <input type="number" id="duration" value="2" min="2" max="53">
+                    <input type="number" id="duration" onsubmit="return false" required value="2" min="2" max="53">
                     <div class="value-button" id="increase" onclick="increaseValue()">+</div>
                 </div>
-                <input id="find" type="submit" value="Find">
+                <input id="find" type="submit" value="Find" onsubmit="return false" onclick="getReservationData()">
                 <!-- <input type="submit"> -->
             </form>
 

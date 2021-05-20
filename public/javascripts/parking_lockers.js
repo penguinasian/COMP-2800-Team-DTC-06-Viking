@@ -1,5 +1,5 @@
 
-// This code is partially copied from https://codepen.io/mtbroomell/pen/yNwwdv and modified based on this situation:
+/* This part of code is partially copied from https://codepen.io/mtbroomell/pen/yNwwdv and modified based on this situation: */
 function increaseValue() {
     var value = parseInt(document.getElementById('duration').value, 10);
     value = isNaN(value) ? 0 : value;
@@ -46,27 +46,21 @@ function initMap() {
   });
 }
 
-function getNumberOfBoxes() {
-  let numberOfLockers;
-  db.collection("lockers")
-  .get()
-  .then(function (query2) {
-    numberOfLockers = query2.size;
-    console.log("First func: " + numberOfLockers);
-  })
-  for (let i = 0; i < numberOfLockers; i++) {
-    numberOfBoxes.push(0);
-  }
-  console.log("numOfLockers = " + numberOfLockers);
-}
-
-//testing the reservation database
+/* read data from firestore reservation table to generate a list of all reserved boxes in the specified period */
 function getReservationData() {
-  
+  let start = document.getElementById("start_date").value;
+  let duration = document.getElementById("duration").value;
+
+  console.log("start: " + start + "duration: " + start + (duration*7));
+
   db.collection("reservation")
     .get()
     .then(function (query) {
         let fullBoxes = [];
+
+        //this hardcoded part must be replaced:
+        
+
         let req_begin = new Date('2021-05-28');
         let req_end = new Date('2021-08-28');
 
@@ -209,5 +203,5 @@ function addMarkers(locations, type) {
   }
 }
 
-getReservationData();
+// getReservationData();
 // updateMap();
