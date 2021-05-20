@@ -37,6 +37,24 @@ header img {
   justify-items: center;
 }
 
+
+
+.firstPage.alternateBackGround1 {
+  background-image: url(../images/Daniel_Zhang.jpg);
+}
+
+.firstPage.alternateBackGround2 {
+  background-image: url(../images/Eiman_Ardakanian.jpeg);
+}
+
+.firstPage.alternateBackGround3 {
+  background-image: url(../images/Jonghoon_Jang.jpg);
+}
+
+.firstPage.alternateBackGround4 {
+  background-image: url(../images/Kevin_Guo.jpg);
+}
+
 h1 {
   font-family: 'Berkshire Swash', serif;
   font-size: 12vh;

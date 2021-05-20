@@ -63,31 +63,31 @@ function add_popularRoutes(id, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH, ROUTE
 
 
 function readPopularRoutes() {
-    
+
     firebase.auth().onAuthStateChanged(function (user) {
         var user = firebase.auth().currentUser;
         var uid = user.uid;
-        if (uid){
-        db.collection("users").doc(uid)
-            .get().then(function (doc) {
-                db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").limit(4)
-                    .get()
-                    .then(function (query) {
+        if (uid) {
+            db.collection("users").doc(uid)
+                .get().then(function (doc) {
+                    db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").limit(4)
+                        .get()
+                        .then(function (query) {
 
-                        pageStart = query.docs[0]
-                        pageEnd = query.docs[3]                   
-                        
+                            pageStart = query.docs[0]
+                            pageEnd = query.docs[3]
 
-                        query.forEach(function (doc) {
 
-                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+                            query.forEach(function (doc) {
+
+                                add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                                    , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+                            })
                         })
-                    })
-        
-            })
-        }else{
-            window.location.href="https://viking-eaee3.web.app/login.html";
+
+                })
+        } else {
+            window.location.href = "https://viking-eaee3.web.app/login.html";
         }
     })
 }
@@ -98,7 +98,7 @@ readPopularRoutes();
 
 
 function AddNextClickPagination() {
-    
+
     firebase.auth().onAuthStateChanged(function (user) {
         paginationButton = document.getElementById("nextButton");
         paginationButton.addEventListener("click", function () {
@@ -120,9 +120,9 @@ function AddNextClickPagination() {
 
                                 pageStart = query.docs[0]
                                 pageEnd = query.docs[3]
-                               
+
                                 document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                                
+
                                 if (!pageEnd) {
                                     nextButton = document.getElementById("nextButton");
                                     nextButton.className = "hidden";
@@ -151,7 +151,7 @@ function AddPreviousClickPagination() {
         paginationButton.addEventListener("click", function () {
             console.log("button was clicked");
             firebase.auth().onAuthStateChanged(function (user) {
-                
+
                 document.getElementById("nextButton").className = ""
                 var user = firebase.auth().currentUser;
                 var uid = user.uid;
@@ -166,9 +166,9 @@ function AddPreviousClickPagination() {
                                 }
                                 pageStart = query.docs[0]
                                 pageEnd = query.docs[3]
-                             
+
                                 document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                           
+
                                 if (!pageEnd) {
                                     previousButton = document.getElementById("previousButton");
                                     previous.className = "hidden";
@@ -192,15 +192,25 @@ AddPreviousClickPagination();
 
 function addLikeListener(id, likes_number, like_div) {
     firebase.auth().onAuthStateChanged(function (user) {
-        like_div.addEventListener("click", function () {
-            console.log("like was clicked!")
-            db.collection("popular_routes")
-                .doc(id)
-                .update({
-                    ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(1) //increments like!
-                })
+            let route_name = like_div.parentNode.getElementsByClassName("routesNameFont")[0].innerText
+            like_div.addEventListener("click", function () {
+                console.log("like was clicked!")
+                db.collection("popular_routes")
+                    .doc(id)
+                    .update({
+                        ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(1) //increments like!
+                    })
+                var user = firebase.auth().currentUser;
+                var uid = user.uid;
+                db.collection("users")
+                    .doc(uid)
+                    .update({
+                        liked_routes:firebase.firestore.FieldValue.arrayUnion(route_name)
+                    })
 
-        })
+            })
+
+        
     })
     db.collection("popular_routes")
         .doc(id)
@@ -216,22 +226,22 @@ function addFilterListenerForLevel() {
     var levelDropDown = document.getElementById("levelOption");
     firebase.auth().onAuthStateChanged(function (user) {
         levelDropDown
-        .addEventListener("change", function () {
-            var text = e.value
-            console.log("button was clicked")
-            db.collection("popular_routes").where("ROUTE_DIFFICULTY", "==", text)
-                .get()
-                .then(function (query) {
-                    document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                    query.forEach(function (doc) {
-                       
+            .addEventListener("change", function () {
+                var text = e.value
+                console.log("button was clicked")
+                db.collection("popular_routes").where("ROUTE_DIFFICULTY", "==", text)
+                    .get()
+                    .then(function (query) {
+                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+                        query.forEach(function (doc) {
+
                             add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                                 , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
 
-                        
+
+                        })
                     })
-                })
-        })
+            })
     })
 }
 

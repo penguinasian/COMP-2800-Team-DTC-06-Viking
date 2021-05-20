@@ -92,6 +92,26 @@
             });
         }
         sayHello();
+
+        function addAnimationListener() {
+            let i = 0
+
+            let easterEggButton = document.getElementById("username")
+            easterEggButton.addEventListener("click", function(){
+                i++;
+                if (i>4) {
+                    i = 0;
+                }
+
+            
+                let firstPage = document.getElementsByClassName("firstPage")[0]
+                firstPage.className = "firstPage alternateBackGround" + i;
+             
+
+            })
+        }
+
+        addAnimationListener();
     </script>
 </body>
 
