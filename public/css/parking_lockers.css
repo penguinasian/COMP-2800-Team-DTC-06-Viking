@@ -14,23 +14,68 @@
 
 main>form {
     height: 8vh;
-    font-size: 2vh;
+    font-size: 1.6vh;
     font-weight: bold;
     color: #4C744C;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 4fr 3fr 1fr;
     justify-content: space-around;
-    gap: 0.5vh 10vw;
-    margin: 0.5vh 5vw;
+    gap: 0vh 3vw;
+    margin: 0.5vh 3vw;
     grid-template-areas:
-    "label label"
-    "input input";
+    "label label label"
+    "input input input";
 }
 
-form>input {
+
+#start_date {
     height: 4vh;
-    max-width: 500px;
+    width: 40vw;
+    max-width: 200px;
 }
+
+#duration {
+    height: 4vh;
+    width: 10vw;
+    max-width: 150px;
+    text-align: center;
+}
+  
+.value-button {
+    background-color: #4C744C;
+    color: #F8F0E6;
+    display: inline-block;
+    border: 2px solid rgb(133, 133, 133);
+    width: 6vw;
+    height: 4vh;
+    margin: 0px;
+    padding-top: 0.4vh;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#end_date {
+    display: flex;
+}
+  
+#decrease {
+    border-radius: 1vh 0 0 1vh;
+}
+  
+#increase {
+    border-radius: 0 1vh 1vh 0;
+}
+
+#find {
+    height: 4vh;
+    width: 5vh;
+    border-radius: 1vh;
+    background-color: #4C744C;
+    color: #F8F0E6;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 
 iframe {
     width: 100vw;
