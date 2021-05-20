@@ -76,14 +76,18 @@ function readLockers() {
                     availablity = "locker"
                 }
 
+                // let infoContent =
+                //     `<h4>${doc.data().name}</h4>
+                //     <b>Address: </b> <br> ${doc.data().address} <br> 
+                //     <br><h5 class=${availablity}>Locker Slots: 5 / ${doc.data().total} </h5>
+                //     <a href="parking_reservation.html?name=${doc.data().name}"><p class="reservation">Reservation</p></a>
+                //     `;
                 let infoContent =
                     `<h4>${doc.data().name}</h4>
                     <b>Address: </b> <br> ${doc.data().address} <br> 
-                    <br><h5 class=${availablity}>Locker Slots: 5 / ${doc.data().total} </h5>
-                    <a href="parking_reservation.html?name=${doc.data().name}"><p class="reservation">Reservation</p></a>
                     `;
-                    // lockerId, startDate, numberOfweeks, (array!) 
-                let locker = [infoContent, doc.data().latitude, doc.data().longitude, availablity ,doc.data().total];
+                // lockerId, startDate, numberOfweeks, (array!) 
+                let locker = [infoContent, doc.data().latitude, doc.data().longitude, availablity, doc.data().total];
                 locations.push(locker)
             })
 
