@@ -95,4 +95,23 @@ main img {
     align-items: center;
 }
 
+#previousButton {
+    width:10vh !important;
+    border-radius: 10% !important;
+}
+
+#nextButton {
+    width:10vh !important;
+    border-radius: 10% !important;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}
+
 
