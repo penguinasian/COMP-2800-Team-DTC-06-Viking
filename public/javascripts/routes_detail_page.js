@@ -30,7 +30,7 @@ function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, RO
     details_text.appendChild(level_text)
 
     let duration = document.createElement("p")
-    duration.innerHTML = "Duration:" + ROUTE_DURATION +"hr(s)"
+    duration.innerHTML = "Duration:" + ROUTE_DURATION + "hr(s)"
     details_text.appendChild(duration)
 
     let length_text = document.createElement("p")
@@ -44,7 +44,7 @@ function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, RO
 
     routes_detail.appendChild(image)
     routes_detail.appendChild(details_text)
-    
+
     //create a paragraph to describe the route
     let route_para = document.createElement("p")
     route_para.className = "routePara"
@@ -54,20 +54,28 @@ function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, RO
     document.getElementsByClassName("detailsPage")[0].appendChild(route_title_div)
     document.getElementsByClassName("detailsPage")[0].appendChild(routes_detail)
     document.getElementsByClassName("detailsPage")[0].appendChild(route_para)
-    
+
 }
 
 
 function readPopularRoutesName(id) {
-  
 
-        db.collection("popular_routes").where("ROUTE_NAME", "==", value)
-            .get().then(function (result) {
-                   let doc = result.docs[0]
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection("popular_routes").where("ROUTE_NAME", "==", value)
+                .get().then(function (result) {
+                    let doc = result.docs[0]
                     add_RoutesDetail(doc.id, doc.data().ROUTE_MAP_LINK, doc.data().ROUTE_LENGTH
                         , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_DURATION, doc.data().ROUTE_ELEV_UP, doc.data().ROUTE_DESC, doc.data().ROUTE_NAME)
-                
-            })     
+
+                })
+
+        } else {
+            //No user is signed in.
+            window.location.href="https://viking-eaee3.web.app/login.html";
+        }
+    })
+
 
 }
 

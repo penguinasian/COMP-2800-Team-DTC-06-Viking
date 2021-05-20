@@ -67,6 +67,7 @@ function readPopularRoutes() {
     firebase.auth().onAuthStateChanged(function (user) {
         var user = firebase.auth().currentUser;
         var uid = user.uid;
+        if (uid){
         db.collection("users").doc(uid)
             .get().then(function (doc) {
                 db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").limit(4)
@@ -85,7 +86,9 @@ function readPopularRoutes() {
                     })
         
             })
-
+        }else{
+            window.location.href="https://viking-eaee3.web.app/login.html";
+        }
     })
 }
 

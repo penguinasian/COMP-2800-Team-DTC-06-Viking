@@ -39,6 +39,7 @@ h1 {
     justify-content: space-around;
     margin-top: 2vh;
     font-size: 2.5vh;
+    flex-wrap: wrap;
 }
 
 
