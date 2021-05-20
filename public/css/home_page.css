@@ -73,3 +73,15 @@ button {
 button:hover {
   background-color: silver;
 }
+
+#animated-logo {
+  position: relative;
+  animation-name: biking;
+  animation-duration: 2s;
+  animation-iteration-count: 4;
+}
+
+@keyframes biking {
+  from {left: -60%; top: 0;}
+  to {left: 60%; top: 0;}
+}

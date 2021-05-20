@@ -35,9 +35,9 @@
 
 <body>
     <header>
-        <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top">
-            <div class="logoName">
-                <img src="./images/logo_final.png">
+        <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top" id="">
+            <div class="logoName" id="">
+                <img src="./images/logo_final.png" id="logoImg">
             </div>
         </div>
     </header>
@@ -71,7 +71,7 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
-
+        let clickCount = 1;
         function sayHello() {
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
@@ -88,10 +88,23 @@
                         })
                 } else {
                     // No user is signed in.
+                    window.location.href="https://viking-eaee3.web.app/login.html";
                 }
             });
         }
         sayHello();
+
+        document.getElementById("logoImg").addEventListener("click", function () {
+            if (clickCount != 10) {
+                clickCount++;
+                console.log(clickCount);
+                document.getElementsByClassName("logoName")[0].removeAttribute("id");
+            } else {
+                clickCount = 1;
+                console.log(clickCount);
+                document.getElementsByClassName("logoName")[0].id = "animated-logo";
+            }
+        });
     </script>
 </body>
 
