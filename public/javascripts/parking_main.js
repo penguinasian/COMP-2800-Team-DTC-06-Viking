@@ -26,3 +26,33 @@ function initMap() {
         center: new google.maps.LatLng(49.26656454900745, -123.10665831323317)
     });
 }
+
+/* read data from Firestore and update map*/
+
+function readParkades() {
+    db.collection("parkades")
+        .get()
+        .then(function (query) {
+            let locations = []
+            query.forEach(function (doc) {
+                let availablity = doc.data().available / doc.data().total
+
+                if (availablity >= 0.6) {
+                    availablity = "parkade_high"
+                } else if (availablity >= 0.3) {
+                    availablity = "parkade_medium"
+                } else if (availablity > 0) {
+                    availablity = "parkade_low"
+                } else {
+                    availablity = "parkade_full"
+                }
+
+                let infoContent = `<h4>${doc.data().name}</h4><b>Address: </b> <br> ${doc.data().address} <br> <br><h5 class=${availablity}>Parking Slots: ${doc.data().available} / ${doc.data().total} </h5>`;
+                let parkade = [infoContent, doc.data().latitude, doc.data().longitude, availablity, doc.data().available, doc.data().total];
+                locations.push(parkade)
+            })
+
+            addMarkers(locations, 'parkade')
+        })
+}
+
