@@ -1,3 +1,7 @@
+let userBookmarks = [];
+let routeID, userID;
+
+
 function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, ROUTE_DURATION, ROUTE_ELEV_UP, ROUTE_DESC, ROUTE_NAME) {
 
     //create a div for bike route title on the top
@@ -10,6 +14,7 @@ function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, RO
     //create a bookmark for bike route details page on the top
     let bookmark_div = document.createElement("div")
     bookmark_div.className = "bookmark"
+    bookmark_div.id = "bookmarkButton"
     bookmark_div.innerHTML = '<i class="fas fa-bookmark fa-2x"></i>'
     route_title_div.appendChild(bookmark_div)
 
@@ -55,6 +60,46 @@ function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, RO
     document.getElementsByClassName("detailsPage")[0].appendChild(routes_detail)
     document.getElementsByClassName("detailsPage")[0].appendChild(route_para)
 
+    changeBookmarksColour();
+
+    document.getElementById("bookmarkButton").addEventListener("click", function () {
+        updateBookmarks();
+    });
+
+}
+
+
+function changeBookmarksColour() {
+    if (userBookmarks.includes(routeID)) {
+        document.getElementById("bookmarkButton").style.color = "#4C744C";
+    } else {
+        document.getElementById("bookmarkButton").style.color = "grey";
+    }
+}
+
+// from https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
+// why doesn't javascript have a remove function?
+function removeBookmark() {
+    const index = userBookmarks.indexOf(routeID);
+    if (index > -1) {
+    userBookmarks.splice(index, 1);
+    }
+}
+
+function updateBookmarks() {
+    if (userBookmarks.includes(routeID)) {
+        db.collection("users").doc(userID).update({
+            bookmarks: firebase.firestore.FieldValue.arrayRemove(routeID)
+        });
+        removeBookmark();
+        changeBookmarksColour();
+    } else {
+        db.collection("users").doc(userID).update({
+            bookmarks: firebase.firestore.FieldValue.arrayUnion(routeID)
+        });
+        userBookmarks.push(routeID);
+        changeBookmarksColour();
+    }
 }
 
 
@@ -62,9 +107,19 @@ function readPopularRoutesName(id) {
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
+            userID = user.uid;
+            db.collection("users").doc(user.uid).get()
+            .then((doc) => {
+                userBookmarks = doc.data().bookmarks;
+            })
+            .catch(function (error) {
+                console.log("Error adding new user: " + error);
+            });
+
             db.collection("popular_routes").where("ROUTE_NAME", "==", value)
                 .get().then(function (result) {
                     let doc = result.docs[0]
+                    routeID = doc.data().ROUTE_ID;
                     add_RoutesDetail(doc.id, doc.data().ROUTE_MAP_LINK, doc.data().ROUTE_LENGTH
                         , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_DURATION, doc.data().ROUTE_ELEV_UP, doc.data().ROUTE_DESC, doc.data().ROUTE_NAME)
 
