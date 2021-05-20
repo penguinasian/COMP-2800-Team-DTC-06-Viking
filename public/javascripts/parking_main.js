@@ -56,3 +56,39 @@ function readParkades() {
         })
 }
 
+/* read data from Firestore and update map*/
+function readLockers() {
+    db.collection("lockers")
+        .get()
+        .then(function (query) {
+            let locations = []
+            query.forEach(function (doc) {
+                let availablity = 5 / doc.data().total
+
+                if (availablity >= 0.6) {
+                    availablity = "locker"
+                } else if (availablity >= 0.3) {
+                    availablity = "locker"
+                } else if (availablity > 0) {
+                    availablity = "locker"
+                } else {
+                    availablity = "locker"
+                }
+
+                let infoContent =
+                    `<h4>${doc.data().name}</h4>
+                    <b>Address: </b> <br> ${doc.data().address} <br> 
+                    <br><h5 class=${availablity}>Parking Slots: 5 / ${doc.data().total} </h5>
+                    <a class="reservation" href="parking_reservation.html?name=${doc.data().name}">Reservation</a>
+                    `;
+
+                let locker = [infoContent, doc.data().latitude, doc.data().longitude, availablity ,doc.data().total];
+                locations.push(locker)
+            })
+
+            addMarkers(locations, 'parkade')
+        })
+}
+
+
+
