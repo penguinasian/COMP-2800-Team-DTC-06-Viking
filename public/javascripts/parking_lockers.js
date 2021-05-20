@@ -90,54 +90,70 @@ function getReservationData() {
           }    
         })
       
-      console.log(count);
-      console.log(fullBoxes);
+      // console.log(count);
+      // console.log(fullBoxes);
       
-      //hard coded: needs to be changed later
-      let totalLockersBoxes = [0,0,0,0,0,0];
-      let lockersBoxes = [[1,1], [1,2], [1,3], [1,4], [1,5], [2,1], [2,2], [2,3], [2,4], [2,5], [3,1], [3,2], [3,3], [3,4], [3,5], [4,1], [4,2], [4,3], [4,4], [4,5], [5,1], [5,2], [5,3], [5,4], [5,5], [6,1], [6,2], [6,3], [6,4], [6,5]];
-      let availableLockersBoxes = lockersBoxes;
-      let test = [1,2];
+      // //hard coded: needs to be changed later
+      // let totalLockersBoxes = [0,0,0,0,0,0];
+      // let lockersBoxes = [[1,1], [1,2], [1,3], [1,4], [1,5], [2,1], [2,2], [2,3], [2,4], [2,5], [3,1], [3,2], [3,3], [3,4], [3,5], [4,1], [4,2], [4,3], [4,4], [4,5], [5,1], [5,2], [5,3], [5,4], [5,5], [6,1], [6,2], [6,3], [6,4], [6,5]];
+      // let availableLockersBoxes = lockersBoxes;
+      // let test = [1,2];
       
-      for (let i = 0; i < fullBoxes.length; i ++) {
-        var j = 0;
-        while (availableLockersBoxes[j]) {
-          if ((availableLockersBoxes[j][0] == fullBoxes[i][0]) && (availableLockersBoxes[j][1] == fullBoxes[i][1])) {
-            availableLockersBoxes.splice(j, 1);
-          }
-          else {
+      // for (let i = 0; i < fullBoxes.length; i ++) {
+      //   var j = 0;
+      //   while (availableLockersBoxes[j]) {
+      //     if ((availableLockersBoxes[j][0] == fullBoxes[i][0]) && (availableLockersBoxes[j][1] == fullBoxes[i][1])) {
+      //       availableLockersBoxes.splice(j, 1);
+      //     }
+      //     else {
             
-            j ++;
-          }
-        }
-      }
-      console.log(availableLockersBoxes);
+      //       j ++;
+      //     }
+      //   }
+      // }
+      // console.log(availableLockersBoxes);
 
       //calculating the number of avalable boxes in each locker:
-      for(let i = 0; i < availableLockersBoxes.length; i++) {
-        totalLockersBoxes[availableLockersBoxes[i][0]-1] += 1;
-      }
+      // for(let i = 0; i < availableLockersBoxes.length; i++) {
+      //   totalLockersBoxes[availableLockersBoxes[i][0]-1] += 1;
+      // }
       // console.log(totalLockersBoxes);
-      updateMap(totalLockersBoxes);
-      
+      updateMap(fullBoxes);
   })
 }
 
 
 /* read data from Firestore and update map*/
-function updateMap(totalLockersBoxes) {
+function updateMap(fullBoxes) {
   db.collection("lockers")
       .get()
       .then(function (query) {
           let locations = [];
-          console.log(totalLockersBoxes);
-          
+          // console.log(fullBoxes);
           query.forEach(function (doc) {
-            let id = doc.data().id;
-            
-              let available = totalLockersBoxes[id-1];
-              let availablity = available / doc.data().total;
-              console.log(id, availablity);
+            let lockerID = doc.data().id;
+            let lockerBoxes = [];
+            let numOfBoxes = doc.data().total;
+
+            for (let i = 1; i <= numOfBoxes; i++) {
+              lockerBoxes.push([lockerID, i]);
+            }
+
+            for (let i = 0; i < fullBoxes.length; i ++) {
+              var j = 0;
+              while (lockerBoxes[j]) {
+                if ((lockerBoxes[j][0] == fullBoxes[i][0]) && (lockerBoxes[j][1] == fullBoxes[i][1])) {
+                  lockerBoxes.splice(j, 1);
+                }
+                else {
+                  j++;
+                }
+              }
+            }
+
+              let available = lockerBoxes.length;
+              let availablity = available / numOfBoxes;
+              console.log(lockerID, availablity, lockerBoxes);
 
               if (availablity >= 0.6) {
                  availablity = "locker_high"
@@ -149,8 +165,8 @@ function updateMap(totalLockersBoxes) {
                   availablity = "locker_full"
               }
 
-              let infoContent = `<h4>${doc.data().name}</h4><b>Address: </b> <br> ${doc.data().address} <br> <br><h5 class=${availablity}>Parking Slots: ${available} / ${doc.data().total} </h5>`;
-              let locker = [infoContent, doc.data().latitude, doc.data().longitude, available, doc.data().total, availablity];
+              let infoContent = `<h4>${doc.data().name}</h4><b>Address: </b> <br> ${doc.data().address} <br> <br><h5 class=${availablity}>Parking Slots: ${available} / ${numOfBoxes} </h5>`;
+              let locker = [infoContent, doc.data().latitude, doc.data().longitude, available, numOfBoxes, availablity];
               locations.push(locker)
            })
 
