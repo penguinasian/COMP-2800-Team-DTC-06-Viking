@@ -38,21 +38,21 @@ function readParkades() {
                 let availablity = doc.data().available / doc.data().total
 
                 if (availablity >= 0.6) {
-                    availablity = "parkade_high"
+                    availablity = "high"
                 } else if (availablity >= 0.3) {
-                    availablity = "parkade_medium"
+                    availablity = "medium"
                 } else if (availablity > 0) {
-                    availablity = "parkade_low"
+                    availablity = "low"
                 } else {
-                    availablity = "parkade_full"
+                    availablity = "full"
                 }
 
                 let infoContent = `<h4>${doc.data().name}</h4><b>Address: </b> <br> ${doc.data().address} <br> <br><h5 class=${availablity}>Parking Slots: ${doc.data().available} / ${doc.data().total} </h5>`;
-                let parkade = [infoContent, doc.data().latitude, doc.data().longitude, availablity, doc.data().available, doc.data().total];
+                let parkade = [infoContent, doc.data().latitude, doc.data().longitude, 'parkade_' + availablity, doc.data().available, doc.data().total];
                 locations.push(parkade)
             })
 
-            addMarkers(locations, 'parkade')
+            addMarkers(locations)
         })
 }
 
@@ -78,22 +78,22 @@ function readLockers() {
                 let infoContent =
                     `<h4>${doc.data().name}</h4>
                     <b>Address: </b> <br> ${doc.data().address} <br> 
-                    <br><h5 class=${availablity}>Parking Slots: 5 / ${doc.data().total} </h5>
-                    <a class="reservation" href="parking_reservation.html?name=${doc.data().name}">Reservation</a>
+                    <br><h5 class=${availablity}>Locker Slots: 5 / ${doc.data().total} </h5>
+                    <a href="parking_reservation.html?name=${doc.data().name}"><p class="reservation">Reservation</p></a>
                     `;
 
                 let locker = [infoContent, doc.data().latitude, doc.data().longitude, availablity ,doc.data().total];
                 locations.push(locker)
             })
 
-            addMarkers(locations, 'parkade')
+            addMarkers(locations)
         })
 }
 
 
 
 /* add Markers and infoWindows*/
-function addMarkers(locations, type) {
+function addMarkers(locations) {
     for (let i = 0; i < locations.length; i++) {
 
         const latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
