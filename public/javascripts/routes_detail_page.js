@@ -92,14 +92,12 @@ function updateBookmarks() {
             bookmarks: firebase.firestore.FieldValue.arrayRemove(routeID)
         });
         removeBookmark();
-        console.log(userBookmarks);
         changeBookmarksColour();
     } else {
         db.collection("users").doc(userID).update({
             bookmarks: firebase.firestore.FieldValue.arrayUnion(routeID)
         });
         userBookmarks.push(routeID);
-        console.log(userBookmarks);
         changeBookmarksColour();
     }
 }
