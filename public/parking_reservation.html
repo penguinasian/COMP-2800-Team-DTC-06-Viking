@@ -44,15 +44,15 @@
 
     <!-- All elements go into main-->
     <main>
-        <form action=#>
+        <!-- <form action=#>
             <label for="Start_Date">Start Date:</label>
             <label for="End_Date">End Date:</label>
 
             <input type="date" id="Start_Date" name="Start_Date">
             <input type="date" id="End_Date" name="End_Date">
 
-            <!-- <input type="submit"> -->
-        </form>
+            <input type="submit">
+        </form> -->
 
         <h3>Availability</h3>
         <div class="result">
@@ -71,9 +71,11 @@
         </div>
 
         <div class=lockerNumber>
-            <form action="#">
+            <form action="#" id = "bikes_number">
                 <label for="quantity">Number of bike lockers</label>
-                <input type="number" id="quantity" name="quantity" min="1" max="99">
+                <div class="value-button" id="decrease" onclick="decreaseValue()">-</div>
+                <input type="number" id="quantity" name="quantity" required value="1" min="1" max="20">
+                <div class="value-button" id="increase" onclick="increaseValue()">+</div>
             </form>
         </div>
 
