@@ -8,8 +8,36 @@ main {
     text-align: center;
 }
 
+#bookmarks-title-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-title-padding {
+    flex-grow: 3;
+    flex-basis: 0;
+}
+
+#logout-button {
+    font-size: 3vw;
+    background-color: red;
+    width: fit-content;
+    margin: auto;
+    padding: 0.5vw;
+    border: 1px solid black;
+    border-radius: 5%;
+}
+
+#logout-button:active {
+    background-color: darkred;
+    color: black;
+}
+
 #bookmarks-title {
     font-size: 5vw;
+    flex-grow: 10;
+    flex-basis: 0;
 }
 
 #profile-bookmarks-div {

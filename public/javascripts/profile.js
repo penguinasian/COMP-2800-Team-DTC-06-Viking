@@ -50,6 +50,9 @@ document.getElementById("bookmarks-next").addEventListener('click', function() {
     }
     });
 
+document.getElementById("logout-button").addEventListener('click', function() {
+    logOut();
+});
 
 function setBMLoadText() {
     document.getElementById("bookmarks-spinner").style.visibility = "hidden";
@@ -208,3 +211,12 @@ function titleCase(str) {
     }
     return str.join(' ');
   }
+
+function logOut() {
+    firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+      }).catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+}
