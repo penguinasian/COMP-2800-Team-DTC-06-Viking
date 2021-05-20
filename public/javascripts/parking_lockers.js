@@ -1,3 +1,30 @@
+/* Constants */
+const mapIcons = {
+  "locker_high": "./images/locker_high.png",
+  "locker_medium": "./images/locker_medium.png",
+  "locker_low": "./images/locker_low.png",
+  "locker_full": "./images/locker_full.png",
+  "locker": "./images/locker.png"
+}
+
+/* 
+Availablity level
+high [0.6, 1.0]
+medium [0.3, 0.6)
+low (0, 0.3)
+full = 0
+*/
+
+const full = 0;
+const lowAvailablity = 0.3;
+const highAvailablity = 0.6;
+
+const zoomLevel = 12;
+const initMapLat = 49.260909127728326;
+const initMapLng = -123.08353272449504;
+
+
+
 
 /* This part of code is partially copied from https://codepen.io/mtbroomell/pen/yNwwdv and modified based on this situation: */
 function increaseValue() {
@@ -16,33 +43,13 @@ function decreaseValue() {
     document.getElementById('duration').value = value;
 }
 
-/* needs to be changed to lockers images */
-const mapIcons = {
-  "locker_high": "./images/parkade_high.png",
-  "locker_medium": "./images/parkade_medium.png",
-  "locker_low": "./images/parkade_low.png",
-  "locker_full": "./images/parkade_full.png",
-  "locker": "./images/locker.png"
-}
-
-/* 
-Availablity level
-high [0.6, 1.0]
-medium [0.3, 0.6)
-low (0, 0.3)
-full = 0
-*/
-
-const full = 0;
-const lowAvailablity = 0.3;
-const highAvailablity = 0.6;
 
 /* Initialize map*/
 let map;
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 13,
-      center: new google.maps.LatLng(49.26656454900745, -123.10665831323317)
+      zoom: zoomLevel,
+      center: new google.maps.LatLng(initMapLat, initMapLng)
   });
 }
 
@@ -164,31 +171,24 @@ function updateMap(fullBoxes) {
                   availablity = "locker_full"
               }
 
-              let infoContent = `<h4>${doc.data().name}</h4><b>Address: </b> <br> ${doc.data().address} <br> <br><h5 class=${availablity}>Parking Slots: ${available} / ${numOfBoxes} </h5>`;
+              let infoContent = `<h4>${doc.data().name}</h4>
+              <b>Address: </b> <br> ${doc.data().address} <br> 
+              <br><h5 class=${availablity}>Parking Slots: ${available} / ${numOfBoxes} </h5>
+              <a href="parking_reservation.html?name=${doc.data().name}"><p class="reservation">Reservation</p></a>
+              `;
               let locker = [infoContent, doc.data().latitude, doc.data().longitude, available, numOfBoxes, availablity];
               locations.push(locker)
            })
 
-          addMarkers(locations, 'locker')
+          addMarkers(locations)
       })
 }
 
 /* add Markers and infoWindows*/
-function addMarkers(locations, type) {
+function addMarkers(locations) {
   for (let i = 0; i < locations.length; i++) {
 
       const latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
-      let mapIcon
-      // let availablity =  locations[i][3] / locations[i][4]
-      // if (availablity >= 0.6) {
-      //     mapIcon = mapIcons["parkade_high"]
-      // } else if (availablity >= 0.3) {
-      //     mapIcon = mapIcons["parkade_medium"]
-      // } else if ( availablity > 0) {
-      //     mapIcon = mapIcons["parkade_low"]
-      // } else {
-      //     mapIcon = mapIcons["parkade_full"]
-      // }
 
       let marker = new google.maps.Marker({
           position: latLng,
@@ -208,5 +208,12 @@ function addMarkers(locations, type) {
   }
 }
 
-// getReservationData();
-// updateMap();
+/*Get currnet zoom Level and center of the map*/
+function getCurrentMap() {
+  let zoom = map.getZoom();
+  let centerObject = map.getCenter();
+  console.log(zoom);
+  console.log(centerObject.lat());
+  console.log(centerObject.lng());
+
+}
