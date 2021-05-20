@@ -92,3 +92,29 @@ function readLockers() {
 
 
 
+/* add Markers and infoWindows*/
+function addMarkers(locations, type) {
+    for (let i = 0; i < locations.length; i++) {
+
+        const latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
+
+        let marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            icon: mapIcons[locations[i][3]]
+        });
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+                let infowindow = new google.maps.InfoWindow({
+                    content: locations[i][0]
+                });
+
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
+
+    }
+}
+
+readParkades()
+readLockers()
