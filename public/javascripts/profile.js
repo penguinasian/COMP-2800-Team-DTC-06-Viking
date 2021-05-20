@@ -117,7 +117,7 @@ function fetchReservations() {
                 getLockerID();
             } else {
                 changeResLoadText();
-                document.getElementById("reservations-div").insertAdjacentHTML("beforeend", '<p style="font-size: 5vw; margin-top: 5vh;">Sorry, you currently have no reservations</p>');
+                document.getElementById("reservations-div").insertAdjacentHTML("beforeend", '<p style="font-size: 5vw; margin-top: 5vh; text-align: center;">Sorry, you currently have no reservations</p>');
             }
         })
         .catch((error) => {
