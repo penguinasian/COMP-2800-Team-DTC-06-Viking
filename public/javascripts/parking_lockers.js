@@ -16,7 +16,7 @@ function decreaseValue() {
     document.getElementById('duration').value = value;
 }
 
-//needs to be changed to lockers images
+/* needs to be changed to lockers images */
 const mapIcons = {
   "locker_high": "./images/parkade_high.png",
   "locker_medium": "./images/parkade_medium.png",
@@ -49,21 +49,19 @@ function initMap() {
 /* read data from firestore reservation table to generate a list of all reserved boxes in the specified period */
 function getReservationData() {
   let start = document.getElementById("start_date").value;
-  let duration = document.getElementById("duration").value;
-
-  console.log("start: " + start + "duration: " + start + (duration*7));
+  let weeks = parseInt(document.getElementById("duration").value);
+  let req_begins = new Date(start);
+  let req_ends = new Date(start);
+  let req_days = weeks * 7;
+  req_ends.setDate(req_ends.getDate() + req_days);
+  console.log(req_ends);
 
   db.collection("reservation")
     .get()
     .then(function (query) {
         let fullBoxes = [];
 
-        //this hardcoded part must be replaced:
-        
-
-        let req_begin = new Date('2021-05-28');
-        let req_end = new Date('2021-08-28');
-
+        /* creates an array of all reserved spots with intersection to the chosen date range */
         let count = 0;
         query.forEach(function (doc) {
           let record = []
@@ -77,7 +75,7 @@ function getReservationData() {
           end.setDate(end.getDate() + numOfDays);
               
               
-          if (!(begin > req_end) && !(end < req_begin)) {
+          if (!(begin > req_ends) && !(end < req_begins)) {
             count++;
             record.push(lockerID, boxID);
             fullBoxes.push(record);
@@ -129,10 +127,13 @@ function updateMap(fullBoxes) {
             let lockerBoxes = [];
             let numOfBoxes = doc.data().total;
 
+            // To create a full array of nested [lockerID,boxeID] arrays of each locker in one big array:
+            // [[1,1], [1,2], [1,3], [1,4], [1,5]], or [[2,1], [2,2], [2,3], [2,4], [2,5]],or [[3,1], [3,2], [3,3], [3,4], [3,5], [4,1], [4,2], [4,3], [4,4], [4,5], [5,1], [5,2], [5,3], [5,4], [5,5], [6,1], [6,2], [6,3], [6,4], [6,5]];
             for (let i = 1; i <= numOfBoxes; i++) {
               lockerBoxes.push([lockerID, i]);
             }
 
+            // generating an array of empty slots in that locker in the chosen period/range by splicing the full array with reserved array
             for (let i = 0; i < fullBoxes.length; i ++) {
               var j = 0;
               while (lockerBoxes[j]) {
@@ -145,7 +146,11 @@ function updateMap(fullBoxes) {
               }
             }
 
-              let available = lockerBoxes.length;
+            // lockerBoxes variable is now the array of free slots in the requested period by user:
+            // e.g. lockerBoxes = [[1,1], [1,3]]
+              
+            // available is the number of empty boxes in each locker (inside forEach loop)
+            let available = lockerBoxes.length;
               let availablity = available / numOfBoxes;
               console.log(lockerID, availablity, lockerBoxes);
 
