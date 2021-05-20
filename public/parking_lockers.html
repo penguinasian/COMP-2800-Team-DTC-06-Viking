@@ -43,12 +43,16 @@
         
         <main>
             <form action=#>
-                <label for="Start_Date">Start Date:</label>
-                <label for="End_Date">End Date:</label>
-
-                <input type="date" id="Start_Date" name="Start_Date">
-                <input type="date" id="End_Date" name="End_Date">
-
+                <label for="start_date">Start Date:</label>
+                <label for="end_date">Duration (weeks):</label>
+                <label></label>
+                <input type="date" id="start_date" name="start_date">
+                <div id="end_date">
+                    <div class="value-button" id="decrease" onclick="decreaseValue()">-</div>
+                    <input type="number" id="duration" value="2" min="2" max="53">
+                    <div class="value-button" id="increase" onclick="increaseValue()">+</div>
+                </div>
+                <input id="find" type="submit" value="Find">
                 <!-- <input type="submit"> -->
             </form>
 
@@ -165,7 +169,7 @@
         <!-- JS files: Your own JavaScript functions included here    -->
         <!--------------------------------------------------------------------->
 
-        <script src="./javascripts/user_login.js"></script>
+        <script src="./javascripts/parking_lockers.js"></script>
         
 
         
