@@ -3,6 +3,7 @@ const mapIcons = {
     "parkade_medium": "./images/parkade_medium.png",
     "parkade_low": "./images/parkade_low.png",
     "parkade_full": "./images/parkade_full.png",
+    "parkade": "./images/parkade.png",
     "locker": "./images/locker.png"
 }
 
@@ -48,7 +49,7 @@ function readParkades() {
                 }
 
                 let infoContent = `<h4>${doc.data().name}</h4><b>Address: </b> <br> ${doc.data().address} <br> <br><h5 class=${availablity}>Parking Slots: ${doc.data().available} / ${doc.data().total} </h5>`;
-                let parkade = [infoContent, doc.data().latitude, doc.data().longitude, 'parkade_' + availablity, doc.data().available, doc.data().total];
+                let parkade = [infoContent, doc.data().latitude, doc.data().longitude, 'parkade', doc.data().available, doc.data().total];
                 locations.push(parkade)
             })
 
@@ -81,7 +82,7 @@ function readLockers() {
                     <br><h5 class=${availablity}>Locker Slots: 5 / ${doc.data().total} </h5>
                     <a href="parking_reservation.html?name=${doc.data().name}"><p class="reservation">Reservation</p></a>
                     `;
-
+                    // lockerId, startDate, numberOfweeks, (array!) 
                 let locker = [infoContent, doc.data().latitude, doc.data().longitude, availablity ,doc.data().total];
                 locations.push(locker)
             })
