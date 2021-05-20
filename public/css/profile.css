@@ -1,3 +1,8 @@
+main {
+    background-color:#4C744C;
+    color: white;
+}
+
 #profile-title {
     font-size: 8vw;
     text-align: center;
@@ -52,6 +57,16 @@
 
 #bookmarks-prev:active, #bookmarks-next:active {
     background-color: rgba(200,200,200,1);
+}
+
+#reservation-loader-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#reservation-loading-message {
+    font-size: 8vw;
+    text-align: center;
 }
 
 .tg  {

@@ -17,13 +17,18 @@ firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid)
             .get()
             .then(function (doc) {
-                document.getElementById("profile-title").innerText = doc.data().name + "'s Profile";
+                document.getElementById("profile-title").innerText = titleCase(doc.data().name) + "'s Profile";
                 bookmarksArray = doc.data().bookmarks;
                 userID = doc.data().user_id;
                 console.log(bookmarksArray);
                 bookmarkCount = bookmarksArray.length;
                 console.log(bookmarkCount);
-                fetchRoutes();
+                if (bookmarkCount != 0) {
+                    fetchRoutes();
+                } else {
+                    setBMLoadText();
+                }
+                fetchReservations();
             })
     } else {
         // No user is signed in.
@@ -32,16 +37,28 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 document.getElementById("bookmarks-prev").addEventListener('click', function() {
-    decrementBookmarkIndex(1);
-    console.log(bookmarkIndex);
-    setCurrentBookmark();
+    if (bookmarkCount > 1) {
+        decrementBookmarkIndex(1);
+        setCurrentBookmark();
+    }
 });
     
 document.getElementById("bookmarks-next").addEventListener('click', function() {
-   incrementBookmarkIndex(1);
-   console.log(bookmarkIndex);
-   setCurrentBookmark();
+    if (bookmarkCount > 1) {
+        incrementBookmarkIndex(1);
+        setCurrentBookmark(); 
+    }
     });
+
+
+function setBMLoadText() {
+    document.getElementById("bookmarks-spinner").style.visibility = "hidden";
+    document.getElementById("bookmarks-spinner").style.height = 0;
+    if (bookmarkCount == 0) {
+        document.getElementById("bookmarks-route-title").innerHTML = "Sorry, you have no favourite routes";
+    }
+}
+
 
 function fetchRoutes() {
     let allRoutes = db.collection("popular_routes");
@@ -52,8 +69,7 @@ function fetchRoutes() {
                 routesList.push(doc.data());
                 if (!firstUpdate) {
                     firstUpdate = true;
-                    document.getElementById("bookmarks-spinner").style.visibility = "hidden";
-                    document.getElementById("bookmarks-spinner").style.height = 0;
+                    setBMLoadText();
                     setCurrentBookmark();
                 }
             });
@@ -91,13 +107,18 @@ function decrementBookmarkIndex(decrement) {
 //fetch user reservations from the reservation collection
 
 function fetchReservations() {
-    let allReservations = db.collection("reservation").where("USER_ID", "==", userID);
+    let allReservations = db.collection("reservation").where("USER_ID", "==", parseInt(userID, 10));
         allReservations.get()
         .then((snapshot) => {
             snapshot.docs.forEach((doc) => {
                 reservationsArray.push(doc.data());
             });
-            getLockerID();
+            if (reservationsArray.length != 0) {
+                getLockerID();
+            } else {
+                changeResLoadText();
+                document.getElementById("reservations-div").insertAdjacentHTML("beforeend", '<p style="font-size: 5vw; margin-top: 5vh;">Sorry, you currently have no reservations</p>');
+            }
         })
         .catch((error) => {
             console.log(error);
@@ -107,50 +128,81 @@ function fetchReservations() {
 //adds unique locker ids from reservations to an array
 
 function getLockerID() {
-    reservationsArray.forEach((reservation) => {
-        lockersList.add(reservation.LOCKER_ID);
-    });
+    for (var i = 0; i < reservationsArray.length; i++) {
+        lockersList.add(reservationsArray[i].LOCKER_ID);
+    }
     fetchLockerLocation();
+}
+
+function changeResLoadText() {
+    document.getElementById("reservation-loading-message").innerHTML = "Your Reservations";
+    document.getElementById("reservation-spinner").style.height = 0;
+    document.getElementById("reservation-spinner").style.visibility = "hidden";
 }
 
 //gets locker info from set of unique locker id
 
 function fetchLockerLocation() {
-    let allLockers = db.collection("lockers");
-    for (let locker of lockersList) {
-        allLockers.where("id", "==", locker).get()
+    const lockerValues = lockersList.values();
+    let nextValue = lockerValues.next().value;
+    console.log(nextValue, lockerValues);
+    fetchLockerHelper(nextValue, lockerValues);
+};
+
+function fetchLockerHelper(lockerListValue, allValues) {
+    db.collection("lockers").where("id", "==", parseInt(lockerListValue, 10)).get()
         .then((snapshot) => {
-            snapshot.docs.forEach((doc) => {
+            snapshot.forEach((doc) => {
                 lockerArray.push(doc.data());
             });
-            updateUserReservation();
+            let nextValue;
+            try {
+                nextValue = allValues.next().value;
+            } catch {
+                nextValue = false;
+            } finally {
+                if (nextValue) {
+                    fetchLockerHelper(nextValue);
+                } else {
+                    changeResLoadText();
+                    updateUserReservation();
+                }
+            }
         })
         .catch((error) => {
             console.log(error);
         });
-    }
-}; 
+}
 
 //gets locker address from locker info
 
 function getLockerAddress(lockerID) {
-    lockerArray.forEach((locker) => {
-        if (locker.id == lockerID) {
-            return locker.address;
+    for (var i = 0; i < lockerArray.length; i++) {
+        if (lockerArray[i].id == lockerID) {
+            return lockerArray[i].address;
         }
-    });
+    }
 }
 
 //adds reservation html based on parameters
 
 function createReservationHistory(resID, resAddress, resBox, resDate, resDuration) {
-    document.getElementById("reservations-div").insertAdjacentHTML("beforeend", '<table class="tg"><thead><tr><th class="titles">Locker Address</th><th class="values" id="raddress'+ resID +'">'+ resAddress +'</th></tr><tr><td class="titles">Box #</td><td class="values" id="rbox'+ resID +'">'+ resBox +'</td></tr><tr><td class="titles">Start Date</td><td class="values" id="rdate'+ resID +'">'+ resDate +'</td></tr><tr><td class="titles">Duration</td><td class="values" id="rduration'+ resID +'">'+ resDuration +'</td></tr></thead></table>');
+    document.getElementById("reservations-div").insertAdjacentHTML("beforeend", '<table class="tg"><thead><tr><th class="titles">Locker Address</th><th class="values" id="raddress'+ resID +'">'+ resAddress +'</th></tr><tr><td class="titles">Box #</td><td class="values" id="rbox'+ resID +'">'+ resBox +'</td></tr><tr><td class="titles">Start Date</td><td class="values" id="rdate'+ resID +'">'+ resDate +'</td></tr><tr><td class="titles">Duration</td><td class="values" id="rduration'+ resID +'">'+ resDuration +' Weeks</td></tr></thead></table>');
 }
 
 //combines information and outputs it to the page as html
 
 function updateUserReservation() {
     for (var i = 0; i < reservationsArray.length; i++) {
-        createReservationHistory(i, getLockerAddress(i), reservationsArray[i].BOX_ID, reservationsArray[i].RES_BEGIN, reservationsArray[i].RES_DURATION_WEEKS);
+        createReservationHistory(i, getLockerAddress(reservationsArray[i].LOCKER_ID), reservationsArray[i].BOX_ID, reservationsArray[i].RES_BEGIN, reservationsArray[i].RES_DURATION_WEEKS);
     }
 }
+
+//taken from https://www.freecodecamp.org/news/three-ways-to-title-case-a-sentence-in-javascript-676a9175eb27/
+function titleCase(str) {
+    str = str.toLowerCase().split(' ');
+    for (var i = 0; i < str.length; i++) {
+      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+    }
+    return str.join(' ');
+  }
