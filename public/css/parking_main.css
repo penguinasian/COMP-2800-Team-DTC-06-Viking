@@ -13,9 +13,9 @@
 }
 /* Active page style.*/
 
-iframe {
+#map {
     width: 100vw;
-    height: 65vh;
+    height: 60vh;
 }
 
 #buttons {
@@ -32,4 +32,57 @@ iframe {
     height: 6vh;
     padding-top: 0.2rem;
     font-size: 2.8vh;
+}
+
+
+.high {
+    color: white;
+    background-color: #63D668;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.medium {
+    color: white;
+    background-color: #FF974D;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.low {
+    color: white;
+    background-color: #F23C32;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.full {
+    color: white;
+    background-color: #9E1313;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.mapLegend {
+    margin-top: 1vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.mapLegend > p {
+    font-size: 4vw;
+}
+
+.reservation {
+    font-size: 1.5em;
+    color: white;
+    background-color: #4C744C;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0 10px;
+    text-decoration: none;
 }
