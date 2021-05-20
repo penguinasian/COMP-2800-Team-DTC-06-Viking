@@ -29,10 +29,6 @@ h1 {
     align-items: center;
 }
 
-.fa-bookmark {
-    color:#4C744C;
-}
-
 .detailsText {
     display: flex;
     flex-direction: row;
