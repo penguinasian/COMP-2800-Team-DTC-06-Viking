@@ -192,26 +192,51 @@ AddPreviousClickPagination();
 
 function addLikeListener(id, likes_number, like_div) {
     firebase.auth().onAuthStateChanged(function (user) {
+        var user = firebase.auth().currentUser;
+        var uid = user.uid;
+
+        like_div.addEventListener("click", async function () {
+
             let route_name = like_div.parentNode.getElementsByClassName("routesNameFont")[0].innerText
-            like_div.addEventListener("click", function () {
+            let user = await db.collection("users").doc(uid).get()
+            let liked_routes_array = user.data().liked_routes
+            if (liked_routes_array.includes(route_name)) {
                 console.log("like was clicked!")
                 db.collection("popular_routes")
                     .doc(id)
                     .update({
-                        ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(1) //increments like!
+                        ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(-1) //increments like!
                     })
-                var user = firebase.auth().currentUser;
-                var uid = user.uid;
+                
+                
+                    db.collection("users")
+                    .doc(uid)
+                    .update({
+
+                        liked_routes: firebase.firestore.FieldValue.arrayRemove(route_name)
+                    })
+                
+
+            } else {
+                console.log("like was clicked!")
+                db.collection("popular_routes")
+                    .doc(id)
+                    .update({
+                        ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(1) //decrements like!
+                    })
+
                 db.collection("users")
                     .doc(uid)
                     .update({
-                        liked_routes:firebase.firestore.FieldValue.arrayUnion(route_name)
+
+                        liked_routes: firebase.firestore.FieldValue.arrayUnion(route_name)
                     })
+            }
+        })
 
-            })
 
-        
     })
+
     db.collection("popular_routes")
         .doc(id)
         .onSnapshot(function (snap) {
