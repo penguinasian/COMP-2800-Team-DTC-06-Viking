@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+}
+header {
+    background-color: #4C744C;
+    height: 1fr;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoName {
+    margin: 0.5vh auto;
+    text-align: center;
+    height: 9vh;
+}
+
+header img {
+    margin: 0px;
+    height: 9vh;
+}
+
+#error-wrapper {
+    position: absolute;
+    color: white;
+    width: 100%;
+    top: 35%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+#error-div {
+    z-index: 100;
+    background-color: #4C744C;
+    padding: 2vw;
+}
+
+#not-found-title {
+    font-size: 25vw;
+    margin: 0;
+}
+
+.not-found-text {
+    font-size: 4vw;
+}
+
+#back-click, #home-click {
+    color: #84B430;
+}
