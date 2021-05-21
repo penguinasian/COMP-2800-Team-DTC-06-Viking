@@ -47,12 +47,12 @@
         <div class="filter">
             <div class="custom-select">
                 <i class="fas fa-filter"></i>
-                <select>
-                    <option value="0">Choose length:</option>
-                    <option value="1">0 ~ 5km</option>
-                    <option value="2">5km ~ 10km</option>
-                    <option value="3">10km ~ 20km</option>
-                    <option value="4">above 20km</option>
+                <select id="lengthOption">
+                    <option value="0">Length All:</option>
+                    <option value="1">0 ~ 10km</option>
+                    <option value="2">10km ~ 20km</option>
+                    <option value="3">20km ~ 30km</option>
+                    <option value="4">above 30km</option>
 
                 </select>
 
@@ -62,21 +62,33 @@
             <div class="custom-select">
                 <i class="fas fa-filter"></i>
                 <select id="levelOption">
-                    <option value="0">Level: All</option>
-                    <option value="1">Easy</option>
-                    <option value="2">Medium</option>
-                    <option value="3">Hard</option>
+                    <option value="Level: All">Level: All</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
                 </select>
             </div>
 
-            <div class="buttonForFilter">
-                <button id="buttonFilter">Go</button>
+            <div class="custom-select">
+                <i class="fas fa-filter"></i>
+                <select id="popularity">
+                    <option value="Popularity: All">Popularity: All</option>
+                    <option value="Top 3">Top 3</option>
+                    <option value="Top 5">Top 5</option>
+                    <option value="Top 10">Top 10</option>
+                </select>
             </div>
+
         </div>
 
         <div class="routesImage">
 
 
+        </div>
+
+        <div class="pagination">
+            <button id="previousButton" class="hidden">Previous</button>
+            <button id="nextButton">Next</button>
         </div>
     </main>
 
@@ -126,165 +138,7 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-    <script>
-        function add_popularRoutes(id, name, static_image, Length, level, likes) {
-
-            //create an individule div for each routes inside parent div  
-            let individule_routes = document.createElement("div")
-            individule_routes.className = "routes"  // set a class
-
-            //create an image tag
-            let image = document.createElement("img")
-            image.setAttribute("src", static_image)
-            let a_link = document.createElement("a")
-            a_link.setAttribute("href", "./routes_detail_page.html?name=" + name)
-            a_link.appendChild(image)
-
-
-
-            //create a div for routes name under the pic
-            let routes_name = document.createElement("div")
-            routes_name.className = "routesName"
-           
-
-            //create a p tag inside routesName div
-            let route_name = document.createElement("p")
-            route_name.className = "routesNameFont"
-            routes_name.appendChild(route_name)
-            route_name.innerText = name
-
-            //create a like button
-            let like_div = document.createElement("div")
-            like_div.className = "thumb"
-            like_div.innerHTML = '<i class="fas fa-thumbs-up"></i>'
-            routes_name.appendChild(like_div)
-
-            //create a routes detail div
-            let routes_detail = document.createElement("div")
-            routes_detail.className = "routesDetail"
-            let level_text = document.createElement("p")
-            level_text.innerHTML = level
-            let length_text = document.createElement("p")
-            length_text.innerHTML = "Length:" +" " + Length.toString() + "km"
-            length_text.className = "text"
-  
-            let likes_number = document.createElement("p")
-
-            
-            
-
-            routes_detail.appendChild(level_text)
-            routes_detail.appendChild(length_text)
-       
-         
-            routes_detail.appendChild(likes_number)
-            
-
-            //number_p is the amount of likes for food quality
-            //let number_p = document.createElement("p")
-            //like_div.appendChild(number_p)
-
-
-            //let number_p2 = document.createElement("p")
-            //like_div2.appendChild(number_p2)
-
-
-            //attache event listener to the thumb
-            addLikeListener(id, likes_number, like_div)
-
-
-            //append child divs to parent div
-            individule_routes.appendChild(a_link)
-            individule_routes.appendChild(routes_name)
-            individule_routes.appendChild(routes_detail)
-
-
-            document.getElementsByClassName("routesImage")[0].appendChild(individule_routes)
-        }
-
-        function readPopularRoutes() {
-            firebase.auth().onAuthStateChanged(function (user) {
-                var user = firebase.auth().currentUser;
-                var uid = user.uid;
-                db.collection("users").doc(uid)
-                    .get().then(function (doc) {
-                        db.collection("popular_routes")
-                            .get()
-                            .then(function (query) {
-                                query.forEach(function (doc) {
-
-                                    add_popularRoutes(doc.id, doc.data().name, doc.data().static_image, doc.data().Length
-                                        , doc.data().level, doc.data().likes)
-
-                                })
-                            })
-
-                    })
-
-            })
-        }
-
-        readPopularRoutes();
-
-        function addLikeListener(id, likes_number, like_div) {
-            firebase.auth().onAuthStateChanged(function (user) {
-                like_div.addEventListener("click", function () {
-                    console.log("like was click!")
-                    db.collection("popular_routes")
-                        .doc(id)
-                        .update({
-                            likes: firebase.firestore.FieldValue.increment(1) //increments like!
-                        })
-
-                })
-            })
-            db.collection("popular_routes")
-                .doc(id)
-                .onSnapshot(function (snap) {
-                    likes_number.innerHTML = snap.get("likes")
-                })
-        }
-
-
-        function addFilterListener() {
-            var e = document.getElementById("levelOption")
-            
-            var buttonClick = document.getElementById("buttonFilter");
-            firebase.auth().onAuthStateChanged(function (user) {
-                buttonClick.addEventListener("click", function () {
-                    var text = e.options[e.selectedIndex].text
-                    console.log("button was clicked")
-                    db.collection("popular_routes")
-                        .get()
-                        .then(function (query) {
-                            document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                            query.forEach(function (doc) {
-                                if (doc.data().level == text) {
-                                    add_popularRoutes(doc.id, doc.data().name, doc.data().static_image, doc.data().Length
-                                        , doc.data().level, doc.data().likes)
-                                        
-                                } 
-
-                                if (text == "Level: All") {
-                                    db.collection("popular_routes")
-                                    .get()
-                                    .then(function (query) {
-                                        document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                                        query.forEach(function (doc) {
-                                        add_popularRoutes(doc.id, doc.data().name, doc.data().static_image, doc.data().Length
-                                        , doc.data().level, doc.data().likes)
-                                    })
-                                })
-                                    
-                                }
-                            })
-                        })
-                })
-            })
-        }
-
-        addFilterListener();
-    </script>
+    <script src="./javascripts/popular_routes.js"></script>
 </body>
 
 </html>
