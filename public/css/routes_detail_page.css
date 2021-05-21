@@ -29,16 +29,13 @@ h1 {
     align-items: center;
 }
 
-.fa-bookmark {
-    color:#4C744C;
-}
-
 .detailsText {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 2vh;
     font-size: 2.5vh;
+    flex-wrap: wrap;
 }
 
 
@@ -57,4 +54,8 @@ iframe {
 
 main h1 {
     margin-left: 2vw;
+}
+
+main p {
+    font-size: 1.8vh !important;
 }
