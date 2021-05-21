@@ -70,14 +70,16 @@ function readPopularRoutes() {
         if (uid) {
             db.collection("users").doc(uid)
                 .get().then(function (doc) {
+                    //to get only 4 routes at a time in a page
                     db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").limit(4)
                         .get()
                         .then(function (query) {
 
+                            //assign the first document(route) and the last document(route) on a page to variables pageStart and pageEnd
                             pageStart = query.docs[0]
                             pageEnd = query.docs[3]
 
-
+                            //query the documents inside popular_routes collection
                             query.forEach(function (doc) {
 
                                 add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
@@ -92,6 +94,7 @@ function readPopularRoutes() {
     })
 }
 
+//initialize pageStart and pageEnd to null. 
 let pageStart = null;
 let pageEnd = null;
 readPopularRoutes();
@@ -100,30 +103,37 @@ readPopularRoutes();
 function AddNextClickPagination() {
 
     firebase.auth().onAuthStateChanged(function (user) {
+        //get the "next" button
         paginationButton = document.getElementById("nextButton");
         paginationButton.addEventListener("click", function () {
             console.log("button was clicked");
             firebase.auth().onAuthStateChanged(function (user) {
                 var user = firebase.auth().currentUser;
                 var uid = user.uid;
+                //reset the "previousButton" class to empty string. So that the "previous button" shows on the other pages other than the first page
                 document.getElementById("previousButton").className = ""
                 db.collection("users").doc(uid)
                     .get().then(function (doc) {
-
+                        // get the next 4 routes by using orderBy and startAfter. Note: pageEnd has been reset to the the 4th route of previous page
                         db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").startAfter(pageEnd).limit(4)
                             .get()
                             .then(function (query) {
-
+                                // stop the function when there is no routes left, stop the function right away
                                 if (!query.size) {
                                     return;
                                 }
 
+                                //reset the "pageStart" to the first route of the current page, "pageEnd" to the last route of the current page
                                 pageStart = query.docs[0]
                                 pageEnd = query.docs[3]
 
+                                //clear everything on the page first, otherwise, the next 4 routes will be added on top of the existing one
                                 document.getElementsByClassName("routesImage")[0].innerHTML = "";
 
+                                //since we are using query.docs[3] to set the "pageEnd", if we couldn't have a fourth item, then means this is the last page
                                 if (!pageEnd) {
+
+                                    //last page, hide the next button
                                     nextButton = document.getElementById("nextButton");
                                     nextButton.className = "hidden";
                                 }
@@ -200,10 +210,12 @@ function addLikeListener(id, likes_number, like_div) {
             let route_name = like_div.parentNode.getElementsByClassName("routesNameFont")[0].innerText
             let user = await db.collection("users").doc(uid).get()
             let liked_routes_array = user.data().liked_routes
+            //check if the route the user is liking is already in the array
             if (liked_routes_array.includes(route_name)) {
                 console.log("like was clicked!")
                 db.collection("popular_routes")
                     .doc(id)
+                    //if yes, then the user must have liked it before, then decrement like count if clicked again
                     .update({
                         ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(-1) //decrements like!
                     })
@@ -215,15 +227,15 @@ function addLikeListener(id, likes_number, like_div) {
 
                         liked_routes: firebase.firestore.FieldValue.arrayRemove(route_name)
                     })
-                
-                
+
+                // reset the thumb button to fern green color
                 let thumbButtonArray = like_div.parentNode.getElementsByClassName("fa-thumbs-up")[0]
-                
+
                 thumbButtonArray.style.color = '#4C744C'
-                
-                
 
 
+
+                // otherwise, increment like count
             } else {
                 console.log("like was clicked!")
                 db.collection("popular_routes")
@@ -238,19 +250,19 @@ function addLikeListener(id, likes_number, like_div) {
 
                         liked_routes: firebase.firestore.FieldValue.arrayUnion(route_name)
                     })
+                // set the thumb button to red color
+                let thumbButtonArray = like_div.parentNode.getElementsByClassName("fa-thumbs-up")[0]
 
-                    let thumbButtonArray = like_div.parentNode.getElementsByClassName("fa-thumbs-up")[0]
-                
                 thumbButtonArray.style.color = 'red'
-                
-                
+
+
 
             }
         })
 
 
     })
-
+    // get the like count from database
     db.collection("popular_routes")
         .doc(id)
         .onSnapshot(function (snap) {
