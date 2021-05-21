@@ -93,9 +93,10 @@ function testUserSign() {
 }
 
 
+
 document.getElementById('pay').addEventListener('click', function (event) {
-    let totalPrice =  parseInt(document.getElementById("totalPrice").textContent.substring(2,5))
     
+    let totalPrice =  parseInt(document.getElementById("totalPrice").textContent.substring(2,5))
     
     console.log('button clicked')
     console.log('LocekrId ' + LockerId);
@@ -105,46 +106,47 @@ document.getElementById('pay').addEventListener('click', function (event) {
     console.log('RES_PAYMENT_DATE ' + currentDate);
     console.log('RES_PAYMENT_AMOUNT ' + totalPrice);
 
-
-    db.collection("reservation").add({
-        // USER_ID: uid,
-        LOCKER_ID: LockerId,
-        BOX_ID: boxId,
-        RES_BEGIN: startDate,
-        RES_DURATION_WEEKS: weeks,
-        RES_PAYMENT_DATE: currentDate,
-        RES_PAYMENT_AMOUNT: totalPrice
-    });
-
-    console.log('Updated')
-
-    // firebase.auth().onAuthStateChanged(function (user) {
-    //     if (user) {
-    //         // User is signed in.
-    //         console.log("Success")
-    //         let user = firebase.auth().currentUser;
-    //         let uid = user.uid;
-    //         let totalPrice =  parseInt(document.getElementById("totalPrice").textContent.substring(2,5))
-
-    //         console.log(uid)
-    //         db.collection("test").add({
-    //             USER_ID: uid,
-    //             LOCKER_ID: LockerId,
-    //             BOX_ID: boxId,
-    //             RES_BEGIN: startDate,
-    //             RES_DURATION_WEEKS: weeks,
-    //             RES_PAYMENT_DATE: currentDate,
-    //             RES_PAYMENT_AMOUNT: totalPrice
-    //         });
-
-    //     } else {
-    //         // No user is signed in.
-    //         console.log("not log-in")
-    //     }
+    /* Tested - good */
+    // db.collection("reservation").add({
+    //     // USER_ID: uid,
+    //     LOCKER_ID: LockerId,
+    //     BOX_ID: boxId,
+    //     RES_BEGIN: startDate,
+    //     RES_DURATION_WEEKS: weeks,
+    //     RES_PAYMENT_DATE: currentDate,
+    //     RES_PAYMENT_AMOUNT: totalPrice
     // });
+    /* needs to be deleted */
+
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+            console.log("Success")
+            let user = firebase.auth().currentUser;
+            let uid = user.uid;
+
+            console.log(uid)
+
+            db.collection("reservation").add({
+                USER_ID: uid,
+                LOCKER_ID: LockerId,
+                BOX_ID: boxId,
+                RES_BEGIN: startDate,
+                RES_DURATION_WEEKS: weeks,
+                RES_PAYMENT_DATE: currentDate,
+                RES_PAYMENT_AMOUNT: totalPrice
+            });
+
+            console.log('Updated')
+
+        } else {
+            // No user is signed in.
+            window.location.href="https://viking-eaee3.web.app/login.html";
+            console.log("not log-in")
+        }
+    });
 });
-
-
 
 
 
