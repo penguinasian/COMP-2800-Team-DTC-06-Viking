@@ -215,9 +215,13 @@ function addLikeListener(id, likes_number, like_div) {
 
                         liked_routes: firebase.firestore.FieldValue.arrayRemove(route_name)
                     })
-
-                let thumbButton = document.getElementsByClassName("fa-thumbs-up")[0]
-                thumbButton.style.color = "#4C744C";
+                
+                
+                let thumbButtonArray = like_div.parentNode.getElementsByClassName("fa-thumbs-up")[0]
+                
+                thumbButtonArray.style.color = '#4C744C'
+                
+                
 
 
             } else {
@@ -234,8 +238,12 @@ function addLikeListener(id, likes_number, like_div) {
 
                         liked_routes: firebase.firestore.FieldValue.arrayUnion(route_name)
                     })
-                let thumbButton = document.getElementsByClassName("fa-thumbs-up")[0]
-                thumbButton.style.color = "red";
+
+                    let thumbButtonArray = like_div.parentNode.getElementsByClassName("fa-thumbs-up")[0]
+                
+                thumbButtonArray.style.color = 'red'
+                
+                
 
             }
         })
