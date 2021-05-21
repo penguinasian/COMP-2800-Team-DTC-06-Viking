@@ -15,14 +15,14 @@
 
 #map {
     width: 100vw;
-    height: 60vh;
+    height: 65vh;
 }
 
 #buttons {
     display: flex;
     gap: 15vw;
     margin: 0vh 5vw;
-    margin-top: 1vh;
+    margin-top: 1.5vh;
 }
 
 #buttons button {
