@@ -205,24 +205,27 @@ function addLikeListener(id, likes_number, like_div) {
                 db.collection("popular_routes")
                     .doc(id)
                     .update({
-                        ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(-1) //increments like!
+                        ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(-1) //decrements like!
                     })
-                
-                
-                    db.collection("users")
+
+
+                db.collection("users")
                     .doc(uid)
                     .update({
 
                         liked_routes: firebase.firestore.FieldValue.arrayRemove(route_name)
                     })
-                
+
+                let thumbButton = document.getElementsByClassName("fa-thumbs-up")[0]
+                thumbButton.style.color = "#4C744C";
+
 
             } else {
                 console.log("like was clicked!")
                 db.collection("popular_routes")
                     .doc(id)
                     .update({
-                        ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(1) //decrements like!
+                        ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(1) //increments like!
                     })
 
                 db.collection("users")
@@ -231,6 +234,9 @@ function addLikeListener(id, likes_number, like_div) {
 
                         liked_routes: firebase.firestore.FieldValue.arrayUnion(route_name)
                     })
+                let thumbButton = document.getElementsByClassName("fa-thumbs-up")[0]
+                thumbButton.style.color = "red";
+
             }
         })
 
