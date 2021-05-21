@@ -117,13 +117,13 @@ function getReservationData() {
       //   totalLockersBoxes[availableLockersBoxes[i][0]-1] += 1;
       // }
       // console.log(totalLockersBoxes);
-      updateMap(fullBoxes);
+      updateMap(fullBoxes, req_begins, req_ends, weeks);
   })
 }
 
 
 /* read data from Firestore and update map*/
-function updateMap(fullBoxes) {
+function updateMap(fullBoxes, req_begins, req_ends, weeks) {
   db.collection("lockers")
       .get()
       .then(function (query) {
@@ -174,8 +174,10 @@ function updateMap(fullBoxes) {
               let infoContent = `<h4>${doc.data().name}</h4>
               <b>Address: </b> <br> ${doc.data().address} <br> 
               <br><h5 class=${availablity}>Parking Slots: ${available} / ${numOfBoxes} </h5>
-              <a href="parking_reservation.html?name=${doc.data().name}"><p class="reservation">Reservation</p></a>
+              <a href="parking_reservation.html?array=${doc.data().address}|${req_begins}|${req_ends}|${available}|${numOfBoxes}|${weeks}|${lockerID}|${lockerBoxes[0]}">
+              <p class="reservation">Reservation</p></a>
               `;
+              // address, check-in, check-out, available, total_slots, weeks, locker_id, box_id
               let locker = [infoContent, doc.data().latitude, doc.data().longitude, available, numOfBoxes, availablity];
               locations.push(locker)
            })
