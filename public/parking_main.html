@@ -1,102 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="./css/skeleton.css">
-        <link rel="stylesheet" href="./css/parking_main.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/skeleton.css">
+    <link rel="stylesheet" href="./css/parking_main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/9d9ca769a8.js" crossorigin="anonymous"></script>
 
-        <!--Favicon links-->
-        <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-        <!--<link rel="manifest" href="../public/favicon/manifest.json">-->
-        <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#4c744c">
-        <link rel="shortcut icon" href="./favicon/favicon.ico">
-        <meta name="msapplication-TileColor" content="#4c744c">
-        <meta name="msapplication-config" content="./favicon/browserconfig.xml">
-        <meta name="theme-color" content="#ffffff">
-        <!--End Favicon links-->
-        
-        <title>Parking_main</title>
-    </head>
+    <!--Favicon links-->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <!--<link rel="manifest" href="../public/favicon/manifest.json">-->
+    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#4c744c">
+    <link rel="shortcut icon" href="./favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#4c744c">
+    <meta name="msapplication-config" content="./favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!--End Favicon links-->
 
-    <body>
-        <header>
-            <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top" style="height:10vh">
-                <div class="logoName">
-                    <img src="./images/logo_final.png">
-                </div>
+    <title>Parking_main</title>
+</head>
+
+<body>
+    <header>
+        <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top" style="height:10vh">
+            <div class="logoName">
+                <img src="./images/logo_final.png">
             </div>
-        </header>
-        
-        <main>
-            <div>
-                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1OZSuD_NjYaRNB622gKq1D3aAMjbE0w6I"></iframe>
+        </div>
+    </header>
+
+    <main>
+        <div id="map"></div>
+        <div id='buttons'>
+            <button type="button" onclick="document.location='./parking_lockers.html'"
+                class="btn btn-primary btn-lg">Lockers</button>
+            <button type="button" onclick="document.location='./parking_parkades.html'"
+                class="btn btn-primary btn-lg">Parkades</button>
+        </div>
+    </main>
+
+
+    <!-- Bottom: parking, services, routes, info and profile icons -->
+    <nav class="navbar navbar-expand fixed-bottom d-flex align-items-center">
+        <div class="container-fluid">
+            <div class="bottomIcon parking">
+                <button class="btn iconButton parking" href="#"><i class="fas fa-biking parking"></i></button>
+                <p class="footer">Parking</p>
             </div>
-    
-            <div id='buttons'>
-                <button type="button" onclick="document.location='./parking_lockers.html'" class="btn btn-primary btn-lg">Lockers</button>
-                <button type="button" onclick="document.location='./parking_parkades.html'" class="btn btn-primary btn-lg">Parkades</button>
+
+            <div class="bottomIcon services">
+                <button class="btn iconButton" onclick="document.location='./services.html'"><i class="fas fa-map-marked services"></i></button>
+                <p class="footer">Services</p>
             </div>
-        </main>
-        
-
-        <!-- Bottom: parking, services, routes, info and profile icons -->
-        <nav class="navbar navbar-expand fixed-bottom d-flex align-items-center">
-            <div class="container-fluid">
-                <div class="bottomIcon parking">
-                    <button class="btn iconButton parking" href="#"><i class="fas fa-biking parking"></i></button>
-                    <p class="footer">Parking</p>
-                </div>
-
-                <div class="bottomIcon services">
-                    <button class="btn iconButton" onclick="document.location='./services.html'"><i class="fas fa-map-marked services"></i></button>
-                    <p class="footer">Services</p>
-                </div>
-                <div class="bottomIcon routes">
-                    <button class="btn iconButton" onclick="document.location='./popular_routes.html'"><i class="far fa-compass routes"></i></i></button>
-                    <p class="footer">Routes</p>
-                </div>
-                <div class="bottomIcon info">
-                    <button class="btn iconButton" onclick="document.location='./about_us_current.html'"><i class="fas fa-info-circle info"></i></i></button>
-                    <p class="footer">Info</p>
-                </div>
-                <div class="bottomIcon profile">
-                    <button class="btn iconButton" onclick="document.location='./profile.html'"><i class="fas fa-user-circle profile"></i></button>
-                    <p class="footer">Profile</p>
-                </div>
+            <div class="bottomIcon routes">
+                <button class="btn iconButton" onclick="document.location='./popular_routes.html'"><i class="far fa-compass routes"></i></i></button>
+                <p class="footer">Routes</p>
             </div>
-        </nav>
+            <div class="bottomIcon info">
+                <button class="btn iconButton" onclick="document.location='./about_us_current.html'"><i class="fas fa-info-circle info"></i></i></button>
+                <p class="footer">Info</p>
+            </div>
+            <div class="bottomIcon profile">
+                <button class="btn iconButton" onclick="document.location='./profile.html'"><i class="fas fa-user-circle profile"></i></button>
+                <p class="footer">Profile</p>
+            </div>
+        </div>
+    </nav>
 
 
-        <!----------------------------------------------->
-        <!-- JS: Boostrap, Firebase, API related    -->
-        <!----------------------------------------------->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-            </script>
-        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
-        <script src="./javascripts/firebase_api.js"></script>
-        <!--------------------------------------------------------------------->
-        <!-- JS files: Your own JavaScript functions included here    -->
-        <!--------------------------------------------------------------------->
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="./javascripts/firebase_api.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_6aXL_PACxTA0BNnH3t97Z7jhTw3LbxI&callback=initMap&libraries=&v=weekly"
+        async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
 
-        <script src="./javascripts/user_login.js"></script>
-    </body>
+    <script src="./javascripts/parking_main.js"></script>
+</body>
 
 </html>

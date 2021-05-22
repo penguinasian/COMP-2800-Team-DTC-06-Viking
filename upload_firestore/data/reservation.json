@@ -1,0 +1,256 @@
+{
+  "reservation": [
+    {
+      "LOCKER_ID": 4,
+      "BOX_ID": 1,
+      "USER_ID": 6,
+      "RES_BEGIN": "2020-12-24",
+      "RES_DURATION_WEEKS": 25,
+      "RES_PAYMENT_AMOUNT": 62.5,
+      "RES_PAYEMENT_DATE": "2020-12-21"
+    },
+    {
+      "LOCKER_ID": 1,
+      "BOX_ID": 1,
+      "USER_ID": 1,
+      "RES_BEGIN": "2021-01-08",
+      "RES_DURATION_WEEKS": 4,
+      "RES_PAYMENT_AMOUNT": 10,
+      "RES_PAYEMENT_DATE": "2021-01-05"
+    },
+    {
+      "LOCKER_ID": 2,
+      "BOX_ID": 1,
+      "USER_ID": 6,
+      "RES_BEGIN": "2021-01-08",
+      "RES_DURATION_WEEKS": 8,
+      "RES_PAYMENT_AMOUNT": 20,
+      "RES_PAYEMENT_DATE": "2021-01-05"
+    },
+    {
+      "LOCKER_ID": 5,
+      "BOX_ID": 1,
+      "USER_ID": 10,
+      "RES_BEGIN": "2021-01-08",
+      "RES_DURATION_WEEKS": 17,
+      "RES_PAYMENT_AMOUNT": 42.5,
+      "RES_PAYEMENT_DATE": "2021-01-05"
+    },
+    {
+      "LOCKER_ID": 3,
+      "BOX_ID": 1,
+      "USER_ID": 3,
+      "RES_BEGIN": "2021-01-11",
+      "RES_DURATION_WEEKS": 25,
+      "RES_PAYMENT_AMOUNT": 62.5,
+      "RES_PAYEMENT_DATE": "2021-01-08"
+    },
+    {
+      "LOCKER_ID": 1,
+      "BOX_ID": 2,
+      "USER_ID": 2,
+      "RES_BEGIN": "2021-01-15",
+      "RES_DURATION_WEEKS": 25,
+      "RES_PAYMENT_AMOUNT": 62.5,
+      "RES_PAYEMENT_DATE": "2021-01-12"
+    },
+    {
+      "LOCKER_ID": 2,
+      "BOX_ID": 2,
+      "USER_ID": 6,
+      "RES_BEGIN": "2021-01-15",
+      "RES_DURATION_WEEKS": 8,
+      "RES_PAYMENT_AMOUNT": 20,
+      "RES_PAYEMENT_DATE": "2021-01-12"
+    },
+    {
+      "LOCKER_ID": 5,
+      "BOX_ID": 2,
+      "USER_ID": 9,
+      "RES_BEGIN": "2021-01-15",
+      "RES_DURATION_WEEKS": 8,
+      "RES_PAYMENT_AMOUNT": 20,
+      "RES_PAYEMENT_DATE": "2021-01-12"
+    },
+    {
+      "LOCKER_ID": 3,
+      "BOX_ID": 2,
+      "USER_ID": 4,
+      "RES_BEGIN": "2021-02-02",
+      "RES_DURATION_WEEKS": 25,
+      "RES_PAYMENT_AMOUNT": 62.5,
+      "RES_PAYEMENT_DATE": "2021-01-30"
+    },
+    {
+      "LOCKER_ID": 4,
+      "BOX_ID": 2,
+      "USER_ID": 7,
+      "RES_BEGIN": "2021-02-02",
+      "RES_DURATION_WEEKS": 4,
+      "RES_PAYMENT_AMOUNT": 10,
+      "RES_PAYEMENT_DATE": "2021-01-30"
+    },
+    {
+      "LOCKER_ID": 2,
+      "BOX_ID": 3,
+      "USER_ID": 7,
+      "RES_BEGIN": "2021-02-04",
+      "RES_DURATION_WEEKS": 8,
+      "RES_PAYMENT_AMOUNT": 20,
+      "RES_PAYEMENT_DATE": "2021-02-01"
+    },
+    {
+      "LOCKER_ID": 5,
+      "BOX_ID": 3,
+      "USER_ID": 2,
+      "RES_BEGIN": "2021-02-04",
+      "RES_DURATION_WEEKS": 8,
+      "RES_PAYMENT_AMOUNT": 20,
+      "RES_PAYEMENT_DATE": "2021-02-01"
+    },
+    {
+      "LOCKER_ID": 1,
+      "BOX_ID": 3,
+      "USER_ID": 3,
+      "RES_BEGIN": "2021-02-08",
+      "RES_DURATION_WEEKS": 4,
+      "RES_PAYMENT_AMOUNT": 10,
+      "RES_PAYEMENT_DATE": "2021-02-05"
+    },
+    {
+      "LOCKER_ID": 3,
+      "BOX_ID": 3,
+      "USER_ID": 3,
+      "RES_BEGIN": "2021-02-26",
+      "RES_DURATION_WEEKS": 17,
+      "RES_PAYMENT_AMOUNT": 42.5,
+      "RES_PAYEMENT_DATE": "2021-02-23"
+    },
+    {
+      "LOCKER_ID": 1,
+      "BOX_ID": 4,
+      "USER_ID": 4,
+      "RES_BEGIN": "2021-03-12",
+      "RES_DURATION_WEEKS": 12,
+      "RES_PAYMENT_AMOUNT": 30,
+      "RES_PAYEMENT_DATE": "2021-03-09"
+    },
+    {
+      "LOCKER_ID": 3,
+      "BOX_ID": 4,
+      "USER_ID": 5,
+      "RES_BEGIN": "2021-03-12",
+      "RES_DURATION_WEEKS": 12,
+      "RES_PAYMENT_AMOUNT": 30,
+      "RES_PAYEMENT_DATE": "2021-03-09"
+    },
+    {
+      "LOCKER_ID": 4,
+      "BOX_ID": 4,
+      "USER_ID": 8,
+      "RES_BEGIN": "2021-03-12",
+      "RES_DURATION_WEEKS": 12,
+      "RES_PAYMENT_AMOUNT": 30,
+      "RES_PAYEMENT_DATE": "2021-03-09"
+    },
+    {
+      "LOCKER_ID": 4,
+      "BOX_ID": 2,
+      "USER_ID": 7,
+      "RES_BEGIN": "2021-03-14",
+      "RES_DURATION_WEEKS": 51,
+      "RES_PAYMENT_AMOUNT": 127.5,
+      "RES_PAYEMENT_DATE": "2021-03-11"
+    },
+    {
+      "LOCKER_ID": 1,
+      "BOX_ID": 1,
+      "USER_ID": 1,
+      "RES_BEGIN": "2021-03-18",
+      "RES_DURATION_WEEKS": 12,
+      "RES_PAYMENT_AMOUNT": 30,
+      "RES_PAYEMENT_DATE": "2021-03-15"
+    },
+    {
+      "LOCKER_ID": 5,
+      "BOX_ID": 2,
+      "USER_ID": 9,
+      "RES_BEGIN": "2021-03-29",
+      "RES_DURATION_WEEKS": 12,
+      "RES_PAYMENT_AMOUNT": 30,
+      "RES_PAYEMENT_DATE": "2021-03-22"
+    },
+    {
+      "LOCKER_ID": 4,
+      "BOX_ID": 3,
+      "USER_ID": 8,
+      "RES_BEGIN": "2021-03-26",
+      "RES_DURATION_WEEKS": 12,
+      "RES_PAYMENT_AMOUNT": 30,
+      "RES_PAYEMENT_DATE": "2021-03-23"
+    },
+    {
+      "LOCKER_ID": 2,
+      "BOX_ID": 4,
+      "USER_ID": 8,
+      "RES_BEGIN": "2021-03-29",
+      "RES_DURATION_WEEKS": 4,
+      "RES_PAYMENT_AMOUNT": 10,
+      "RES_PAYEMENT_DATE": "2021-03-26"
+    },
+    {
+      "LOCKER_ID": 2,
+      "BOX_ID": 5,
+      "USER_ID": 8,
+      "RES_BEGIN": "2021-04-12",
+      "RES_DURATION_WEEKS": 4,
+      "RES_PAYMENT_AMOUNT": 10,
+      "RES_PAYEMENT_DATE": "2021-04-06"
+    },
+    {
+      "LOCKER_ID": 1,
+      "BOX_ID": 5,
+      "USER_ID": 5,
+      "RES_BEGIN": "2021-04-28",
+      "RES_DURATION_WEEKS": 8,
+      "RES_PAYMENT_AMOUNT": 20,
+      "RES_PAYEMENT_DATE": "2021-04-20"
+    },
+    {
+      "LOCKER_ID": 3,
+      "BOX_ID": 5,
+      "USER_ID": 9,
+      "RES_BEGIN": "2021-04-28",
+      "RES_DURATION_WEEKS": 8,
+      "RES_PAYMENT_AMOUNT": 20,
+      "RES_PAYEMENT_DATE": "2021-04-25"
+    },
+    {
+      "LOCKER_ID": 3,
+      "BOX_ID": 4,
+      "USER_ID": 5,
+      "RES_BEGIN": "2021-06-10",
+      "RES_DURATION_WEEKS": 12,
+      "RES_PAYMENT_AMOUNT": 30,
+      "RES_PAYEMENT_DATE": "2021-05-08"
+    },
+    {
+      "LOCKER_ID": 5,
+      "BOX_ID": 1,
+      "USER_ID": 10,
+      "RES_BEGIN": "2021-05-16",
+      "RES_DURATION_WEEKS": 8,
+      "RES_PAYMENT_AMOUNT": 20,
+      "RES_PAYEMENT_DATE": "2021-05-13"
+    },
+    {
+      "LOCKER_ID": 5,
+      "BOX_ID": 4,
+      "USER_ID": 9,
+      "RES_BEGIN": "2021-07-14",
+      "RES_DURATION_WEEKS": 10,
+      "RES_PAYMENT_AMOUNT": 25,
+      "RES_PAYEMENT_DATE": "2021-05-18"
+    }
+  ]
+}

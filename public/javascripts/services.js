@@ -16,12 +16,13 @@ const mapIcons = {
   Type writeServices() on the chrome console */
 function writeServices() {
     let servicesRef = db.collection("services");
-    servicesRef.add({
-        address: "112 E 7th Ave, Vancouver, BC",
-        latitud: 49.26739328527185,
-        longitud: -123.09948281884026,
-        name: "Bikes for All",
-        type: "rental"
+    servicesRef.add({ 
+        address: "3002 Granville St, Vancouver, BC V6H 3J8",
+        latitude: 49.25929525514697,
+        longitude: -123.13718188510096,
+        name: "Meinhardt Fine Foods",
+        type: "airpump",
+        note: "Mon-Sun 9a.m.-6p.m"
     });
     console.log('updated')
 }
@@ -54,8 +55,8 @@ function updateMap() {
         .then(function (query) {
             let locations = []
             query.forEach(function (doc) {
-                console.log(doc.data().address, doc.data().name, doc.data().latitud, doc.data().longitud)
-                let location = [`<h4>${doc.data().name}</h4> <br> ${doc.data().address}`, doc.data().latitud, doc.data().longitud, doc.data().type]
+                console.log(doc.data().address, doc.data().name, doc.data().latitude, doc.data().longitude)
+                let location = [`<h4>${doc.data().name}</h4><b>Addres: </b> <br> ${doc.data().address} <br><br> ${doc.data().note}`, doc.data().latitude, doc.data().longitude, doc.data().type]
                 locations.push(location)
                 // console.log(location)
             })

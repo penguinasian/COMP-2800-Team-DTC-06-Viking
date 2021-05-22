@@ -51,26 +51,15 @@ function updateMap() {
                 locations.push(parkade)
             })
 
-            addMarkers(locations, 'parkade')
+            addMarkers(locations)
         })
 }
 
 /* add Markers and infoWindows*/
-function addMarkers(locations, type) {
+function addMarkers(locations) {
     for (let i = 0; i < locations.length; i++) {
 
         const latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
-        let mapIcon
-        // let availablity =  locations[i][3] / locations[i][4]
-        // if (availablity >= 0.6) {
-        //     mapIcon = mapIcons["parkade_high"]
-        // } else if (availablity >= 0.3) {
-        //     mapIcon = mapIcons["parkade_medium"]
-        // } else if ( availablity > 0) {
-        //     mapIcon = mapIcons["parkade_low"]
-        // } else {
-        //     mapIcon = mapIcons["parkade_full"]
-        // }
 
         let marker = new google.maps.Marker({
             position: latLng,
@@ -90,5 +79,5 @@ function addMarkers(locations, type) {
     }
 }
 
-
+/* update map with markers*/
 updateMap()

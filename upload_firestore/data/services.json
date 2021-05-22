@@ -1,0 +1,100 @@
+{
+  "services": [
+    {
+      "name": "Cycle BC Rentals & Tours",
+      "address": "73 E 6th Ave #10, Vancouver, BC V5T 1J3",
+      "type": "rental",
+      "latitude": 49.26722605,
+      "longitude": -123.1013534,
+      "note": "Mon-Sun 9a.m.-6p.m"
+    },
+    {
+      "name": "Bike Star Bike Rentals",
+      "address": "1218 Cartwright St, Vancouver, BC V6H 3R9",
+      "type": "rental",
+      "latitude": 49.26928334,
+      "longitude": -123.1310309,
+      "note": ""
+    },
+    {
+      "name": "Cycle City Tours And Bike Rentals",
+      "address": "648 Hornby St, Vancouver, BC V6C 2G2",
+      "type": "rental",
+      "latitude": 49.28446471,
+      "longitude": -123.1193341,
+      "note": "Mon-Sun 9a.m.-6p.m"
+    },
+    {
+      "name": "Mobi Bike Station",
+      "address": "3161 Ontario Bikeway, Vancouver, BC V5T 2Y9",
+      "type": "rental",
+      "latitude": 49.25761834,
+      "longitude": -123.101404,
+      "note": ""
+    },
+    {
+      "name": "Flat Fix Bike Shop",
+      "address": "2496 Victoria Dr, Vancouver, BC V5N 4L3",
+      "type": "repair",
+      "latitude": 49.26397731,
+      "longitude": -123.0614503,
+      "note": "Mon-Sat 12a.m-6.p.m"
+    },
+    {
+      "name": "Reckless Bike Stores",
+      "address": "110 Davie St, Vancouver, BC V6Z 2V4",
+      "type": "repair",
+      "latitude": 49.27424392,
+      "longitude": -123.1142822,
+      "note": ""
+    },
+    {
+      "name": "Dream Cycle",
+      "address": "1010 Commercial Dr, Vancouver, BC V5L 3W9",
+      "type": "repair",
+      "latitude": 49.27659273,
+      "longitude": -123.0660656,
+      "note": "Mon-Sat 10a.m-6.p.m"
+    },
+    {
+      "name": "Enroute Bike Service Studio",
+      "address": "2205 W 1st Ave, Vancouver, BC V6K 1E9",
+      "type": "repair",
+      "latitude": 49.27183055,
+      "longitude": -123.1559298,
+      "note": "Mon-Sun 7a.m-4.p.m"
+    },
+    {
+      "name": "Canadian Tire",
+      "address": "2290 Cambie St, Vancouver, BC V5Z 2T7",
+      "type": "airpump",
+      "latitude": 49.26641942,
+      "longitude": -123.1143602,
+      "note": "Mon-Sun 9a.m-9.p.m"
+    },
+    {
+      "name": "The Home Depot",
+      "address": "900 Terminal Ave, Vancouver, BC V6A 4G4",
+      "type": "airpump",
+      "latitude": 49.26999867,
+      "longitude": -123.082459,
+      "note": "Mon-Sun 6a.m-9.p.m"
+    },
+    {
+      "name": "Air pump",
+      "address": "3388 Main St, Vancouver, BC V5V 3M7",
+      "type": "airpump",
+      "latitude": 49.25542773,
+      "longitude": -123.0993593,
+      "note": ""
+    },
+    {
+      "name": "Air pump",
+      "address": "1185 Robson St, Vancouver, BC V6E 1B5",
+      "type": "airpump",
+      "latitude": 49.28661092,
+      "longitude": -123.1248432,
+      "note": ""
+    }
+  ]
+}

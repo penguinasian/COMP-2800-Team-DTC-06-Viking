@@ -42,81 +42,27 @@
         </header>
         
         <main>
-            <form action=#>
-                <label for="Start_Date">Start Date:</label>
-                <label for="End_Date">End Date:</label>
-
-                <input type="date" id="Start_Date" name="Start_Date">
-                <input type="date" id="End_Date" name="End_Date">
-
+            <form action="#" onsubmit="getReservationData();return false">
+                <label for="start_date">Start Date:</label>
+                <label for="end_date">Duration (weeks):</label>
+                <label></label>
+                <input type="date" id="start_date" required name="start_date">
+                <div id="end_date">
+                    <div class="value-button" id="decrease" onclick="decreaseValue()">-</div>
+                    <input type="number" id="duration" onsubmit="return false" required value="2" min="2" max="53">
+                    <div class="value-button" id="increase" onclick="increaseValue()">+</div>
+                </div>
+                <input id="find" type="submit" value="Find" onsubmit="return false" onclick="getReservationData()">
                 <!-- <input type="submit"> -->
             </form>
 
-            <div class='map sticky-top'>
-                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=15olpAF0QbgPiGBborN9vuifpsFrOfRpL" ></iframe>
-            </div>
-    
-            <div class="result">
-                <table class="tg">
-                    <thead>
-                        <tr>
-                            <th class="listNumber" rowspan="2"># 1</th>
-                            <th class="titles">Address</th>
-                            <th class="values">Lorem 1338920, Vancouver</th>
-                            <th class="reserve" rowspan="2"><button type="button" onclick="document.location.href='./parking_reservation.html'">Reserve</button></th>
-                        </tr>
-                        <tr>
-                            <td class="titles">Available Slots</td>
-                            <td class="values">16 / 32</td>
-                        </tr>
-                    </thead>
-                </table>
-    
-    
-                <table class="tg">
-                    <thead>
-                        <tr>
-                            <th class="listNumber" rowspan="2"># 2</th>
-                            <th class="titles">Address</th>
-                            <th class="values">1338 Cambie, Vancouver</th>
-                            <th class="reserve" rowspan="2"><button type="button" onclick="document.location.href='./parking_reservation.html'">Reserve</button></th>
-                        </tr>
-                        <tr>
-                            <td class="titles">Available Slots</td>
-                            <td class="values">1 / 20</td>
-                        </tr>
-                    </thead>
-                </table>
-    
-                <table class="tg">
-                    <thead>
-                        <tr>
-                            <th class="listNumber" rowspan="2"># 3</th>
-                            <th class="titles">Address</th>
-                            <th class="values">130 Lorem , BC, Vancouver</th>
-                            <th class="reserve" rowspan="2"><button type="button" onclick="document.location.href='./parking_reservation.html'">Reserve</button></th>
-                        </tr>
-                        <tr>
-                            <td class="titles">Available Slots</td>
-                            <td class="values">11 / 20</td>
-                        </tr>
-                    </thead>
-                </table>
-    
-                <table class="tg">
-                    <thead>
-                        <tr>
-                            <th class="listNumber" rowspan="2"># 4</th>
-                            <th class="titles">Address</th>
-                            <th class="values">38920 Main, Vancouver</th>
-                            <th class="reserve" rowspan="2"><button type="button" onclick="document.location.href='./parking_reservation.html'">Reserve</button></th>
-                        </tr>
-                        <tr>
-                            <td class="titles">Available Slots</td>
-                            <td class="values">30 / 30</td>
-                        </tr>
-                    </thead>
-                </table>
+            <div id="map" class='map sticky-top'></div>
+            <div class="mapLegend">
+                <p>Map Legend</p>
+                <p class="parkade_high">High</p>
+                <p class="parkade_medium">Medium</p>
+                <p class="parkade_low">Low</p>
+                <p class="parkade_full">Full</p>
             </div>
 
         </main>
@@ -161,11 +107,18 @@
         <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
         <script src="./javascripts/firebase_api.js"></script>
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_6aXL_PACxTA0BNnH3t97Z7jhTw3LbxI&callback=initMap&libraries=&v=weekly"
+        async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
         <!--------------------------------------------------------------------->
         <!-- JS files: Your own JavaScript functions included here    -->
         <!--------------------------------------------------------------------->
 
-        <script src="./javascripts/user_login.js"></script>
+        <script src="./javascripts/parking_lockers.js"></script>
         
 
         
