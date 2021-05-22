@@ -35,7 +35,7 @@ function AddNextClickPagination(user) {
                         }
                         query.forEach(function (doc) {
 
-                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                            add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                                 , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
                         })
                     })
@@ -47,7 +47,7 @@ function AddNextClickPagination(user) {
 
 }
 
-function addFilterListenerForLength() {
+function addFilterListenerForLength(user) {
     var e = document.getElementById("lengthOption")
 
     var lengthDropDown = document.getElementById("lengthOption");
@@ -61,7 +61,7 @@ function addFilterListenerForLength() {
                 .then(function (query) {
                     document.getElementsByClassName("routesImage")[0].innerHTML = "";
                     query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                             , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
 
                     })
@@ -74,7 +74,7 @@ function addFilterListenerForLength() {
                 .then(function (query) {
                     document.getElementsByClassName("routesImage")[0].innerHTML = "";
                     query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                             , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
 
                     })
@@ -87,7 +87,7 @@ function addFilterListenerForLength() {
                 .then(function (query) {
                     document.getElementsByClassName("routesImage")[0].innerHTML = "";
                     query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                             , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
 
                     })
@@ -100,7 +100,7 @@ function addFilterListenerForLength() {
                 .then(function (query) {
                     document.getElementsByClassName("routesImage")[0].innerHTML = "";
                     query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                             , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
 
                     })
@@ -113,7 +113,7 @@ function addFilterListenerForLength() {
                 .then(function (query) {
                     document.getElementsByClassName("routesImage")[0].innerHTML = "";
                     query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                             , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
 
                     })
@@ -142,7 +142,7 @@ function readPopularRoutes(user) {
                         //query the documents inside popular_routes collection
                         query.forEach(function (doc) {
 
-                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                            add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                                 , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
                         })
                     })
@@ -185,7 +185,7 @@ async function AddPreviousClickPagination(user) {
                         }
                         query.forEach(function (doc) {
 
-                            add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                            add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                                 , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
                         })
                     })
@@ -197,7 +197,7 @@ async function AddPreviousClickPagination(user) {
 
 }
 
-function addFilterListenerForPopularity() {
+function addFilterListenerForPopularity(user) {
     var e = document.getElementById("popularity")
 
     var lengthDropDown = document.getElementById("popularity");
@@ -211,7 +211,7 @@ function addFilterListenerForPopularity() {
                 .then(function (query) {
                     document.getElementsByClassName("routesImage")[0].innerHTML = "";
                     query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                             , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
 
                     })
@@ -224,7 +224,7 @@ function addFilterListenerForPopularity() {
                 .then(function (query) {
                     document.getElementsByClassName("routesImage")[0].innerHTML = "";
                     query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                             , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
 
                     })
@@ -237,7 +237,7 @@ function addFilterListenerForPopularity() {
                 .then(function (query) {
                     document.getElementsByClassName("routesImage")[0].innerHTML = "";
                     query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                             , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
 
                     })
@@ -250,7 +250,7 @@ function addFilterListenerForPopularity() {
                 .then(function (query) {
                     document.getElementsByClassName("routesImage")[0].innerHTML = "";
                     query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                             , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
 
                     })
@@ -261,11 +261,8 @@ function addFilterListenerForPopularity() {
 
 }
 
-function addLikeListener(id, likes_number, like_div) {
-    firebase.auth().onAuthStateChanged(async function (user) {
-        var user = firebase.auth().currentUser;
+async function addLikeListener(id, user, likes_number, like_div) {
         var uid = user.uid;
-
         let route_name = like_div.parentNode.getElementsByClassName("routesNameFont")[0].innerText
         let userEntity = await db.collection("users").doc(uid).get()
         let liked_routes_array = userEntity.data().liked_routes
@@ -333,8 +330,6 @@ function addLikeListener(id, likes_number, like_div) {
             }
         })
 
-
-    })
     // get the like count from database
     db.collection("popular_routes")
         .doc(id)
@@ -344,7 +339,7 @@ function addLikeListener(id, likes_number, like_div) {
 }
 
 
-function addFilterListenerForLevel() {
+function addFilterListenerForLevel(user) {
     var e = document.getElementById("levelOption")
 
     var levelDropDown = document.getElementById("levelOption");
@@ -359,7 +354,7 @@ function addFilterListenerForLevel() {
                     document.getElementsByClassName("routesImage")[0].innerHTML = "";
                     query.forEach(function (doc) {
 
-                        add_popularRoutes(doc.id, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                             , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
 
 
@@ -369,7 +364,7 @@ function addFilterListenerForLevel() {
 
 }
 
-function add_popularRoutes(id, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH, ROUTE_DIFFICULTY, ROUTE_POPULARITY) {
+function add_popularRoutes(id, user, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH, ROUTE_DIFFICULTY, ROUTE_POPULARITY) {
 
     //create an individule div for each routes inside parent div  
     let individule_routes = document.createElement("div")
@@ -419,7 +414,7 @@ function add_popularRoutes(id, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH, ROUTE
 
 
     //attache event listener to the thumb
-    addLikeListener(id, likes_number, like_div)
+    addLikeListener(id, user, likes_number, like_div)
 
 
     //append child divs to parent div
@@ -442,11 +437,11 @@ firebase.auth().onAuthStateChanged(function (user) {
 
     AddPreviousClickPagination(user);
 
-    addFilterListenerForLevel();
+    addFilterListenerForLevel(user);
 
-    addFilterListenerForLength();
+    addFilterListenerForLength(user);
 
-    addFilterListenerForPopularity();
+    addFilterListenerForPopularity(user);
 })
 
 
