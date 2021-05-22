@@ -181,66 +181,58 @@
   }
   @-webkit-keyframes riding {
     from {
-      transform: translateX(-250%);
+      transform: translateX(-100vw);
     }
     to {
-      transform: translateX(250%);
+      transform: translateX(200vw);
     }
   }
   @-moz-keyframes riding {
     from {
-      transform: translateX(-250%);
+      transform: translateX(-100vw);
     }
     to {
-      transform: translateX(250%);
+      transform: translateX(200vw);
     }
   }
   @-ms-keyframes riding {
     from {
-      transform: translateX(-250%);
+      transform: translateX(-100vw);
     }
     to {
-      transform: translateX(250%);
+      transform: translateX(200vw);
     }
   }
   @keyframes riding {
     from {
-      transform: translateX(-250%);
+      transform: translateX(-100vw);
     }
     to {
-      transform: translateX(250%);
+      transform: translateX(200vw);
     }
   }
-  html,
-  body {
-    max-width: 100%;
-    overflow: hidden;
-    background: #fff;
-  }
+
   
   .bike {
-    width: 600px;
-    height: 400px;
+    width: 30vh;
+    height: 20vh;
     margin: auto;
-    margin-top: 368px;
+    margin-top: 35vh;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     -webkit-animation-name: riding;
-    -webkit-animation-duration: 4s;
+    -webkit-animation-duration: 8s;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
     -moz-animation-name: riding;
-    -moz-animation-duration: 4s;
+    -moz-animation-duration: 8s;
     -moz-animation-timing-function: linear;
     -moz-animation-iteration-count: infinite;
     -o-animation-name: riding;
-    -o-animation-duration: 4s;
+    -o-animation-duration: 8s;
     -o-animation-timing-function: linear;
     -o-animation-iteration-count: infinite;
     animation-name: riding;
-    animation-duration: 4s;
+    animation-duration: 8s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
   }
@@ -615,19 +607,19 @@
   
   .bike-two {
     -webkit-animation-name: riding;
-    -webkit-animation-duration: 3s;
+    -webkit-animation-duration: 4s;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
     -moz-animation-name: riding;
-    -moz-animation-duration: 3s;
+    -moz-animation-duration: 4s;
     -moz-animation-timing-function: linear;
     -moz-animation-iteration-count: infinite;
     -o-animation-name: riding;
-    -o-animation-duration: 3s;
+    -o-animation-duration: 4s;
     -o-animation-timing-function: linear;
     -o-animation-iteration-count: infinite;
     animation-name: riding;
-    animation-duration: 3s;
+    animation-duration: 4s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
   }
