@@ -36,33 +36,39 @@ main {
 
 main p {
     color:white !important;
-    font-size:3.5vw !important;
-    line-height: 3vh !important;
+    font-size: 1.7vh !important;
+    line-height: 2.5vh !important;
     font-family: 'Times New Roman', Times, serif;
+    
 }
 
 main p a {
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold !important;
-    color: rgb(35, 35, 97) !important;
+    color:#437ecc !important;
 }
 
 
 /* Active page icon style -classes: parking, services, routes, info, profile*/
 
 .signIn {
-    margin-top: 15vh;
+    margin-top: 2vh;
     text-align: center;
 }
 
 .btn {
-    color:#23335e !important;
+    color:#244877 !important;
     font-weight: bold !important;
     font-size: 3vh !important;
     text-align: center;
     opacity: 100% !important;
 }
 
+li button, span {
+    font-size: 1.5vh !important;
+    max-width: 25vh !important;
+    min-height: 50px !important;
+}
 
 /* Active page style.*/
 
