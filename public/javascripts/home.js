@@ -15,7 +15,7 @@ let clickCount = 1;
                         })
                 } else {
                     // No user is signed in.
-                    //window.location.href="https://viking-eaee3.web.app/login.html";
+                    window.location.href="https://viking-eaee3.web.app/login.html";
                 }
             });
         }

@@ -44,15 +44,15 @@
 
     <!-- All elements go into main-->
     <main>
-        <form action=#>
+        <!-- <form action=#>
             <label for="Start_Date">Start Date:</label>
             <label for="End_Date">End Date:</label>
 
             <input type="date" id="Start_Date" name="Start_Date">
             <input type="date" id="End_Date" name="End_Date">
 
-            <!-- <input type="submit"> -->
-        </form>
+            <input type="submit">
+        </form> -->
 
         <h3>Availability</h3>
         <div class="result">
@@ -60,20 +60,22 @@
                 <thead>
                     <tr>
                         <th class="field">Address</th>
-                        <td class="value">Lorem 1338920, Vancouver</td>
+                        <td id="address" class="value">Lorem 1338920, Vancouver</td>
                     </tr>
                     <tr>
                         <th class="field">Available Slots</th>
-                        <td class="slots">16 / 32</td>
+                        <td id="slots" class="slots">16 / 32</td>
                     </tr>
                 </thead>
             </table>
         </div>
 
         <div class=lockerNumber>
-            <form action="#">
+            <form action="#" id = "bikes_number">
                 <label for="quantity">Number of bike lockers</label>
-                <input type="number" id="quantity" name="quantity" min="1" max="99">
+                <div class="value-button" id="decrease" onclick="decreaseValue()">-</div>
+                <input type="number" id="quantity" name="quantity" required value="1" min="1" max="20">
+                <div class="value-button" id="increase" onclick="increaseValue()">+</div>
             </form>
         </div>
 
@@ -83,27 +85,27 @@
                 <thead>
                     <tr>
                         <th class="field">Address</th>
-                        <td class="value">Lorem 1338920, Vancouver</td>
+                        <td id="address2" class="value">Lorem 1338920, Vancouver</td>
                     </tr>
                     <tr>
                         <th class="field">Check-in</th>
-                        <td class="slots">2021-05-01</td>
+                        <td id="start" class="slots">2021-05-01</td>
                     </tr>
                     <tr>
                         <th class="field">Check-out</th>
-                        <td class="slots">2021-05-31</td>
+                        <td id="end" class="slots">2021-05-31</td>
                     </tr>
                     <tr>
                         <th class="field">Length</th>
-                        <td class="slots">3 months</td>
+                        <td id="length" class="slots">3 months</td>
                     </tr>
                     <tr>
                         <th class="field">Qty</th>
-                        <td class="slots">2</td>
+                        <td id="qty" class="slots">2</td>
                     </tr>
                     <tr>
                         <th class="field">Unit Price</th>
-                        <td class="slots">a bike locker for $ 10/month</td>
+                        <td class="slots">a bike locker for $2.5 / week</td>
                     </tr>
                 </thead>
             </table>
@@ -112,7 +114,7 @@
             <thead>
                 <tr id="total">
                     <td class="field">Total Price</td>
-                    <td class="slots">$ 60</td>
+                    <td id="totalPrice" class="slots">$ 60</td>
                 </tr>
             </thead>
         </table>
@@ -148,7 +150,7 @@
                 <p class="footer">Info</p>
             </div>
             <div class="bottomIcon profile">
-                <button class="btn iconButton" href="#"><i class="fas fa-user-circle profile"></i></button>
+                <button class="btn iconButton" onclick="document.location='./profile.html'"><i class="fas fa-user-circle profile"></i></button>
                 <p class="footer">Profile</p>
             </div>
         </div>
@@ -170,7 +172,6 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
 
-    <script src="./javascripts/user_login.js"></script>
     <script src='./javascripts/parking_reservation.js'></script>
 </body>
 
