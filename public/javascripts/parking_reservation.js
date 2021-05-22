@@ -27,6 +27,12 @@ console.log("boxID " + boxId);
 console.log("today " + currentDate);
 
 
+firebase.auth().onAuthStateChanged(function (user) {
+    if  (!user) {
+        window.location.href="https://viking-eaee3.web.app/login.html";
+    } 
+});
+
 
 
 function increaseValue() {
