@@ -1,3 +1,11 @@
+firebase.auth().onAuthStateChanged(function (user) {
+    if  (!user) {
+        window.location.href="https://viking-eaee3.web.app/login.html";
+    } 
+});
+
+
+
 const chargePerWeek = 2.5;
 
 /* This part of code is partially copied from https://codepen.io/mtbroomell/pen/yNwwdv and modified based on this situation: */
@@ -27,11 +35,7 @@ console.log("boxID " + boxId);
 console.log("today " + currentDate);
 
 
-firebase.auth().onAuthStateChanged(function (user) {
-    if  (!user) {
-        window.location.href="https://viking-eaee3.web.app/login.html";
-    } 
-});
+
 
 
 
