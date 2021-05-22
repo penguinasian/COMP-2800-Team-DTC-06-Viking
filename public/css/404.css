@@ -1,31 +1,39 @@
 body {
-    margin: 0;
-}
-header {
-    background-color: #4C744C;
-    height: 1fr;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    margin: 0em;
+    grid-template-areas:
+    "header"
+    "main"
 }
 
+header {
+    grid-area: header;
+    background-color:#4C744C;
+}
+  
 .logoName {
     margin: 0.5vh auto;
     text-align: center;
     height: 9vh;
 }
+  
 
 header img {
     margin: 0px;
     height: 9vh;
 }
 
+.firstPage {
+    grid-area: main;
+}
+
 #error-wrapper {
     position: absolute;
     color: white;
     width: 100%;
-    top: 35%;
+    top: 15%;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -33,18 +41,17 @@ header img {
 }
 
 #error-div {
-    z-index: 100;
     background-color: #4C744C;
     padding: 2vw;
 }
 
 #not-found-title {
-    font-size: 25vw;
+    font-size: 5vh;
     margin: 0;
 }
 
 .not-found-text {
-    font-size: 4vw;
+    font-size: 2vh;
 }
 
 #back-click, #home-click {
