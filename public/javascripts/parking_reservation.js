@@ -142,14 +142,20 @@ document.getElementById('pay').addEventListener('click', function (event) {
             // User is signed in.
             console.log("Success")
             let user = firebase.auth().currentUser;
-            let uid = user.uid;
+            let userID;
+
+            db.collection("users").doc(user.uid)
+            .get()
+            .then(function (doc) {
+                userID = doc.data().USER_ID;
+            });
 
             console.log(uid)
             for (let i = 1; i <= quantity; i++) {
                 db.collection("reservation").add({
                     LOCKER_ID: LockerId,
                     BOX_ID: boxIdArray[i],
-                    USER_ID: uid,
+                    USER_ID: userID,
                     RES_BEGIN: startDate,
                     RES_DURATION_WEEKS: weeks,
                     RES_PAYMENT_DATE: currentDate,
