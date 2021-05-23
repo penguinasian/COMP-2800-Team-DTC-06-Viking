@@ -1,8 +1,8 @@
-// firebase.auth().onAuthStateChanged(function (user) {
-//     if  (!user) {
-//         window.location.href="https://viking-eaee3.web.app/login.html";
-//     } 
-// });
+firebase.auth().onAuthStateChanged(function (user) {
+    if  (!user) {
+        window.location.href="https://viking-eaee3.web.app/login.html";
+    } 
+});
 
 
 
@@ -137,35 +137,35 @@ document.getElementById('pay').addEventListener('click', function (event) {
     /* needs to be deleted */
 
 
-    // firebase.auth().onAuthStateChanged(function (user) {
-    //     if (user) {
-    //         // User is signed in.
-    //         console.log("Success")
-    //         let user = firebase.auth().currentUser;
-    //         let uid = user.uid;
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+            console.log("Success")
+            let user = firebase.auth().currentUser;
+            let uid = user.uid;
 
-    //         console.log(uid)
-    //         for (let i = 1; i <= quantity; i++) {
-    //             db.collection("reservation").add({
-    //                 LOCKER_ID: LockerId,
-    //                 BOX_ID: boxIdArray[i],
-    //                 USER_ID: uid,
-    //                 RES_BEGIN: startDate,
-    //                 RES_DURATION_WEEKS: weeks,
-    //                 RES_PAYMENT_DATE: currentDate,
-    //                 RES_PAYMENT_AMOUNT: priceForEachBox
-    //             });
-    //         }
+            console.log(uid)
+            for (let i = 1; i <= quantity; i++) {
+                db.collection("reservation").add({
+                    LOCKER_ID: LockerId,
+                    BOX_ID: boxIdArray[i],
+                    USER_ID: uid,
+                    RES_BEGIN: startDate,
+                    RES_DURATION_WEEKS: weeks,
+                    RES_PAYMENT_DATE: currentDate,
+                    RES_PAYMENT_AMOUNT: priceForEachBox
+                });
+            }
             
 
-    //         console.log('Updated')
+            console.log('Updated')
 
-    //     } else {
-    //         // No user is signed in.
-    //         window.location.href="https://viking-eaee3.web.app/login.html";
-    //         console.log("not log-in")
-    //     }
-    // });
+        } else {
+            // No user is signed in.
+            window.location.href="https://viking-eaee3.web.app/login.html";
+            console.log("not log-in")
+        }
+    });
 });
 
 

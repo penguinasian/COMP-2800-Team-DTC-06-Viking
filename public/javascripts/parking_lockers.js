@@ -24,11 +24,11 @@ const initMapLat = 49.260909127728326;
 const initMapLng = -123.08353272449504;
 
 
-// firebase.auth().onAuthStateChanged(function (user) {
-//   if  (!user) {
-//       window.location.href="https://viking-eaee3.web.app/login.html";
-//   } 
-// });
+firebase.auth().onAuthStateChanged(function (user) {
+  if  (!user) {
+      window.location.href="https://viking-eaee3.web.app/login.html";
+  } 
+});
 
 
 /* This part of code is partially copied from https://codepen.io/mtbroomell/pen/yNwwdv and modified based on this situation: */
