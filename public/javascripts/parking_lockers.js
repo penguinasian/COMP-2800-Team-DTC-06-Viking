@@ -24,11 +24,11 @@ const initMapLat = 49.260909127728326;
 const initMapLng = -123.08353272449504;
 
 
-firebase.auth().onAuthStateChanged(function (user) {
-  if  (!user) {
-      window.location.href="https://viking-eaee3.web.app/login.html";
-  } 
-});
+// firebase.auth().onAuthStateChanged(function (user) {
+//   if  (!user) {
+//       window.location.href="https://viking-eaee3.web.app/login.html";
+//   } 
+// });
 
 
 /* This part of code is partially copied from https://codepen.io/mtbroomell/pen/yNwwdv and modified based on this situation: */
@@ -60,71 +60,53 @@ function initMap() {
 
 /* read data from firestore reservation table to generate a list of all reserved boxes in the specified period */
 function getReservationData() {
-  let start = document.getElementById("start_date").value;
-  let weeks = parseInt(document.getElementById("duration").value);
-  let req_begins = new Date(start);
-  let req_ends = new Date(start);
-  let req_days = weeks * 7;
-  req_ends.setDate(req_ends.getDate() + req_days);
-  console.log(req_ends);
+  $(document).ready(function(){
+    
+    let start = document.getElementById("start_date").value;
+    let weeks = parseFloat(document.getElementById("duration").value);
+    let today = new Date();
+    let req_begins = new Date(start);
+    let req_ends = new Date(start);
 
-  db.collection("reservation")
-    .get()
-    .then(function (query) {
-        let fullBoxes = [];
-
-        /* creates an array of all reserved spots with intersection to the chosen date range */
-        let count = 0;
-        query.forEach(function (doc) {
-          let record = []
-          let boxID = doc.data().BOX_ID;
-          let lockerID = doc.data().LOCKER_ID;
-          let resBegin = doc.data().RES_BEGIN;
-          let numOfWeeks = doc.data().RES_DURATION_WEEKS;
-          let numOfDays = numOfWeeks * 7;
-          let begin = new Date(resBegin);
-          let end = new Date(resBegin);
-          end.setDate(end.getDate() + numOfDays);
+    if (start && (req_begins >= today) && (weeks >= 2 && weeks <= 53) && Number.isInteger(weeks)) {
+      let req_days = weeks * 7;
+      req_ends.setDate(req_ends.getDate() + req_days);
+      console.log(req_begins);
+      console.log(req_ends);
+    
+      db.collection("reservation")
+        .get()
+        .then(function (query) {
+            let fullBoxes = [];
+    
+            /* creates an array of all reserved spots with intersection to the chosen date range */
+            let count = 0;
+            query.forEach(function (doc) {
+              let record = [];
+              let boxID = doc.data().BOX_ID;
+              let lockerID = doc.data().LOCKER_ID;
+              let resBegin = doc.data().RES_BEGIN;
+              let numOfWeeks = doc.data().RES_DURATION_WEEKS;
+              let numOfDays = numOfWeeks * 7;
+              let begin = new Date(resBegin);
+              let end = new Date(resBegin);
+              end.setDate(end.getDate() + numOfDays + 1); //it can be reserved again 24 hours later
+                  
               
-              
-          if (!(begin > req_ends) && !(end < req_begins)) {
-            count++;
-            record.push(lockerID, boxID);
-            fullBoxes.push(record);
-          }    
-        })
-      
-      // console.log(count);
-      // console.log(fullBoxes);
-      
-      // //hard coded: needs to be changed later
-      // let totalLockersBoxes = [0,0,0,0,0,0];
-      // let lockersBoxes = [[1,1], [1,2], [1,3], [1,4], [1,5], [2,1], [2,2], [2,3], [2,4], [2,5], [3,1], [3,2], [3,3], [3,4], [3,5], [4,1], [4,2], [4,3], [4,4], [4,5], [5,1], [5,2], [5,3], [5,4], [5,5], [6,1], [6,2], [6,3], [6,4], [6,5]];
-      // let availableLockersBoxes = lockersBoxes;
-      // let test = [1,2];
-      
-      // for (let i = 0; i < fullBoxes.length; i ++) {
-      //   var j = 0;
-      //   while (availableLockersBoxes[j]) {
-      //     if ((availableLockersBoxes[j][0] == fullBoxes[i][0]) && (availableLockersBoxes[j][1] == fullBoxes[i][1])) {
-      //       availableLockersBoxes.splice(j, 1);
-      //     }
-      //     else {
-            
-      //       j ++;
-      //     }
-      //   }
-      // }
-      // console.log(availableLockersBoxes);
-
-      //calculating the number of avalable boxes in each locker:
-      // for(let i = 0; i < availableLockersBoxes.length; i++) {
-      //   totalLockersBoxes[availableLockersBoxes[i][0]-1] += 1;
-      // }
-      // console.log(totalLockersBoxes);
-      updateMap(fullBoxes, req_begins, req_ends, weeks);
-  })
+              if (!(begin > req_ends) && !(end < req_begins)) {
+                count++;
+                record.push(lockerID, boxID);
+                fullBoxes.push(record);
+              }    
+            })
+          updateMap(fullBoxes, req_begins, req_ends, weeks);
+      })
+    }
+  });
 }
+
+
+
 
 
 /* read data from Firestore and update map*/
@@ -162,9 +144,17 @@ function updateMap(fullBoxes, req_begins, req_ends, weeks) {
             // e.g. lockerBoxes = [[1,1], [1,3]]
               
             // available is the number of empty boxes in each locker (inside forEach loop)
-            let available = lockerBoxes.length;
+              let available = lockerBoxes.length;
               let availablity = available / numOfBoxes;
-              console.log(lockerID, availablity, lockerBoxes);
+              console.log(lockerID, lockerBoxes);
+
+              let boxIdArray = [];
+              for (let index = 0; index < available; index++) {
+                boxIdArray.push(lockerBoxes[index][1]);
+              }
+              let boxIdString = boxIdArray.join();
+              console.log("joined: " + boxIdString);
+
 
               if (availablity >= 0.6) {
                  availablity = "locker_high"
@@ -176,17 +166,17 @@ function updateMap(fullBoxes, req_begins, req_ends, weeks) {
                   availablity = "locker_full"
               }
 
+              
               let infoContent = `<h4>${doc.data().name}</h4>
               <b>Address: </b> <br> ${doc.data().address} <br> 
               <br><h5 class=${availablity}>Parking Slots: ${available} / ${numOfBoxes} </h5>
-              <a href="parking_reservation.html?array=${doc.data().address}|${req_begins}|${req_ends}|${available}|${numOfBoxes}|${weeks}|${lockerID}|${lockerBoxes[0]}">
+              <a href="parking_reservation.html?array=${doc.data().address}|${req_begins}|${req_ends}|${available}|${numOfBoxes}|${weeks}|${lockerID}|${boxIdString}">
               <p class="reservation">Reservation</p></a>
               `;
-              // address, check-in, check-out, available, total_slots, weeks, locker_id, box_id
+              // address, check-in, check-out, available, total_slots, weeks, locker_id, box_idString
               let locker = [infoContent, doc.data().latitude, doc.data().longitude, available, numOfBoxes, availablity];
               locations.push(locker)
            })
-
           addMarkers(locations)
       })
 }
@@ -211,7 +201,6 @@ function addMarkers(locations) {
               infowindow.open(map, marker);
           }
       })(marker, i));
-
   }
 }
 
@@ -222,5 +211,4 @@ function getCurrentMap() {
   console.log(zoom);
   console.log(centerObject.lat());
   console.log(centerObject.lng());
-
 }

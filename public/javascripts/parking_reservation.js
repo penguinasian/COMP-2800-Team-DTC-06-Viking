@@ -1,8 +1,8 @@
-firebase.auth().onAuthStateChanged(function (user) {
-    if  (!user) {
-        window.location.href="https://viking-eaee3.web.app/login.html";
-    } 
-});
+// firebase.auth().onAuthStateChanged(function (user) {
+//     if  (!user) {
+//         window.location.href="https://viking-eaee3.web.app/login.html";
+//     } 
+// });
 
 
 
@@ -21,7 +21,8 @@ let available = parseInt(infoArray[3]);
 let numOfBoxes = parseInt(infoArray[4]);
 let weeks = parseInt(infoArray[5]);
 let LockerId = parseInt(infoArray[6]);
-let boxId = parseInt(infoArray[7]);
+let boxIdString = infoArray[7];
+let boxIdArray = boxIdString.split(",");
 
 let startDate = req_begins.toISOString().substring(0, 10);
 let endDate = req_ends.toISOString().substring(0, 10);
@@ -31,7 +32,7 @@ console.log(startDate);
 console.log(req_ends);
 console.log(available);
 console.log("LockerID " + LockerId);
-console.log("boxID " + boxId);
+console.log(boxIdArray);
 console.log("today " + currentDate);
 
 
@@ -42,11 +43,10 @@ console.log("today " + currentDate);
 function increaseValue() {
     var value = parseInt(document.getElementById('quantity').value, 10);
     value = isNaN(value) ? 0 : value;
-    value > 19 ? value = 19 : '';
+    value > available-1 ? value = available-1 : '';
     value++;
     document.getElementById('quantity').value = value;
-    updateInformation()
-
+    updateInformation();
 }
 
 function decreaseValue() {
@@ -55,7 +55,7 @@ function decreaseValue() {
     value < 2 ? value = 2 : '';
     value--;
     document.getElementById('quantity').value = value;
-    updateInformation()
+    updateInformation();
 }
 
 // summary toggle button(show, hide)
@@ -73,7 +73,7 @@ document.getElementById('summary').addEventListener('click', function (event) {
 function updateInformation() {
 
     let quantity = parseInt(document.getElementById("quantity").value);
-    let totalPrice = chargePerWeek * quantity * weeks
+    let totalPrice = chargePerWeek * quantity * weeks;
 
 
     $('#address').text(address);
@@ -106,15 +106,23 @@ function testUserSign() {
 
 document.getElementById('pay').addEventListener('click', function (event) {
     
-    let totalPrice =  parseInt(document.getElementById("totalPrice").textContent.substring(2,5))
+    let priceForEachBox =  chargePerWeek * weeks;
+    let quantity = parseInt(document.getElementById("quantity").value);
     
-    console.log('button clicked')
-    console.log('LocekrId ' + LockerId);
-    console.log('BOX_ID ' + boxId);
-    console.log('RES_BEGIN ' + startDate);
-    console.log('RES_DURATION_WEEKS ' + weeks);
-    console.log('RES_PAYMENT_DATE ' + currentDate);
-    console.log('RES_PAYMENT_AMOUNT ' + totalPrice);
+    console.log('button clicked');
+    console.log('quantity ' + quantity);
+    for (let i = 0; i < quantity; i++) {
+        console.log('LOCKER_ID:' + LockerId);
+        console.log('BOX_ID:' + boxIdArray[i]);
+        console.log('RES_BEGIN:' + startDate);
+        console.log('RES_DURATION_WEEKS:' + weeks);
+        console.log('RES_PAYMENT_DATE:' + currentDate);
+        console.log('RES_PAYMENT_AMOUNT:' + priceForEachBox);
+    }
+    
+
+
+    
 
     /* Tested - good */
     // db.collection("reservation").add({
@@ -129,33 +137,35 @@ document.getElementById('pay').addEventListener('click', function (event) {
     /* needs to be deleted */
 
 
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            // User is signed in.
-            console.log("Success")
-            let user = firebase.auth().currentUser;
-            let uid = user.uid;
+    // firebase.auth().onAuthStateChanged(function (user) {
+    //     if (user) {
+    //         // User is signed in.
+    //         console.log("Success")
+    //         let user = firebase.auth().currentUser;
+    //         let uid = user.uid;
 
-            console.log(uid)
+    //         console.log(uid)
+    //         for (let i = 1; i <= quantity; i++) {
+    //             db.collection("reservation").add({
+    //                 LOCKER_ID: LockerId,
+    //                 BOX_ID: boxIdArray[i],
+    //                 USER_ID: uid,
+    //                 RES_BEGIN: startDate,
+    //                 RES_DURATION_WEEKS: weeks,
+    //                 RES_PAYMENT_DATE: currentDate,
+    //                 RES_PAYMENT_AMOUNT: priceForEachBox
+    //             });
+    //         }
+            
 
-            db.collection("reservation").add({
-                USER_ID: uid,
-                LOCKER_ID: LockerId,
-                BOX_ID: boxId,
-                RES_BEGIN: startDate,
-                RES_DURATION_WEEKS: weeks,
-                RES_PAYMENT_DATE: currentDate,
-                RES_PAYMENT_AMOUNT: totalPrice
-            });
+    //         console.log('Updated')
 
-            console.log('Updated')
-
-        } else {
-            // No user is signed in.
-            window.location.href="https://viking-eaee3.web.app/login.html";
-            console.log("not log-in")
-        }
-    });
+    //     } else {
+    //         // No user is signed in.
+    //         window.location.href="https://viking-eaee3.web.app/login.html";
+    //         console.log("not log-in")
+    //     }
+    // });
 });
 
 
