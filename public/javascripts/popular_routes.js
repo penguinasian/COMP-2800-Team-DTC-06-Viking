@@ -1,244 +1,151 @@
 async function AddNextClickPagination(user) {
 
-
     //get the "next" button
     paginationButton = document.getElementById("nextButton");
-    paginationButton.addEventListener("click", function () {
+    paginationButton.addEventListener("click", async function () {
         console.log("button was clicked");
 
         //reset the "previousButton" class to empty string. So that the "previous button" shows on the other pages other than the first page
         document.getElementById("previousButton").className = ""
 
         // get the next 4 routes by using orderBy and startAfter. Note: pageEnd has been reset to the the 4th route of previous page
-        db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").startAfter(pageEnd).limit(4)
-            .get()
-            .then(function (query) {
-                // stop the function when there is no routes left, stop the function right away
-                if (!query.size) {
-                    return;
-                }
+        let query = await db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").startAfter(pageEnd).limit(4).get()
 
-                //reset the "pageStart" to the first route of the current page, "pageEnd" to the last route of the current page
-                pageStart = query.docs[0]
-                pageEnd = query.docs[3]
+        // stop the function when there is no routes left, stop the function right away
+        if (!query.size) {
+            return;
+        }
 
-                //clear everything on the page first, otherwise, the next 4 routes will be added on top of the existing one
-                document.getElementsByClassName("routesImage")[0].innerHTML = "";
+        //reset the "pageStart" to the first route of the current page, "pageEnd" to the last route of the current page
+        pageStart = query.docs[0]
+        pageEnd = query.docs[3]
 
-                //since we are using query.docs[3] to set the "pageEnd", if we couldn't have a fourth item, then means this is the last page
-                if (!pageEnd) {
+        //clear everything on the page first, otherwise, the next 4 routes will be added on top of the existing one
+        document.getElementsByClassName("routesImage")[0].innerHTML = "";
 
-                    //last page, hide the next button
-                    nextButton = document.getElementById("nextButton");
-                    nextButton.className = "hidden";
-                }
-                query.forEach(function (doc) {
+        //since we are using query.docs[3] to set the "pageEnd", if we couldn't have a fourth item, then means this is the last page
+        if (!pageEnd) {
 
-                    add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                        , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-                })
-            })
+            //last page, hide the next button
+            nextButton = document.getElementById("nextButton");
+            nextButton.className = "hidden";
+        }
+        query.forEach(function (doc) {
 
+            add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+        })
     })
-
 }
 
-function addFilterListenerForLength(user) {
+async function addFilterListenerForLength(user) {
     var e = document.getElementById("lengthOption")
 
     var lengthDropDown = document.getElementById("lengthOption");
 
-    lengthDropDown.addEventListener("change", function () {
+    lengthDropDown.addEventListener("change", async function () {
         var text = e.value
         console.log("button was clicked")
         if (text == "0") {
-            db.collection("popular_routes")
-                .get()
-                .then(function (query) {
-                    document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                    query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+            let query = await db.collection("popular_routes").get()
 
-                    })
-                })
-        }
-
-        if (text == "1") {
-            db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 10)
-                .get()
-                .then(function (query) {
-                    document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                    query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-
-                    })
-                })
-        }
-
-        if (text == "2") {
-            db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 20).where("ROUTE_LENGTH", ">", 10)
-                .get()
-                .then(function (query) {
-                    document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                    query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-
-                    })
-                })
-        }
-
-        if (text == "3") {
-            db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 30).where("ROUTE_LENGTH", ">", 20)
-                .get()
-                .then(function (query) {
-                    document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                    query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-
-                    })
-                })
-        }
-
-        if (text == "4") {
-            db.collection("popular_routes").where("ROUTE_LENGTH", ">", 30)
-                .get()
-                .then(function (query) {
-                    document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                    query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-
-                    })
-                })
-        }
-
-    })
-
-}
-
-function readPopularRoutes(user) {
-
-    //to get only 4 routes at a time in a page
-    db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").limit(4)
-        .get()
-        .then(function (query) {
-
-            //assign the first document(route) and the last document(route) on a page to variables pageStart and pageEnd
-            pageStart = query.docs[0]
-            pageEnd = query.docs[3]
-
-            //query the documents inside popular_routes collection
+            document.getElementsByClassName("routesImage")[0].innerHTML = "";
             query.forEach(function (doc) {
-
                 add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                     , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
             })
-        })
+        }
 
+        if (text == "1") {
+            let query = await db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 10).get()
+
+
+            document.getElementsByClassName("routesImage")[0].innerHTML = "";
+            query.forEach(function (doc) {
+                add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                    , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+
+            })
+
+        }
+
+        if (text == "2") {
+            let query = await db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 20).where("ROUTE_LENGTH", ">", 10).get()
+
+
+            document.getElementsByClassName("routesImage")[0].innerHTML = "";
+            query.forEach(function (doc) {
+                add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                    , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+            })
+        }
+
+        if (text == "3") {
+            let query = await db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 30).where("ROUTE_LENGTH", ">", 20).get()
+            document.getElementsByClassName("routesImage")[0].innerHTML = "";
+            query.forEach(function (doc) {
+                add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                    , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+
+            })
+
+        }
+
+        if (text == "4") {
+            let query = await db.collection("popular_routes").where("ROUTE_LENGTH", ">", 30).get()
+            document.getElementsByClassName("routesImage")[0].innerHTML = "";
+            query.forEach(function (doc) {
+                add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                    , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+            })
+        }
+    })
+}
+
+async function readPopularRoutes(user) {
+
+    //to get only 4 routes at a time in a page
+    let query = await db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").limit(4).get()
+    //assign the first document(route) and the last document(route) on a page to variables pageStart and pageEnd
+    pageStart = query.docs[0]
+    pageEnd = query.docs[3]
+
+    //query the documents inside popular_routes collection
+    query.forEach(function (doc) {
+
+        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+    })
 }
 
 async function AddPreviousClickPagination(user) {
 
-    
     paginationButton = document.getElementById("previousButton");
-    paginationButton.addEventListener("click", function () {
+    paginationButton.addEventListener("click", async function () {
         console.log("button was clicked");
 
         document.getElementById("nextButton").className = ""
 
 
-        db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").endBefore(pageStart).limitToLast(4)
-            .get()
-            .then(function (query) {
-                if (!query.size) {
-                    return;
-                }
-                pageStart = query.docs[0]
-                pageEnd = query.docs[3]
+        let query = await db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").endBefore(pageStart).limitToLast(4).get()
 
-                document.getElementsByClassName("routesImage")[0].innerHTML = "";
-
-                if (!pageEnd) {
-                    previousButton = document.getElementById("previousButton");
-                    previous.className = "hidden";
-                }
-                query.forEach(function (doc) {
-
-                    add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                        , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-                })
-            })
-
-
-
-
-    })
-
-}
-
-function addFilterListenerForPopularity(user) {
-    var e = document.getElementById("popularity")
-
-    var lengthDropDown = document.getElementById("popularity");
-
-    lengthDropDown.addEventListener("change", function () {
-        var text = e.value
-        console.log("filter changed")
-        if (text == "Popularity: All") {
-            db.collection("popular_routes")
-                .get()
-                .then(function (query) {
-                    document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                    query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-
-                    })
-                })
+        if (!query.size) {
+            return;
         }
+        pageStart = query.docs[0]
+        pageEnd = query.docs[3]
 
-        if (text == "Top 3") {
-            db.collection("popular_routes").where("ROUTE_POPULARITY", ">=", 1).orderBy("ROUTE_POPULARITY").limit(3)
-                .get()
-                .then(function (query) {
-                    document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                    query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+        document.getElementsByClassName("routesImage")[0].innerHTML = "";
 
-                    })
-                })
+        if (!pageEnd) {
+            previousButton = document.getElementById("previousButton");
+            previous.className = "hidden";
         }
+        query.forEach(function (doc) {
 
-        if (text == "Top 5") {
-            db.collection("popular_routes").where("ROUTE_POPULARITY", ">=", 1).orderBy("ROUTE_POPULARITY").limit(5)
-                .get()
-                .then(function (query) {
-                    document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                    query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-
-                    })
-                })
-        }
-
-        if (text == "Top 10") {
-            db.collection("popular_routes").where("ROUTE_POPULARITY", ">=", 1).orderBy("ROUTE_POPULARITY").limit(10)
-                .get()
-                .then(function (query) {
-                    document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                    query.forEach(function (doc) {
-                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-
-                    })
-                })
-        }
+            add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+        })
 
     })
 
@@ -246,7 +153,6 @@ function addFilterListenerForPopularity(user) {
 
 async function addLikeListener(id, user, likes_number, like_div) {
 
-    
     let route_name = like_div.parentNode.getElementsByClassName("routesNameFont")[0].innerText
     let liked_routes_array = user.data().liked_routes
     if (liked_routes_array.includes(route_name)) {
@@ -268,14 +174,13 @@ async function addLikeListener(id, user, likes_number, like_div) {
                     ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(-1) //decrements like!
                 });
 
-
             db.collection("users")
                 .doc(user.id)
                 .update({
 
                     liked_routes: firebase.firestore.FieldValue.arrayRemove(route_name)
                 });
-               
+
             // reset the thumb button to fern green color
             let thumbButtonArray = like_div.parentNode.getElementsByClassName("fa-thumbs-up")[0];
 
@@ -290,20 +195,17 @@ async function addLikeListener(id, user, likes_number, like_div) {
                     ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(1) //increments like!
                 });
 
-            
             db.collection("users")
                 .doc(user.id)
                 .update({
 
                     liked_routes: firebase.firestore.FieldValue.arrayUnion(route_name)
                 });
-             
+
             // set the thumb button to red color
             let thumbButtonArray = like_div.parentNode.getElementsByClassName("fa-thumbs-up")[0]
 
             thumbButtonArray.style.color = 'red'
-
-
 
         }
     })
@@ -317,29 +219,23 @@ async function addLikeListener(id, user, likes_number, like_div) {
 }
 
 
-function addFilterListenerForLevel(user) {
+async function addFilterListenerForLevel(user) {
     var e = document.getElementById("levelOption")
 
     var levelDropDown = document.getElementById("levelOption");
 
     levelDropDown
-        .addEventListener("change", function () {
+        .addEventListener("change", async function () {
             var text = e.value
             console.log("button was clicked")
-            db.collection("popular_routes").where("ROUTE_DIFFICULTY", "==", text)
-                .get()
-                .then(function (query) {
-                    document.getElementsByClassName("routesImage")[0].innerHTML = "";
-                    query.forEach(function (doc) {
+            let query = await db.collection("popular_routes").where("ROUTE_DIFFICULTY", "==", text).get()
+            document.getElementsByClassName("routesImage")[0].innerHTML = "";
+            query.forEach(function (doc) {
 
-                        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-
-
-                    })
-                })
+                add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+                    , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
+            })
         })
-
 }
 
 function add_popularRoutes(id, user, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH, ROUTE_DIFFICULTY, ROUTE_POPULARITY) {
@@ -355,12 +251,9 @@ function add_popularRoutes(id, user, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH,
     a_link.setAttribute("href", "./routes_detail_page.html?name=" + ROUTE_NAME)
     a_link.appendChild(image)
 
-
-
     //create a div for routes name under the pic
     let routes_name = document.createElement("div")
     routes_name.className = "routesName"
-
 
     //create a p tag inside routesName div
     let route_name = document.createElement("p")
@@ -385,21 +278,17 @@ function add_popularRoutes(id, user, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH,
 
     let likes_number = document.createElement("p")
 
-
     routes_detail.appendChild(level_text)
     routes_detail.appendChild(length_text)
     routes_detail.appendChild(likes_number)
 
-
     //attache event listener to the thumb
     addLikeListener(id, user, likes_number, like_div)
-
 
     //append child divs to parent div
     individule_routes.appendChild(a_link)
     individule_routes.appendChild(routes_name)
     individule_routes.appendChild(routes_detail)
-
 
     document.getElementsByClassName("routesImage")[0].appendChild(individule_routes)
 }
@@ -424,7 +313,6 @@ firebase.auth().onAuthStateChanged(async function (firebaseUser) {
 
     addFilterListenerForLength(user);
 
-    addFilterListenerForPopularity(user);
 })
 
 
