@@ -13,13 +13,14 @@ var uiConfig = {
             // Before this works, you must enable "Firestore" from the firebase console.
             // The Firestore rules allow the user to write. 
             //------------------------------------------------------------------------------------------
-            var latestID;
+            let latestID;
             var user = authResult.user;
             if (authResult.additionalUserInfo.isNewUser) { 
                 db.collection("users").doc("idTracking").get()
                 .then(
                     function (doc) {
                         latestID = doc.data().USER_ID;
+                        console.log(latestID);
                     }
                 )
                 .catch(
