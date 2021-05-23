@@ -21,6 +21,31 @@ var uiConfig = {
                     function (doc) {
                         latestID = doc.data().USER_ID;
                         console.log(latestID);
+                        db.collection("users").doc(user.uid).set({         //write to firestore
+                            name: user.displayName,                    //"users" collection
+                            email: user.email,                   //with authenticated user's ID (user.uid)
+                            bookmarks: [],                      // adds bookmarks                        // adds likes
+                            liked_routes: [],
+                            USER_ID: latestID,                    // add liked_routes     
+                        }).then(function () {
+                            console.log("New user added to firestore");
+                            db.collection("users").doc("idTracking").set({
+                                USER_ID: latestID + 1,
+                            })
+                            .then(() => {
+                                console.log("Updated latest user id");
+                                //re-direct to main.html after signup
+                                window.location.assign("../home.html"); 
+                            })
+                            .catch(
+                                function (error) {
+                                    console.log(error);
+                                }
+                            )      
+                        })
+                            .catch(function (error) {
+                                console.log("Error adding new user: " + error);
+                            });
                     }
                 )
                 .catch(
@@ -28,32 +53,7 @@ var uiConfig = {
                         console.log(error);
                     }
                 )
-                //if new user
-                db.collection("users").doc(user.uid).set({         //write to firestore
-                    name: user.displayName,                    //"users" collection
-                    email: user.email,                   //with authenticated user's ID (user.uid)
-                    bookmarks: [],                      // adds bookmarks                        // adds likes
-                    liked_routes: [],
-                    USER_ID: latestID,                    // add liked_routes     
-                }).then(function () {
-                    console.log("New user added to firestore");
-                    db.collection("users").doc("idTracking").set({
-                        USER_ID: latestID + 1,
-                    })
-                    .then(() => {
-                        console.log("Updated latest user id");
-                        //re-direct to main.html after signup
-                        window.location.assign("../home.html"); 
-                    })
-                    .catch(
-                        function (error) {
-                            console.log(error);
-                        }
-                    )      
-                })
-                    .catch(function (error) {
-                        console.log("Error adding new user: " + error);
-                    });
+               
             } else {
                 return true;
             }
