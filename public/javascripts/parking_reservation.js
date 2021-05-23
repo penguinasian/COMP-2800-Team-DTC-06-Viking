@@ -22,7 +22,7 @@ let numOfBoxes = parseInt(infoArray[4]);
 let weeks = parseInt(infoArray[5]);
 let LockerId = parseInt(infoArray[6]);
 let boxIdString = infoArray[7];
-let boxIdArray = boxIdString.split(",");
+let boxIdArray = boxIdString.split(",").map(function(item) {return parseInt(item, 10);});
 
 let startDate = req_begins.toISOString().substring(0, 10);
 let endDate = req_ends.toISOString().substring(0, 10);
@@ -149,7 +149,7 @@ document.getElementById('pay').addEventListener('click', function (event) {
             .then(function (doc) {
                 userID = doc.data().USER_ID;
                 console.log(userID);
-                for (let i = 1; i <= quantity; i++) {
+                for (let i = 0; i < quantity; i++) {
                     db.collection("reservation").add({
                         LOCKER_ID: LockerId,
                         BOX_ID: boxIdArray[i],
