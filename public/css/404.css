@@ -3,6 +3,7 @@ body {
     display: grid;
     grid-template-rows: 1fr 9fr;
     margin: 0em;
+    overflow: hidden;
     grid-template-areas:
     "header"
     "main"
