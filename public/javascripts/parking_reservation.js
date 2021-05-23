@@ -161,11 +161,8 @@ document.getElementById('pay').addEventListener('click', function (event) {
                     });
                 }
             });
-
-            
-            
-
-            console.log('Updated')
+            console.log('Updated');
+            window.location.replace("https://viking-eaee3.web.app/profile.html");
 
         } else {
             // No user is signed in.

@@ -19,7 +19,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             .then(function (doc) {
                 document.getElementById("profile-title").innerText = titleCase(doc.data().name) + "'s Profile";
                 bookmarksArray = doc.data().bookmarks;
-                userID = doc.data().user_id;
+                userID = doc.data().USER_ID;
                 console.log(bookmarksArray);
                 bookmarkCount = bookmarksArray.length;
                 console.log(bookmarkCount);
