@@ -160,9 +160,10 @@ document.getElementById('pay').addEventListener('click', function (event) {
                         RES_PAYMENT_AMOUNT: priceForEachBox
                     });
                 }
+                console.log('Updated');
+                window.location.replace("https://viking-eaee3.web.app/profile.html");
             });
-            console.log('Updated');
-            window.location.replace("https://viking-eaee3.web.app/profile.html");
+            
 
         } else {
             // No user is signed in.
