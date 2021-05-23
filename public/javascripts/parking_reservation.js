@@ -150,7 +150,7 @@ document.getElementById('pay').addEventListener('click', function (event) {
                 userID = doc.data().USER_ID;
             });
 
-            console.log(uid)
+            console.log(userID);
             for (let i = 1; i <= quantity; i++) {
                 db.collection("reservation").add({
                     LOCKER_ID: LockerId,
