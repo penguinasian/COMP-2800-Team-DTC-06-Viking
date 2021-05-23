@@ -87,20 +87,20 @@ function updateInformation() {
 };
 
 
-function testUserSign() {
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            // User is signed in.
-            console.log("Success")
-            var user = firebase.auth().currentUser;
-            var uid = user.uid;
-            console.log(uid)
-        } else {
-            // No user is signed in.
-            console.log("not log-in")
-        }
-    });
-}
+// function testUserSign() {
+//     firebase.auth().onAuthStateChanged(function (user) {
+//         if (user) {
+//             // User is signed in.
+//             console.log("Success")
+//             var user = firebase.auth().currentUser;
+//             var uid = user.uid;
+//             console.log(uid)
+//         } else {
+//             // No user is signed in.
+//             console.log("not log-in")
+//         }
+//     });
+// }
 
 
 
@@ -140,7 +140,7 @@ document.getElementById('pay').addEventListener('click', function (event) {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            console.log("Success")
+            console.log("Success");
             let user = firebase.auth().currentUser;
             let userID;
 
@@ -148,20 +148,21 @@ document.getElementById('pay').addEventListener('click', function (event) {
             .get()
             .then(function (doc) {
                 userID = doc.data().USER_ID;
+                console.log(userID);
+                for (let i = 1; i <= quantity; i++) {
+                    db.collection("reservation").add({
+                        LOCKER_ID: LockerId,
+                        BOX_ID: boxIdArray[i],
+                        USER_ID: userID,
+                        RES_BEGIN: startDate,
+                        RES_DURATION_WEEKS: weeks,
+                        RES_PAYMENT_DATE: currentDate,
+                        RES_PAYMENT_AMOUNT: priceForEachBox
+                    });
+                }
             });
 
-            console.log(userID);
-            for (let i = 1; i <= quantity; i++) {
-                db.collection("reservation").add({
-                    LOCKER_ID: LockerId,
-                    BOX_ID: boxIdArray[i],
-                    USER_ID: userID,
-                    RES_BEGIN: startDate,
-                    RES_DURATION_WEEKS: weeks,
-                    RES_PAYMENT_DATE: currentDate,
-                    RES_PAYMENT_AMOUNT: priceForEachBox
-                });
-            }
+            
             
 
             console.log('Updated')
@@ -169,7 +170,7 @@ document.getElementById('pay').addEventListener('click', function (event) {
         } else {
             // No user is signed in.
             window.location.href="https://viking-eaee3.web.app/login.html";
-            console.log("not log-in")
+            console.log("not log-in");
         }
     });
 });
