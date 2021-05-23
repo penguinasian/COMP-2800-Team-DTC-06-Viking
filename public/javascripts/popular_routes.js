@@ -143,7 +143,7 @@ function readPopularRoutes(user) {
 
 async function AddPreviousClickPagination(user) {
 
-
+    
     paginationButton = document.getElementById("previousButton");
     paginationButton.addEventListener("click", function () {
         console.log("button was clicked");
@@ -246,6 +246,7 @@ function addFilterListenerForPopularity(user) {
 
 async function addLikeListener(id, user, likes_number, like_div) {
 
+    
     let route_name = like_div.parentNode.getElementsByClassName("routesNameFont")[0].innerText
     let liked_routes_array = user.data().liked_routes
     if (liked_routes_array.includes(route_name)) {
@@ -255,18 +256,17 @@ async function addLikeListener(id, user, likes_number, like_div) {
     }
     like_div.addEventListener("click", async function () {
 
-        let route_name = like_div.parentNode.getElementsByClassName("routesNameFont")[0].innerText
-        let liked_routes_array = user.data().liked_routes
+        user = await db.collection("users").doc(user.id).get()
         //check if the route the user is liking is already in the array
-        if (liked_routes_array.includes(route_name)) {
+        if (user.data().liked_routes.includes(route_name)) {
 
-            console.log("like was clicked!")
+            console.log("unlike was clicked!")
             db.collection("popular_routes")
                 .doc(id)
                 //if yes, then the user must have liked it before, then decrement like count if clicked again
                 .update({
                     ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(-1) //decrements like!
-                })
+                });
 
 
             db.collection("users")
@@ -274,12 +274,12 @@ async function addLikeListener(id, user, likes_number, like_div) {
                 .update({
 
                     liked_routes: firebase.firestore.FieldValue.arrayRemove(route_name)
-                })
-
+                });
+               
             // reset the thumb button to fern green color
-            let thumbButtonArray = like_div.parentNode.getElementsByClassName("fa-thumbs-up")[0]
+            let thumbButtonArray = like_div.parentNode.getElementsByClassName("fa-thumbs-up")[0];
 
-            thumbButtonArray.style.color = '#4C744C'
+            thumbButtonArray.style.color = '#4C744C';
 
             // otherwise, increment like count
         } else {
@@ -288,14 +288,16 @@ async function addLikeListener(id, user, likes_number, like_div) {
                 .doc(id)
                 .update({
                     ROUTE_POPULARITY: firebase.firestore.FieldValue.increment(1) //increments like!
-                })
+                });
 
+            
             db.collection("users")
                 .doc(user.id)
                 .update({
 
                     liked_routes: firebase.firestore.FieldValue.arrayUnion(route_name)
-                })
+                });
+             
             // set the thumb button to red color
             let thumbButtonArray = like_div.parentNode.getElementsByClassName("fa-thumbs-up")[0]
 
