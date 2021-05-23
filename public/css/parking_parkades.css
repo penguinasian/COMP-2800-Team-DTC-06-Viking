@@ -96,7 +96,7 @@ th.titles {
     background-color: #63D668;
     border-radius: 10px;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 1.5vh;
 }
 
 .parkade_medium {
@@ -104,7 +104,7 @@ th.titles {
     background-color: #FF974D;
     border-radius: 10px;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 1.5vh;
 }
 
 .parkade_low {
@@ -112,7 +112,7 @@ th.titles {
     background-color: #F23C32;
     border-radius: 10px;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 1.5vh;
 }
 
 .parkade_full {
@@ -120,7 +120,7 @@ th.titles {
     background-color: #9E1313;
     border-radius: 10px;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 2vh;
 }
 
 .mapLegend {
@@ -130,10 +130,12 @@ th.titles {
 }
 
 .mapLegend > p {
-    font-size: 4vw;
+    font-size: 1.8vh;
 }
 
-
+main {
+    overflow: visible;
+}
 
 
 

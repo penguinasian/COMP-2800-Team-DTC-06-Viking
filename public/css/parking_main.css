@@ -86,3 +86,7 @@
     padding: 0 10px;
     text-decoration: none;
 }
+
+main {
+    overflow: visible;
+}

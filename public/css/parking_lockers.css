@@ -18,13 +18,13 @@ main>form {
     font-weight: bold;
     color: #4C744C;
     display: grid;
-    grid-template-columns: 4fr 3fr 1fr;
+    grid-template-columns: 4fr 0.5fr 3.5fr 1fr;
     justify-content: space-around;
     gap: 0vh 3vw;
-    margin: 0.5vh 3vw;
+    margin: 0.5vh 2vw;
     grid-template-areas:
-    "label label label"
-    "input input input";
+    "label label span span"
+    "input span input input";
 }
 
 
@@ -33,7 +33,17 @@ main>form {
     width: 40vw;
     max-width: 200px;
 }
-
+#start_date span::after {
+    padding-left: 5px;
+}
+  
+#start_date input:invalid+span::after {
+    content: '✖';
+}
+  
+#start_date input:valid+span::after {
+    content: '✓';
+}
 #duration {
     height: 4vh;
     width: 10vw;
@@ -76,6 +86,9 @@ main>form {
     padding-right: 0px;
 }
 
+main {
+    overflow: visible;
+}
 
 #map {
     width: 100vw;
@@ -87,7 +100,8 @@ main>form {
 }
 
 .tg  {
-    border-collapse:collapse;border-spacing:0;
+    border-collapse:collapse;
+    border-spacing:0;
     margin: 13px auto;
 }
 
@@ -176,7 +190,7 @@ th.titles {
     background-color: #63D668;
     border-radius: 10px;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 1.5vh;
 }
 
 .parkade_medium {
@@ -184,7 +198,7 @@ th.titles {
     background-color: #FF974D;
     border-radius: 10px;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 1.5vh;
 }
 
 .parkade_low {
@@ -192,7 +206,7 @@ th.titles {
     background-color: #F23C32;
     border-radius: 10px;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 1.5vh;
 }
 
 .parkade_full {
@@ -200,7 +214,7 @@ th.titles {
     background-color: #9E1313;
     border-radius: 10px;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 1.5vh;
 }
 
 .mapLegend {
@@ -210,7 +224,7 @@ th.titles {
 }
 
 .mapLegend > p {
-    font-size: 4vw;
+    font-size: 1.8vh;
 }
 
 .reservation {
