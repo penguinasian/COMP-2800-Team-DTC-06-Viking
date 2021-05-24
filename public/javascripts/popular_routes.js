@@ -1,41 +1,58 @@
-async function AddNextClickPagination(user) {
+async function onClickPagination(user, buttonToHide, buttonToShow, isNextButton) {
+    console.log("button was clicked");
 
-    //get the "next" button
-    paginationButton = document.getElementById("nextButton");
-    paginationButton.addEventListener("click", async function () {
-        console.log("button was clicked");
+    //reset the "previousButton" class to empty string. So that the "previous button" shows on the other pages other than the first page
+    buttonToShow.className = ""
 
-        //reset the "previousButton" class to empty string. So that the "previous button" shows on the other pages other than the first page
-        document.getElementById("previousButton").className = ""
 
-        // get the next 4 routes by using orderBy and startAfter. Note: pageEnd has been reset to the the 4th route of previous page
-        let query = await db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").startAfter(pageEnd).limit(4).get()
+    // get the next 4 routes by using orderBy and startAfter. Note: pageEnd has been reset to the the 4th route of previous page
 
-        // stop the function when there is no routes left, stop the function right away
-        if (!query.size) {
-            return;
-        }
+    let query = db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc")
+    if(isNextButton) {
+        query = query.startAfter(pageEnd).limit(4);
+    }
+    else {
+        query = query.endBefore(pageStart).limitToLast(4);
+    }
+    
+    let result = await query.get()
+    // stop the function when there is no routes left, stop the function right away
+    if (!result.size) {
+        return;
+    }
 
-        //reset the "pageStart" to the first route of the current page, "pageEnd" to the last route of the current page
-        pageStart = query.docs[0]
-        pageEnd = query.docs[3]
+    //reset the "pageStart" to the first route of the current page, "pageEnd" to the last route of the current page
+    pageStart = result.docs[0]
+    pageEnd = result.docs[3]
 
-        //clear everything on the page first, otherwise, the next 4 routes will be added on top of the existing one
-        document.getElementsByClassName("routesImage")[0].innerHTML = "";
+    //clear everything on the page first, otherwise, the next 4 routes will be added on top of the existing one
+    document.getElementsByClassName("routesImage")[0].innerHTML = "";
 
-        //since we are using query.docs[3] to set the "pageEnd", if we couldn't have a fourth item, then means this is the last page
-        if (!pageEnd) {
+    //since we are using query.docs[3] to set the "pageEnd", if we couldn't have a fourth item, then means this is the last page
+    if (!pageEnd) {
 
-            //last page, hide the next button
-            nextButton = document.getElementById("nextButton");
-            nextButton.className = "hidden";
-        }
-        query.forEach(function (doc) {
+        //last page, hide the next button
+        buttonToHide.className = "hidden";
+    }
+    result.forEach(function (doc) {
 
-            add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-        })
+        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
+            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
     })
+}
+
+async function AddNextClickPagination(user) {
+    //get the "next" button
+    let paginationNextButton = document.getElementById("nextButton");
+    let paginationPreviousButton = document.getElementById("previousButton")
+    paginationNextButton.addEventListener("click", () => onClickPagination(user, paginationNextButton, paginationPreviousButton, true))
+}
+
+async function AddPreviousClickPagination(user) {
+    let paginationNextButton = document.getElementById("nextButton");
+    let paginationPreviousButton = document.getElementById("previousButton");
+    paginationPreviousButton.addEventListener("click", () =>  onClickPagination(user, paginationPreviousButton, paginationNextButton, false))
+
 }
 
 async function addFilterListenerForLength(user) {
@@ -58,21 +75,15 @@ async function addFilterListenerForLength(user) {
 
         if (text == "1") {
             let query = await db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 10).get()
-
-
             document.getElementsByClassName("routesImage")[0].innerHTML = "";
             query.forEach(function (doc) {
                 add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
                     , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-
             })
 
         }
-
         if (text == "2") {
             let query = await db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 20).where("ROUTE_LENGTH", ">", 10).get()
-
-
             document.getElementsByClassName("routesImage")[0].innerHTML = "";
             query.forEach(function (doc) {
                 add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
@@ -118,38 +129,6 @@ async function readPopularRoutes(user) {
     })
 }
 
-async function AddPreviousClickPagination(user) {
-
-    paginationButton = document.getElementById("previousButton");
-    paginationButton.addEventListener("click", async function () {
-        console.log("button was clicked");
-
-        document.getElementById("nextButton").className = ""
-
-
-        let query = await db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").endBefore(pageStart).limitToLast(4).get()
-
-        if (!query.size) {
-            return;
-        }
-        pageStart = query.docs[0]
-        pageEnd = query.docs[3]
-
-        document.getElementsByClassName("routesImage")[0].innerHTML = "";
-
-        if (!pageEnd) {
-            previousButton = document.getElementById("previousButton");
-            previous.className = "hidden";
-        }
-        query.forEach(function (doc) {
-
-            add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-        })
-
-    })
-
-}
 
 async function addLikeListener(id, user, likes_number, like_div) {
 
