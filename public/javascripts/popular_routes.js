@@ -13,13 +13,34 @@ async function onClickPagination(user, buttonToHide, buttonToShow, isNextButton)
 
 async function queryAndRenderRoutes(user, isNextButton, restart) {
     let level = document.getElementById("levelOption").value
-    let query = db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc")
+    let length = document.getElementById("lengthOption").value
+    let query = db.collection("popular_routes")
+
+    if (length == "0") {
+        query = query.orderBy("ROUTE_POPULARITY", "desc")
+    } else {
+        //firebase database must order by the same field when doing inequality filter
+        query = query.orderBy("ROUTE_LENGTH", "desc")
+    }
+
+    if (length == "1") {
+        query = query.where("ROUTE_LENGTH", "<=", 10)
+    }
+    if (length == "2") {
+        query = query.where("ROUTE_LENGTH", "<=", 20).where("ROUTE_LENGTH", ">", 10)
+    }
+    if (length == "3") {
+        query = query.where("ROUTE_LENGTH", "<=", 30).where("ROUTE_LENGTH", ">", 20)
+    }
+    if (length == "4") {
+        query = query.where("ROUTE_LENGTH", ">", 30)
+    }
     if (level != "Difficulty Level: All") {
         query = query.where("ROUTE_DIFFICULTY", "==", level)
     }
 
     if (restart) {
-       query = query.limit(4)
+        query = query.limit(4)
     }
     else if (isNextButton) {
         query = query.startAfter(pageEnd).limit(4);
@@ -63,79 +84,13 @@ async function AddPreviousClickPagination(user) {
 }
 
 async function addFilterListenerForLength(user) {
-    var e = document.getElementById("lengthOption")
 
-    var lengthDropDown = document.getElementById("lengthOption");
-
+    let lengthDropDown = document.getElementById("lengthOption");
     lengthDropDown.addEventListener("change", async function () {
-        var text = e.value
         console.log("button was clicked")
-        if (text == "0") {
-            let query = await db.collection("popular_routes").get()
-
-            document.getElementsByClassName("routesImage")[0].innerHTML = "";
-            query.forEach(function (doc) {
-                add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                    , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-            })
-        }
-
-        if (text == "1") {
-            let query = await db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 10).get()
-            document.getElementsByClassName("routesImage")[0].innerHTML = "";
-            query.forEach(function (doc) {
-                add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                    , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-            })
-
-        }
-        if (text == "2") {
-            let query = await db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 20).where("ROUTE_LENGTH", ">", 10).get()
-            document.getElementsByClassName("routesImage")[0].innerHTML = "";
-            query.forEach(function (doc) {
-                add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                    , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-            })
-        }
-
-        if (text == "3") {
-            let query = await db.collection("popular_routes").where("ROUTE_LENGTH", "<=", 30).where("ROUTE_LENGTH", ">", 20).get()
-            document.getElementsByClassName("routesImage")[0].innerHTML = "";
-            query.forEach(function (doc) {
-                add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                    , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-
-            })
-
-        }
-
-        if (text == "4") {
-            let query = await db.collection("popular_routes").where("ROUTE_LENGTH", ">", 30).get()
-            document.getElementsByClassName("routesImage")[0].innerHTML = "";
-            query.forEach(function (doc) {
-                add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-                    , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-            })
-        }
+        queryAndRenderRoutes(user, false, true)
     })
 }
-
-async function readPopularRoutes(user) {
-
-    //to get only 4 routes at a time in a page
-    let query = await db.collection("popular_routes").orderBy("ROUTE_POPULARITY", "desc").limit(4).get()
-    //assign the first document(route) and the last document(route) on a page to variables pageStart and pageEnd
-    pageStart = query.docs[0]
-    pageEnd = query.docs[3]
-
-    //query the documents inside popular_routes collection
-    query.forEach(function (doc) {
-
-        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY)
-    })
-}
-
 
 async function addLikeListener(id, user, likes_number, like_div) {
 
@@ -206,12 +161,12 @@ async function addLikeListener(id, user, likes_number, like_div) {
 
 
 async function addFilterListenerForLevel(user) {
-    
+
     var levelDropDown = document.getElementById("levelOption");
     levelDropDown
         .addEventListener("change", async function () {
             console.log("button was clicked")
-            
+
             queryAndRenderRoutes(user, false, true)
         })
 }
@@ -281,7 +236,7 @@ firebase.auth().onAuthStateChanged(async function (firebaseUser) {
     }
 
     let user = await db.collection("users").doc(firebaseUser.uid).get()
-    readPopularRoutes(user);
+    queryAndRenderRoutes(user, false, true)
 
     AddNextClickPagination(user);
 
@@ -290,7 +245,6 @@ firebase.auth().onAuthStateChanged(async function (firebaseUser) {
     addFilterListenerForLevel(user);
 
     addFilterListenerForLength(user);
-
 })
 
 
