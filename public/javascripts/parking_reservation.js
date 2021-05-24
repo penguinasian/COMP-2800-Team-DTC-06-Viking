@@ -28,6 +28,9 @@ let startDate = req_begins.toISOString().substring(0, 10);
 let endDate = req_ends.toISOString().substring(0, 10);
 let currnetDateObject = new Date();
 let currentDate = currnetDateObject.toISOString().substring(0, 10);
+let priceForEachBox;
+let quantity;
+let userID;
 console.log(startDate);
 console.log(req_ends);
 console.log(available);
@@ -102,9 +105,7 @@ function updateInformation() {
 //     });
 // }
 
-let priceForEachBox;
-let quantity;
-let userID;
+
 
 document.getElementById('pay').addEventListener('click', function (event) {
     
@@ -125,7 +126,7 @@ document.getElementById('pay').addEventListener('click', function (event) {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            console.log("Success");
+            console.log("Successful user authentication!");
             let user = firebase.auth().currentUser;
             
 
@@ -134,7 +135,8 @@ document.getElementById('pay').addEventListener('click', function (event) {
             .then(function (doc) {
                 userID = doc.data().USER_ID;
                 console.log(userID);
-                writeToDatabase(0);  
+                let firstBox = 0;
+                writeToDatabase(firstBox);
             });
             
 
@@ -147,27 +149,31 @@ document.getElementById('pay').addEventListener('click', function (event) {
 });
 
 
-function writeToDatabase(number) {
+function writeToDatabase(boxNumber) {
     db.collection("reservation").add({
         LOCKER_ID: LockerId,
-        BOX_ID: boxIdArray[number],
+        BOX_ID: boxIdArray[boxNumber],
         USER_ID: userID,
         RES_BEGIN: startDate,
         RES_DURATION_WEEKS: weeks,
         RES_PAYMENT_DATE: currentDate,
         RES_PAYMENT_AMOUNT: priceForEachBox
-    }).then(function (test) {
-        number++;
-        if (number == quantity) {
+    }).then((docRef) => {
+        boxNumber++;
+        console.log("docRef: " + docRef);
+        console.log("number: " + boxNumber);
+        console.log("quantity: " + quantity);
+        if (boxNumber == quantity) {
             window.location.replace="https://viking-eaee3.web.app/profile.html";
         } else {
-            writeToDatabase(number);
+            writeToDatabase(boxNumber);
+            console.log("Added Box number: " + boxNumber);
         }
     });
 }
 
 
-updateInformation()
+updateInformation();
 
 
 
