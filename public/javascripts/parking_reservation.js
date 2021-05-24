@@ -102,12 +102,14 @@ function updateInformation() {
 //     });
 // }
 
-
+let priceForEachBox;
+let quantity;
+let userID;
 
 document.getElementById('pay').addEventListener('click', function (event) {
     
-    let priceForEachBox =  chargePerWeek * weeks;
-    let quantity = parseInt(document.getElementById("quantity").value);
+    priceForEachBox =  chargePerWeek * weeks;
+    quantity = parseInt(document.getElementById("quantity").value);
     
     console.log('button clicked');
     console.log('quantity ' + quantity);
@@ -119,30 +121,13 @@ document.getElementById('pay').addEventListener('click', function (event) {
         console.log('RES_PAYMENT_DATE:' + currentDate);
         console.log('RES_PAYMENT_AMOUNT:' + priceForEachBox);
     }
-    
-
-
-    
-
-    /* Tested - good */
-    // db.collection("reservation").add({
-    //     // USER_ID: uid,
-    //     LOCKER_ID: LockerId,
-    //     BOX_ID: boxId,
-    //     RES_BEGIN: startDate,
-    //     RES_DURATION_WEEKS: weeks,
-    //     RES_PAYMENT_DATE: currentDate,
-    //     RES_PAYMENT_AMOUNT: totalPrice
-    // });
-    /* needs to be deleted */
-
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
             console.log("Success");
             let user = firebase.auth().currentUser;
-            let userID;
+            
 
             db.collection("users").doc(user.uid)
             .get()
