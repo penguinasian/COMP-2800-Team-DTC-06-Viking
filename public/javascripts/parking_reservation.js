@@ -105,7 +105,7 @@ function updateInformation() {
 //     });
 // }
 
-
+let firstBox;
 
 document.getElementById('pay').addEventListener('click', function (event) {
     
@@ -135,7 +135,7 @@ document.getElementById('pay').addEventListener('click', function (event) {
             .then(function (doc) {
                 userID = doc.data().USER_ID;
                 console.log(userID);
-                let firstBox = 0;
+                firstBox = 0;
                 writeToDatabase(firstBox);
             });
             
