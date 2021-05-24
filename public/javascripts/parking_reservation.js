@@ -149,19 +149,7 @@ document.getElementById('pay').addEventListener('click', function (event) {
             .then(function (doc) {
                 userID = doc.data().USER_ID;
                 console.log(userID);
-                for (let i = 0; i < quantity; i++) {
-                    db.collection("reservation").add({
-                        LOCKER_ID: LockerId,
-                        BOX_ID: boxIdArray[i],
-                        USER_ID: userID,
-                        RES_BEGIN: startDate,
-                        RES_DURATION_WEEKS: weeks,
-                        RES_PAYMENT_DATE: currentDate,
-                        RES_PAYMENT_AMOUNT: priceForEachBox
-                    });
-                }
-                console.log('Updated');
-                window.location.replace("https://viking-eaee3.web.app/profile.html");
+                writeToDatabase(0);  
             });
             
 
@@ -173,6 +161,25 @@ document.getElementById('pay').addEventListener('click', function (event) {
     });
 });
 
+
+function writeToDatabase(number) {
+    db.collection("reservation").add({
+        LOCKER_ID: LockerId,
+        BOX_ID: boxIdArray[number],
+        USER_ID: userID,
+        RES_BEGIN: startDate,
+        RES_DURATION_WEEKS: weeks,
+        RES_PAYMENT_DATE: currentDate,
+        RES_PAYMENT_AMOUNT: priceForEachBox
+    }).then(function (test) {
+        number++;
+        if (number == quantity) {
+            window.location.replace="https://viking-eaee3.web.app/profile.html";
+        } else {
+            writeToDatabase(number);
+        }
+    });
+}
 
 
 updateInformation()
