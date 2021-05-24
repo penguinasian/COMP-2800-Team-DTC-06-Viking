@@ -93,6 +93,10 @@ function addMarkers(locations, type) {
                     });
     
                     infowindow.open(map, marker);
+
+                    google.maps.event.addListener(map, "click", function(event) {
+                        infowindow.close();
+                    });
                 }
             })(marker, i));
         }
