@@ -167,7 +167,7 @@ function fetchLockerHelper(lockerListValue, allValues) {
                 nextValue = false;
             } finally {
                 if (nextValue) {
-                    fetchLockerHelper(nextValue);
+                    fetchLockerHelper(nextValue, allValues);
                 } else {
                     changeResLoadText();
                     updateUserReservation();
