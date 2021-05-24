@@ -26,6 +26,7 @@ function initMap() {
         zoom: 13,
         center: new google.maps.LatLng(49.26656454900745, -123.10665831323317)
     });
+    
 }
 
 /* read data from Firestore and update map*/
@@ -115,11 +116,21 @@ function addMarkers(locations) {
                 });
 
                 infowindow.open(map, marker);
+
+                google.maps.event.addListener(map, "click", function(event) {
+                    infowindow.close();
+                });
             }
+
+        
         })(marker, i));
 
     }
 }
 
+
+
+
 readParkades()
 readLockers()
+
