@@ -1,5 +1,6 @@
 let userBookmarks = [];
 let routeID, userID;
+let signOn = true;
 
 
 function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, ROUTE_DURATION, ROUTE_ELEV_UP, ROUTE_DESC, ROUTE_NAME) {
@@ -59,12 +60,17 @@ function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, RO
     document.getElementsByClassName("detailsPage")[0].appendChild(route_title_div)
     document.getElementsByClassName("detailsPage")[0].appendChild(routes_detail)
     document.getElementsByClassName("detailsPage")[0].appendChild(route_para)
+    document.getElementsByClassName("route_title")[0].insertAdjacentHTML("beforeend", '<div class="fb-share-button" data-href="' + window.location.href + '" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' +  window.location.href + '&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>');
+    if (signOn) {
 
     changeBookmarksColour();
 
     document.getElementById("bookmarkButton").addEventListener("click", function () {
         updateBookmarks();
     });
+    } else {
+        document.getElementById("bookmarkButton").style.visibility = "hidden";
+    }
 
 }
 
@@ -116,19 +122,18 @@ function readPopularRoutesName(id) {
                 console.log("Error adding new user: " + error);
             });
 
-            db.collection("popular_routes").where("ROUTE_NAME", "==", value)
-                .get().then(function (result) {
-                    let doc = result.docs[0]
-                    routeID = doc.data().ROUTE_ID;
-                    add_RoutesDetail(doc.id, doc.data().ROUTE_MAP_LINK, doc.data().ROUTE_LENGTH
-                        , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_DURATION, doc.data().ROUTE_ELEV_UP, doc.data().ROUTE_DESC, doc.data().ROUTE_NAME)
-
-                })
-
         } else {
             //No user is signed in.
-            window.location.href="https://viking-eaee3.web.app/login.html";
+            signOn = false;
         }
+        db.collection("popular_routes").where("ROUTE_NAME", "==", value)
+        .get().then(function (result) {
+            let doc = result.docs[0]
+            routeID = doc.data().ROUTE_ID;
+            add_RoutesDetail(doc.id, doc.data().ROUTE_MAP_LINK, doc.data().ROUTE_LENGTH
+                , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_DURATION, doc.data().ROUTE_ELEV_UP, doc.data().ROUTE_DESC, doc.data().ROUTE_NAME)
+
+        })
     })
 
 
