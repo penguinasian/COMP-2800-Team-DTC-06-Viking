@@ -33,6 +33,24 @@
 </head>
 
 <body>
+    <!-- facebook share button code -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=218708463107527&autoLogAppEvents=1"
+        nonce="UpEMOkV8">
+    </script>
+
+    <!-- pininterest share button code -->
+    <script type="text/javascript">
+        (function (d) {
+            var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+            p.type = 'text/javascript';
+            p.async = true;
+            p.src = '//assets.pinterest.com/js/pinit.js';
+            f.parentNode.insertBefore(p, f);
+        }(document));
+    </script>
+
     <header>
         <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top">
             <div class="logoName">
@@ -49,6 +67,26 @@
                 <button onclick="document.location='./about_us_new.html'">About us</button>
                 <button><a id="homeButton" href="./login.html">Get Started</a></button>
             </div>
+        </div>
+
+        <!-- div for all share buttons at the bottom of the page -->
+        <div class="shareButtons">
+            <div class="fb-share-button" data-href="https://viking-eaee3.web.app/" data-layout="button_count"
+                data-size="large"><a target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fviking-eaee3.web.app%2F&amp;src=sdkpreparse"
+                    class="fb-xfbml-parse-ignore">Share</a>
+            </div>
+
+            <div class="twitter-share-button">
+                <a href="https://twitter.com/intent/tweet?&ref_src=twsrc%5Etfw" class="twitter-hashtag-button"
+                    data-size="large" data-show-count="false">Tweet #LoveTwitter</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+
+            <div class="">
+                <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" data-pin-tall="true"></a>
+            </div>
+
         </div>
     </main>
 

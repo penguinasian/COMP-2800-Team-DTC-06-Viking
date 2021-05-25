@@ -87,4 +87,22 @@ header img {
     background-color: silver;
   }
 
+  .shareButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .fb-share-button {
+    margin-right: 0.5vh;
+  }
+
+  .twitter-share-button {
+    margin-left:0.5vh;
+  }
+
+  .pininterest-share-button{
+    margin-left:1vh;
+  }
+
 
