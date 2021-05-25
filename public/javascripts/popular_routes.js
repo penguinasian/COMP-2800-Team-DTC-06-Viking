@@ -1,4 +1,6 @@
-async function onClickPagination(user, buttonToHide, buttonToShow, isNextButton) {
+/*jslint devel: true */
+async function onClickPagination(user, buttonToHide, buttonToShow, 
+    isNextButton) {
 
     console.log("button was clicked");
     await queryAndRenderRoutes(user, isNextButton)
