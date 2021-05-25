@@ -67,3 +67,8 @@ h3 {
 section, article {
     padding: 0vh 6vw;
 }
+
+.share {
+    width: 20vw;
+    margin-bottom: 2vh;
+}

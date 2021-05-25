@@ -83,7 +83,7 @@
                 <br>
                 What are you waiting for? Get started today!
             </article>
-
+            <img class="share" src="./images/facebook.png" onclick="facebookShare()">
             <div>
                 <img id="top_image" src="./images/bike6l.jpeg" alt="Biking in a Park">
             </div>
@@ -189,7 +189,15 @@
         <!--------------------------------------------------------------------->
 
         <script src="./javascripts/user_login.js"></script>
-        
+        <script>
+            function facebookShare() {
+                let url = 'https://viking-eaee3.web.app/about_us_current.html';
+                let encodeUrl = encodeURIComponent(url);
+                let facebook = 'http://www.facebook.com/sharer/sharer.php?u=';
+                let link = facebook + encodeUrl
+                window.open(link);
+            }
+        </script>
 
         
     </body>
