@@ -58,7 +58,7 @@ function setBMLoadText() {
     document.getElementById("bookmarks-spinner").style.visibility = "hidden";
     document.getElementById("bookmarks-spinner").style.height = 0;
     if (bookmarkCount == 0) {
-        document.getElementById("bookmarks-route-title").innerHTML = "Sorry, you have no favourite routes";
+        document.getElementById("bookmarks-route-title").innerHTML = "Sorry, you have no bookmarked routes";
     }
 }
 
