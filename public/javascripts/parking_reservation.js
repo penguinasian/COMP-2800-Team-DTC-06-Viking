@@ -164,7 +164,7 @@ function writeToDatabase(boxNumber) {
         console.log("number: " + boxNumber);
         console.log("quantity: " + quantity);
         if (boxNumber == quantity) {
-            window.location.replace="https://viking-eaee3.web.app/profile.html";
+            window.location.replace('https://viking-eaee3.web.app/profile.html');
         } else {
             writeToDatabase(boxNumber);
             console.log("Added Box number: " + boxNumber);
