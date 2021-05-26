@@ -59,3 +59,11 @@ main h1 {
 main p {
     font-size: 1.8vh !important;
 }
+
+#button-wrapper {
+    display: flex;
+}
+
+#button-wrapper div {
+    margin: 2vw;
+}
