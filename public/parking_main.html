@@ -43,14 +43,39 @@
 
     <main>
         <div id="map"></div>
+        <div class='infoModal'>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="bi bi-info-circle-fill"></i>
+        </div>
+        </button>
         <div id='buttons'>
             <button type="button" onclick="document.location='./parking_lockers.html'"
                 class="btn btn-primary btn-lg">Lockers</button>
+            <!-- Button trigger modal -->
+
             <button type="button" onclick="document.location='./parking_parkades.html'"
                 class="btn btn-primary btn-lg">Parkades</button>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Lockers & Parkades</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Locker <img src="./images/locker.png"></h4> <p>a reserved locker for your bike.</p>
+                        <h4>Parkade <img src="./images/parkade.png"></h4> <p>indoor facilities for customers with multiple bike racks inside.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal ends -->
     </main>
-
 
     <!-- Bottom: parking, services, routes, info and profile icons -->
     <nav class="navbar navbar-expand fixed-bottom d-flex align-items-center">
@@ -61,19 +86,23 @@
             </div>
 
             <div class="bottomIcon services">
-                <button class="btn iconButton" onclick="document.location='./services.html'"><i class="fas fa-map-marked services"></i></button>
+                <button class="btn iconButton" onclick="document.location='./services.html'"><i
+                        class="fas fa-map-marked services"></i></button>
                 <p class="footer">Services</p>
             </div>
             <div class="bottomIcon routes">
-                <button class="btn iconButton" onclick="document.location='./popular_routes.html'"><i class="far fa-compass routes"></i></i></button>
+                <button class="btn iconButton" onclick="document.location='./popular_routes.html'"><i
+                        class="far fa-compass routes"></i></i></button>
                 <p class="footer">Routes</p>
             </div>
             <div class="bottomIcon info">
-                <button class="btn iconButton" onclick="document.location='./about_us_current.html'"><i class="fas fa-info-circle info"></i></i></button>
+                <button class="btn iconButton" onclick="document.location='./about_us_current.html'"><i
+                        class="fas fa-info-circle info"></i></i></button>
                 <p class="footer">Info</p>
             </div>
             <div class="bottomIcon profile">
-                <button class="btn iconButton" onclick="document.location='./profile.html'"><i class="fas fa-user-circle profile"></i></button>
+                <button class="btn iconButton" onclick="document.location='./profile.html'"><i
+                        class="fas fa-user-circle profile"></i></button>
                 <p class="footer">Profile</p>
             </div>
         </div>
