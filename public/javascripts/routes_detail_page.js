@@ -12,12 +12,15 @@ function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, RO
     route_title.innerText = ROUTE_NAME
     route_title_div.appendChild(route_title)
 
+    let wrapper_div = document.createElement("div")
+    wrapper_div.id = "button-wrapper";
+    route_title_div.appendChild(wrapper_div);
     //create a bookmark for bike route details page on the top
     let bookmark_div = document.createElement("div")
     bookmark_div.className = "bookmark"
     bookmark_div.id = "bookmarkButton"
     bookmark_div.innerHTML = '<i class="fas fa-bookmark fa-2x"></i>'
-    route_title_div.appendChild(bookmark_div)
+    wrapper_div.appendChild(bookmark_div)
 
     //create an image tag
     let image = document.createElement("iframe")
@@ -60,7 +63,7 @@ function add_RoutesDetail(id, ROUTE_MAP_LINK, ROUTE_LENGTH, ROUTE_DIFFICULTY, RO
     document.getElementsByClassName("detailsPage")[0].appendChild(route_title_div)
     document.getElementsByClassName("detailsPage")[0].appendChild(routes_detail)
     document.getElementsByClassName("detailsPage")[0].appendChild(route_para)
-    document.getElementsByClassName("route_title")[0].insertAdjacentHTML("beforeend", '<div class="fb-share-button" data-href="' + window.location.href + '" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' +  window.location.href + '&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>');
+    document.getElementById("button-wrapper").insertAdjacentHTML("beforeend", '<div class="fb-share-button" data-href="' + window.location.href + '" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' +  window.location.href + '&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><img src="./images/facebook.png"/></a></div>');
     if (signOn) {
 
     changeBookmarksColour();

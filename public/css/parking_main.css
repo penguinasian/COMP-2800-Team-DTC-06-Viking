@@ -15,14 +15,14 @@
 
 #map {
     width: 100vw;
-    height: 65vh;
+    height: 63vh;
 }
 
 #buttons {
     display: flex;
-    gap: 15vw;
+    gap: 7vw;
     margin: 0vh 5vw;
-    margin-top: 1.5vh;
+    /* margin-top: 1.5vh; */
 }
 
 #buttons button {
@@ -89,4 +89,16 @@
 
 main {
     overflow: visible;
+}
+
+.infoModal {
+    text-align: right;
+}
+
+.infoModal > button {
+    color: #4C744C;
+    background-color: white;
+    border: white;
+    padding-top: 2px;
+    font-size: 3vh;
 }
