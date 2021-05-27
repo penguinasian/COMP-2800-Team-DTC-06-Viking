@@ -9,7 +9,7 @@ const mapIcons = {
     "airpump" : "./images/airpump.png",
     "repair" : "./images/repair.png",
     "rental" : "./images/rental.png"
-}
+};
 
 
 /*Write a new document containing the data of the dish on Firestore 
@@ -24,7 +24,7 @@ function writeServices() {
         type: "airpump",
         note: "Mon-Sun 9a.m.-6p.m"
     });
-    console.log('updated')
+    console.log('updated');
 }
 
 /* Initialize map*/
@@ -53,24 +53,24 @@ function updateMap() {
     db.collection("services")
         .get()
         .then(function (query) {
-            let locations = []
+            let locations = [];
             query.forEach(function (doc) {
-                console.log(doc.data().address, doc.data().name, doc.data().latitude, doc.data().longitude)
-                let location = [`<h4>${doc.data().name}</h4><b>Addres: </b> <br> ${doc.data().address} <br><br> ${doc.data().note}`, doc.data().latitude, doc.data().longitude, doc.data().type]
-                locations.push(location)
+                console.log(doc.data().address, doc.data().name, doc.data().latitude, doc.data().longitude);
+                let location = [`<h4>${doc.data().name}</h4><b>Addres: </b> <br> ${doc.data().address} <br><br> ${doc.data().note}`, doc.data().latitude, doc.data().longitude, doc.data().type];
+                locations.push(location);
                 // console.log(location)
-            })
+            });
 
-            updateMapCenter()
+            updateMapCenter();
 
             if (document.querySelector('input[id="airPumpCheck"]').checked) {
-                addMarkers(locations, 'airpump') 
+                addMarkers(locations, 'airpump');
             } if (document.querySelector('input[id="serviceShopCheck"]').checked) {
-                addMarkers(locations, 'repair') 
+                addMarkers(locations, 'repair'); 
             } if (document.querySelector('input[id="BikeRentalsCheck"]').checked) {
-                addMarkers(locations, 'rental') 
+                addMarkers(locations, 'rental');
             }
-        })
+        });
 }
 
 
@@ -97,7 +97,7 @@ function addMarkers(locations, type) {
                     google.maps.event.addListener(map, "click", function(event) {
                         infowindow.close();
                     });
-                }
+                };
             })(marker, i));
         }
     }
@@ -106,19 +106,19 @@ function addMarkers(locations, type) {
 
 /* update the map when a checkbox is changed */
 checkBoxAirPump.addEventListener( 'change', function() {
-    updateMap()
+    updateMap();
 });
 
 checkBoxServiceShop.addEventListener( 'change', function() {
-    updateMap()
+    updateMap();
 });
 
 checkBoxBikeRental.addEventListener( 'change', function() {
-    updateMap()
+    updateMap();
 });
 
 
 
 /* initial render geodata from Firestore */
-updateMap()
+updateMap();
 
