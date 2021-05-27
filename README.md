@@ -9,6 +9,7 @@ Eiman | Ardakanian | A01195951
 Fengrui (Kevin) | Guo | A01243552
 
 
+## Getting Started
 
 This is the project repository for our app. We used firebase for hosting, which means that all of the relevant html/css/js files are located in subfolders of the `public` folder. Site images are under `/public/images`, and favicons are under `/public/images`. The `/upload_firestore` folder contains all of the csv and json files which are the initial data for our database, along with the scripts to upload them to firebase.
 
@@ -37,3 +38,9 @@ Afterwards, create a <a href="https://firebase.google.com/">firebase account</a>
 1. Type `firebase deploy` in the terminal
 
 If it asks you to assign a project to the app, then follow the steps and select the Vikings firebase project to associate with the code.
+
+## Testing Plan
+
+https://docs.google.com/spreadsheets/d/10W77fkHyNKxPCpFfT9-ZwfgkHA0aP0CANFubDfCeIYg/edit#gid=0
+
+Access our testing plan with the link above and see if there's anything to contribute!
