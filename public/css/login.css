@@ -35,7 +35,7 @@ main {
 }
 
 main p {
-    color:white !important;
+    color:white;
     font-size: 1.7vh !important;
     line-height: 2.5vh !important;
     font-family: 'Times New Roman', Times, serif;
@@ -68,6 +68,10 @@ li button, span {
     font-size: 1.5vh !important;
     max-width: 25vh !important;
     min-height: 50px !important;
+}
+
+.firebaseui-error {
+    color: #dd2c00;
 }
 
 /* Active page style.*/
