@@ -35,7 +35,7 @@ main {
 }
 
 main p {
-    color:white !important;
+    color:white;
     font-size: 1.7vh !important;
     line-height: 2.5vh !important;
     font-family: 'Times New Roman', Times, serif;
