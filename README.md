@@ -67,6 +67,25 @@ To turn a csv file into json, install a google sheets add-on called <a href="htt
 
 If it asks you to assign a project to the app, then follow the steps and select the Vikings firebase project to associate with the code.
 
+If it asks you if you would like to delete these indexes, please select "No" to continue the rest of the deployment.
+
+### 3rd party APIs:
+The APIs to download (order does not matter):
+Google map API key: AIzaSyC_6aXL_PACxTA0BNnH3t97Z7jhTw3LbxI
+Firebase API key: AIzaSyAnItMRdAhhWAhg2DmlPu6Li2vO952iEho
+
+Instruction for downloading Google map API key:
+To load the Maps JavaScript API inline in an HTML file, add a script tag as show below.
+
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+</script>
+
+
+Instruction for downloading Firebase API key:
+Link firebase_api.js into the bottom of your <body> tag, but before you use any Firebase services
+
+
 ## Testing Plan
 
 https://docs.google.com/spreadsheets/d/10W77fkHyNKxPCpFfT9-ZwfgkHA0aP0CANFubDfCeIYg/edit#gid=0
