@@ -5,7 +5,7 @@ const mapIcons = {
   "locker_low": "./images/locker_low.png",
   "locker_full": "./images/locker_full.png",
   "locker": "./images/locker.png"
-}
+};
 
 /* 
 Availablity level
@@ -67,12 +67,20 @@ function getReservationData() {
     let today = new Date();
     let req_begins = new Date(start);
     let req_ends = new Date(start);
+    console.log('start:'+ start);
+    console.log('button clicked');
+    console.log("today:"+ today);
+    console.log("req_begins:" +req_begins);
+    console.log("req_ends:" +req_ends);
 
     if (start && (req_begins >= today) && (weeks >= 2 && weeks <= 53) && Number.isInteger(weeks)) {
       let req_days = weeks * 7;
       req_ends.setDate(req_ends.getDate() + req_days);
       console.log(req_begins);
       console.log(req_ends);
+      $("#start").css({"color":"#4C744C"});
+      $("#start").text("Start Date*:");
+
     
       db.collection("reservation")
         .get()
@@ -98,10 +106,19 @@ function getReservationData() {
                 record.push(lockerID, boxID);
                 fullBoxes.push(record);
               }    
-            })
+            });
           updateMap(fullBoxes, req_begins, req_ends, weeks);
-      })
+      });
+    } 
+    else if (!(req_begins >= today)) {
+      console.log('date input not correct');
+      $("#start").css({"color":"red"});
+      // $("#start").text("hello");
+      $("#start").append("<br>invalid input");
     }
+    
+
+
   });
 }
 
@@ -157,28 +174,38 @@ function updateMap(fullBoxes, req_begins, req_ends, weeks) {
 
 
               if (availablity >= 0.6) {
-                 availablity = "locker_high"
+                 availablity = "locker_high";
               } else if (availablity >= 0.3) {
-                  availablity = "locker_medium"
+                  availablity = "locker_medium";
               } else if ( availablity > 0) {
-                  availablity = "locker_low"
+                  availablity = "locker_low";
               } else {
-                  availablity = "locker_full"
+                  availablity = "locker_full";
               }
 
-              
-              let infoContent = `<h4>${doc.data().name}</h4>
-              <b>Address: </b> <br> ${doc.data().address} <br> 
-              <br><h5 class=${availablity}>Parking Slots: ${available} / ${numOfBoxes} </h5>
-              <a href="parking_reservation.html?array=${doc.data().address}|${req_begins}|${req_ends}|${available}|${numOfBoxes}|${weeks}|${lockerID}|${boxIdString}">
-              <p class="reservation">Reservation</p></a>
-              `;
+              let infoContent;
+              if (available === 0) {
+                infoContent = `<h4>${doc.data().name}</h4>
+                <b>Address: </b> <br> ${doc.data().address} <br> 
+                <br><h5 class=${availablity}>Parking Slots: ${available} / ${numOfBoxes} </h5>
+                `;
+                console.log('avail = 0');
+              } else {
+                infoContent = `<h4>${doc.data().name}</h4>
+                <b>Address: </b> <br> ${doc.data().address} <br> 
+                <br><h5 class=${availablity}>Parking Slots: ${available} / ${numOfBoxes} </h5>
+                <a href="parking_reservation.html?array=${doc.data().address}|${req_begins}|${req_ends}|${available}|${numOfBoxes}|${weeks}|${lockerID}|${boxIdString}">
+                <p class="reservation">Reservation</p></a>
+                `;
+                console.log('avail');
+              }
+
               // address, check-in, check-out, available, total_slots, weeks, locker_id, box_idString
               let locker = [infoContent, doc.data().latitude, doc.data().longitude, available, numOfBoxes, availablity];
-              locations.push(locker)
-           })
-          addMarkers(locations)
-      })
+              locations.push(locker);
+           });
+          addMarkers(locations);
+      });
 }
 
 /* add Markers and infoWindows*/
@@ -203,7 +230,7 @@ function addMarkers(locations) {
               google.maps.event.addListener(map, "click", function(event) {
                 infowindow.close();
             });
-          }
+          };
       })(marker, i));
   }
 }
