@@ -8,6 +8,30 @@ Jonghoon | Jang | A01240621
 Eiman | Ardakanian | A01195951
 Fengrui (Kevin) | Guo | A01243552
 
+## Content
+Content of the project folder:
+
+ Top level of project folder: 
+├── .gitignore               # Git ignore file
+├── public                   # Contains css, html, javascript, images and favicon subfolders
+├── README.md
+├── files related to firebase rules and indexes	
+├── upload_firestore # To export data to firebase
+├── archive   # To store all the unused files
+
+Subfolders and files of public folder:
+├── CSS                      # Folder for css files
+├── images                   # Folder for images for our application
+├── Javascripts              # Folder for all javascript files                  
+├── favicon                  # Folder for favicon icons used for our web application                    
+├── html files     
+
+
+Subfolders of upload_firestore folder:
+├── data                     # csv, json files for the database
+├── javascripts              # javascript files for exporting data to firestore  
+├── serviceAccount.json      # firebase private key
+
 
 ## Getting Started
 
