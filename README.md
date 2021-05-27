@@ -19,7 +19,7 @@ This is the project repository for our app. We used firebase for hosting, which 
 2. <a href="https://code.visualstudio.com/download">VS Code</a>
 3. <a href="https://www.selenium.dev/downloads/">Selenium IDE</a>
     
-Afterwards, create a <a href="https://firebase.google.com/">firebase account</a> to be able to access the database.
+Afterwards, create a <a href="https://firebase.google.com/">firebase account</a> to be able to access the database. You will need to be invited to be able to access the project files on github and firebase.
 
 ### To begin developing, follow the two steps below:
 
