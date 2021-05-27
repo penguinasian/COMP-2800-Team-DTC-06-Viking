@@ -66,8 +66,7 @@ async function queryAndRenderRoutes(user, isNextButton, restart) {
 
     result.forEach(function (doc) {
 
-        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH
-            , doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY);
+        add_popularRoutes(doc.id, user, doc.data().ROUTE_NAME, doc.data().ROUTE_STATIC_IMG, doc.data().ROUTE_LENGTH, doc.data().ROUTE_DIFFICULTY, doc.data().ROUTE_POPULARITY);
     });
 }
 
