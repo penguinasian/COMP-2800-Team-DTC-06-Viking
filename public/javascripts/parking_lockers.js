@@ -23,7 +23,7 @@ const zoomLevel = 12;
 const initMapLat = 49.260909127728326;
 const initMapLng = -123.08353272449504;
 
-
+/* redirect to login page if the user is not signed in */
 firebase.auth().onAuthStateChanged(function (user) {
   if  (!user) {
       window.location.href="https://viking-eaee3.web.app/login.html";
@@ -32,18 +32,22 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 /* This part of code is partially copied from https://codepen.io/mtbroomell/pen/yNwwdv and modified based on this situation: */
+
+/* increment button for # of weeks */
 function increaseValue() {
     var value = parseInt(document.getElementById('duration').value, 10);
     value = isNaN(value) ? 0 : value;
-    value > 52 ? value = 52 : '';
+    if (value>52) {value=52;}
     value++;
     document.getElementById('duration').value = value;
   }
-  
+
+
+/* decrement button for # of weeks */
 function decreaseValue() {
     var value = parseInt(document.getElementById('duration').value, 10);
     value = isNaN(value) ? 0 : value;
-    value < 3 ? value = 3 : '';
+    if (value < 3) {value=3;}
     value--;
     document.getElementById('duration').value = value;
 }
@@ -100,8 +104,8 @@ function getReservationData() {
               let end = new Date(resBegin);
               end.setDate(end.getDate() + numOfDays + 1); //it can be reserved again 24 hours later
                   
-              
-              if (!(begin > req_ends) && !(end < req_begins)) {
+              if ((begin <= req_ends) && (end >= req_begins)) {
+
                 count++;
                 record.push(lockerID, boxID);
                 fullBoxes.push(record);
@@ -110,20 +114,14 @@ function getReservationData() {
           updateMap(fullBoxes, req_begins, req_ends, weeks);
       });
     } 
-    else if (!(req_begins >= today)) {
+    else if ((req_begins < today)) {
       console.log('date input not correct');
       $("#start").css({"color":"red"});
-      // $("#start").text("hello");
       $("#start").append("<br>invalid input");
     }
     
-
-
   });
 }
-
-
-
 
 
 /* read data from Firestore and update map*/
@@ -173,11 +171,11 @@ function updateMap(fullBoxes, req_begins, req_ends, weeks) {
               console.log("joined: " + boxIdString);
 
 
-              if (availablity >= 0.6) {
+              if (availablity >= highAvailablity) {
                  availablity = "locker_high";
-              } else if (availablity >= 0.3) {
+              } else if (availablity >= lowAvailablity) {
                   availablity = "locker_medium";
-              } else if ( availablity > 0) {
+              } else if ( availablity > full) {
                   availablity = "locker_low";
               } else {
                   availablity = "locker_full";
@@ -208,6 +206,7 @@ function updateMap(fullBoxes, req_begins, req_ends, weeks) {
       });
 }
 
+
 /* add Markers and infoWindows*/
 function addMarkers(locations) {
   for (let i = 0; i < locations.length; i++) {
@@ -234,6 +233,7 @@ function addMarkers(locations) {
       })(marker, i));
   }
 }
+
 
 /*Get currnet zoom Level and center of the map*/
 function getCurrentMap() {
