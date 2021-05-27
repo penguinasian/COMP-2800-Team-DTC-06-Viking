@@ -21,6 +21,8 @@ This is the project repository for our app. We used firebase for hosting, which 
     
 Afterwards, create a <a href="https://firebase.google.com/">firebase account</a> to be able to access the database. You will need to be invited to be able to access the project files on github and firebase.
 
+To create route maps, use your google account and create them on <a href="https://www.google.ca/maps/about/mymaps/f">google maps</a>.
+
 ### To begin developing, follow the two steps below:
 
 1. Clone the repository in VS Code
@@ -32,6 +34,8 @@ Afterwards, create a <a href="https://firebase.google.com/">firebase account</a>
 1. Store the relevant json file in `/upload_firestore/data`
 2. Create or use a script in a similar format to `import.js` or `import_pop_routes.js` in the `/upload_firestore` folder
 3. Navigate to `/upload_firestore` in the terminal and type `node file.js`, replacing `file.js` with the name of the script
+
+To turn a csv file into json, install a google sheets add-on called <a href="https://workspace.google.com/marketplace/app/export_sheet_data/903838927001f">export sheet data</a>.
 
 ### To deploy the site:
 
