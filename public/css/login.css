@@ -70,5 +70,9 @@ li button, span {
     min-height: 50px !important;
 }
 
+.firebaseui-error {
+    color: #dd2c00;
+}
+
 /* Active page style.*/
 
