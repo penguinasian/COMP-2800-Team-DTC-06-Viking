@@ -1,14 +1,17 @@
+/* redirect to login page if users are not signed in */
 firebase.auth().onAuthStateChanged(function (user) {
     if  (!user) {
         window.location.href="https://viking-eaee3.web.app/login.html";
     } 
 });
 
-
-
+/* Constant */
 const chargePerWeek = 2.5;
 
+
 /* This part of code is partially copied from https://codepen.io/mtbroomell/pen/yNwwdv and modified based on this situation: */
+
+/* variables passed from the lockers page */
 let params = (new URL(document.location)).searchParams;
 let dataInput = params.get("array");
 let infoArray = dataInput.split("|");
@@ -39,32 +42,30 @@ console.log(boxIdArray);
 console.log("today " + currentDate);
 
 
-
-
-
-
+/* increment button for # of bike lockers */
 function increaseValue() {
     var value = parseInt(document.getElementById('quantity').value, 10);
     value = isNaN(value) ? 0 : value;
-    value > available-1 ? value = available-1 : '';
+    if (value > available -1) {value = available-1;}
     value++;
     document.getElementById('quantity').value = value;
     updateInformation();
 }
 
+/* decrement button for # of bike lockers */
 function decreaseValue() {
     var value = parseInt(document.getElementById('quantity').value, 10);
     value = isNaN(value) ? 0 : value;
-    value < 2 ? value = 2 : '';
+    if (value < 2) {value = 2;}
     value--;
     document.getElementById('quantity').value = value;
     updateInformation();
 }
 
-// summary toggle button(show, hide)
+/* summary toggle button(show, hide) */
 document.getElementById('summary').addEventListener('click', function (event) {
-    console.log('button clicked')
-    let table = document.getElementsByClassName('summaryTable')[0]
+    console.log('button clicked');
+    let table = document.getElementsByClassName('summaryTable')[0];
     if (table.style.display === 'none') {
         table.style.display = 'block';
     } else {
@@ -72,7 +73,7 @@ document.getElementById('summary').addEventListener('click', function (event) {
     }
 });
 
-
+/* Update information on the summary section */
 function updateInformation() {
 
     let quantity = parseInt(document.getElementById("quantity").value);
@@ -87,24 +88,11 @@ function updateInformation() {
     $('#length').text(`${weeks} weeks`);
     $('#qty').text(quantity);
     $('#totalPrice').text(`$ ${totalPrice}`);
-};
+}
 
 
-// function testUserSign() {
-//     firebase.auth().onAuthStateChanged(function (user) {
-//         if (user) {
-//             // User is signed in.
-//             console.log("Success")
-//             var user = firebase.auth().currentUser;
-//             var uid = user.uid;
-//             console.log(uid)
-//         } else {
-//             // No user is signed in.
-//             console.log("not log-in")
-//         }
-//     });
-// }
 
+/* Pay button event */
 let firstBox;
 
 document.getElementById('pay').addEventListener('click', function (event) {
@@ -148,7 +136,7 @@ document.getElementById('pay').addEventListener('click', function (event) {
     });
 });
 
-
+/* Write reservation info to Firebase */
 function writeToDatabase(boxNumber) {
     db.collection("reservation").add({
         LOCKER_ID: LockerId,
