@@ -10,7 +10,7 @@ Fengrui (Kevin) | Guo | A01243552
 
 ## Content
 Content of the project folder:
-
+```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
 ├── public                   # Contains css, html, javascript, images and favicon subfolders
@@ -31,7 +31,7 @@ Subfolders of upload_firestore folder:
 ├── data                     # csv, json files for the database
 ├── javascripts              # javascript files for exporting data to firestore  
 ├── serviceAccount.json      # firebase private key
-
+```
 
 ## Getting Started
 
@@ -83,8 +83,10 @@ To load the Maps JavaScript API inline in an HTML file, add a script tag as show
 
 
 Instruction for downloading Firebase API key:
-Link firebase_api.js into the bottom of your <body> tag, but before you use any Firebase services
+Link firebase_api.js into the bottom of your <body> tag, but before you use any Firebase services.
 
+### Configurations
+Please refer to 3rd party APIs above.
 
 ## Testing Plan
 
