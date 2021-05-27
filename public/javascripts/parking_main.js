@@ -5,7 +5,7 @@ const mapIcons = {
     "parkade_full": "./images/parkade_full.png",
     "parkade": "./images/parkade.png",
     "locker": "./images/locker.png"
-}
+};
 
 /* 
 Availablity level
@@ -30,32 +30,31 @@ function initMap() {
 }
 
 /* read data from Firestore and update map*/
-
 function readParkades() {
     db.collection("parkades")
         .get()
         .then(function (query) {
-            let locations = []
+            let locations = [];
             query.forEach(function (doc) {
-                let availablity = doc.data().available / doc.data().total
+                let availablity = doc.data().available / doc.data().total;
 
                 if (availablity >= 0.6) {
-                    availablity = "high"
+                    availablity = "high";
                 } else if (availablity >= 0.3) {
-                    availablity = "medium"
+                    availablity = "medium";
                 } else if (availablity > 0) {
-                    availablity = "low"
+                    availablity = "low";
                 } else {
-                    availablity = "full"
+                    availablity = "full";
                 }
 
                 let infoContent = `<h4>${doc.data().name}</h4><b>Address: </b> <br> ${doc.data().address} <br> <br><h5 class=${availablity}>Parking Slots: ${doc.data().available} / ${doc.data().total} </h5>`;
                 let parkade = [infoContent, doc.data().latitude, doc.data().longitude, 'parkade', doc.data().available, doc.data().total];
-                locations.push(parkade)
-            })
+                locations.push(parkade);
+            });
 
-            addMarkers(locations)
-        })
+            addMarkers(locations);
+        });
 }
 
 /* read data from Firestore and update map*/
@@ -63,39 +62,32 @@ function readLockers() {
     db.collection("lockers")
         .get()
         .then(function (query) {
-            let locations = []
+            let locations = [];
             query.forEach(function (doc) {
-                let availablity = 5 / doc.data().total
+                let availablity = 5 / doc.data().total;
 
                 if (availablity >= 0.6) {
-                    availablity = "locker"
+                    availablity = "locker";
                 } else if (availablity >= 0.3) {
-                    availablity = "locker"
+                    availablity = "locker";
                 } else if (availablity > 0) {
-                    availablity = "locker"
+                    availablity = "locker";
                 } else {
-                    availablity = "locker"
+                    availablity = "locker";
                 }
 
-                // let infoContent =
-                //     `<h4>${doc.data().name}</h4>
-                //     <b>Address: </b> <br> ${doc.data().address} <br> 
-                //     <br><h5 class=${availablity}>Locker Slots: 5 / ${doc.data().total} </h5>
-                //     <a href="parking_reservation.html?name=${doc.data().name}"><p class="reservation">Reservation</p></a>
-                //     `;
                 let infoContent =
                     `<h4>${doc.data().name}</h4>
                     <b>Address: </b> <br> ${doc.data().address} <br> 
                     `;
                 // lockerId, startDate, numberOfweeks, (array!) 
                 let locker = [infoContent, doc.data().latitude, doc.data().longitude, availablity, doc.data().total];
-                locations.push(locker)
-            })
+                locations.push(locker);
+            });
 
-            addMarkers(locations)
-        })
+            addMarkers(locations);
+        });
 }
-
 
 
 /* add Markers and infoWindows*/
@@ -120,17 +112,13 @@ function addMarkers(locations) {
                 google.maps.event.addListener(map, "click", function(event) {
                     infowindow.close();
                 });
-            }
+            };
 
-        
         })(marker, i));
 
     }
 }
 
-
-
-
-readParkades()
-readLockers()
+readParkades();
+readLockers();
 
