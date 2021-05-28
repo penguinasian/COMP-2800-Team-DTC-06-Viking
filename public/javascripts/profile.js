@@ -106,7 +106,7 @@ function setCurrentBookmark() {
     document.getElementById("bookmarks-route-duration").innerHTML = routesList[bookmarkIndex].ROUTE_DURATION + " hrs";
     document.getElementById("bookmarks-container").style.backgroundImage = "url('" + routesList[bookmarkIndex].ROUTE_STATIC_IMG + "')";
     document.getElementById("route-link").href = "./routes_detail_page.html?name=" + routesList[bookmarkIndex].ROUTE_NAME;
-    document.getElementById("route-link").target = "_blank";
+    //document.getElementById("route-link").target = "_blank";
 }
       
 //Increases the current bookmark index
