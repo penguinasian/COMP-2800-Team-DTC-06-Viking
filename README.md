@@ -14,6 +14,7 @@ Content of the project folder:
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
 ├── public                   # Contains css, html, javascript, images and favicon subfolders
+├── tests                   # Contains 1st version of Selenium tests package
 ├── README.md
 ├── files related to firebase rules and indexes	
 ├── upload_firestore # To export data to firebase
@@ -88,8 +89,8 @@ Link firebase_api.js into the bottom of your <body> tag, but before you use any 
 ### Configurations
 Please refer to 3rd party APIs above.
 
-## Testing Plan
+## Testing Plan and Test Files
 
 https://docs.google.com/spreadsheets/d/10W77fkHyNKxPCpFfT9-ZwfgkHA0aP0CANFubDfCeIYg/edit#gid=0
 
-Access our testing plan with the link above and see if there's anything to contribute!
+Access our testing plan with the link above and our 1st version of Selenium test package in our repo's tests folder and see if there's anything to contribute!
