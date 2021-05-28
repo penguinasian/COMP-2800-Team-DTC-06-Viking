@@ -1,4 +1,4 @@
-
+/*On click event for pagination for next and previous button*/
 async function onClickPagination(user, buttonToHide, buttonToShow, 
     isNextButton) {
 
@@ -13,6 +13,7 @@ async function onClickPagination(user, buttonToHide, buttonToShow,
     }
 }
 
+/*Query and render routes on page, filteration or not*/
 async function queryAndRenderRoutes(user, isNextButton, restart) {
     let level = document.getElementById("levelOption").value;
     let length = document.getElementById("lengthOption").value;
@@ -70,6 +71,7 @@ async function queryAndRenderRoutes(user, isNextButton, restart) {
     });
 }
 
+/*Call onclick pagination event for next button*/
 async function AddNextClickPagination(user) {
     //get the "next" button
     let paginationNextButton = document.getElementById("nextButton");
@@ -77,6 +79,7 @@ async function AddNextClickPagination(user) {
     paginationNextButton.addEventListener("click", () => onClickPagination(user, paginationNextButton, paginationPreviousButton, true));
 }
 
+/*Call onclick pagination event for previous button*/
 async function AddPreviousClickPagination(user) {
     let paginationNextButton = document.getElementById("nextButton");
     let paginationPreviousButton = document.getElementById("previousButton");
@@ -84,6 +87,7 @@ async function AddPreviousClickPagination(user) {
 
 }
 
+/*Filter function for length*/
 async function addFilterListenerForLength(user) {
 
     let lengthDropDown = document.getElementById("lengthOption");
@@ -93,6 +97,7 @@ async function addFilterListenerForLength(user) {
     });
 }
 
+/*Add like button listener*/
 async function addLikeListener(id, user, likes_number, like_div) {
 
     let route_name = like_div.parentNode.getElementsByClassName("routesNameFont")[0].innerText;
@@ -160,7 +165,7 @@ async function addLikeListener(id, user, likes_number, like_div) {
         });
 }
 
-
+/*Add filter for difficulty level*/
 async function addFilterListenerForLevel(user) {
 
     var levelDropDown = document.getElementById("levelOption");
@@ -172,6 +177,7 @@ async function addFilterListenerForLevel(user) {
         });
 }
 
+/*DOM to add elements to page on the fly*/
 function add_popularRoutes(id, user, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH, ROUTE_DIFFICULTY, ROUTE_POPULARITY) {
 
     //create an individule div for each routes inside parent div  
@@ -230,6 +236,8 @@ function add_popularRoutes(id, user, ROUTE_NAME, ROUTE_STATIC_IMG, ROUTE_LENGTH,
 //initialize pageStart and pageEnd to null. 
 let pageStart = null;
 let pageEnd = null;
+
+/*Main function*/
 firebase.auth().onAuthStateChanged(async function (firebaseUser) {
     if (!firebaseUser.uid) {
         window.location.href = "https://viking-eaee3.web.app/login.html";
