@@ -1,4 +1,11 @@
 /*On click event for pagination for next and previous button*/
+/**
+ * 
+ * @param {String} user Currently logged in user
+ * @param {*} buttonToHide a DOM elemement, refer to the button that needs to be hidden
+ * @param {*} buttonToShow a DOM elemenent, refer to the button that needs to be shown
+ * @param {Boolean} isNextButton a Boolean to indicate the Class we are going to give to the button
+ */
 async function onClickPagination(user, buttonToHide, buttonToShow, 
     isNextButton) {
 
